@@ -42,7 +42,7 @@ export const Logo: React.FC<LogoProps> = ({
   return (
     <div className={`flex flex-col ${gaps[size]} ${alignment} ${className}`}>
       <img
-        src="/assets/logo-name-web.png"
+        src="/logo-name-web.png"
         alt="Javier Barrios"
         className={`${imageSizes[size]} w-auto object-contain brightness-0 invert`}
       />

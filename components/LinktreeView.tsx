@@ -94,7 +94,7 @@ export const LinktreeView: React.FC<LinktreeProps> = ({ onEnterSite }) => {
               <div className="w-36 h-36 md:w-40 md:h-40 rounded-full p-[2px] bg-gradient-to-tr from-brand-gold via-brand-goldLight to-brand-goldDark shadow-[0_0_30px_rgba(197,160,89,0.3)] hover:shadow-[0_0_50px_rgba(197,160,89,0.5)] transition-all duration-700 relative z-10">
                   <div className="w-full h-full rounded-full overflow-hidden border-4 border-brand-dark bg-stone-900 relative">
                     <img
-                        src="/assets/linktree.webp"
+                        src="/linktree.webp"
                         alt="Dr. Javier Barrios"
                         className="w-full h-full object-cover opacity-90 group-hover:scale-105 transition-transform duration-700"
                     />

@@ -248,7 +248,7 @@ export const LandingPage: React.FC = () => {
              onClick={openModal}
           >
              {/* Thumbnail Image */}
-             <div className="absolute inset-0 bg-[url('/assets/DSC_1879.webp')] bg-cover bg-center group-hover:scale-105 transition-transform duration-[1.5s]"></div>
+             <div className="absolute inset-0 bg-[url('/DSC_1879.webp')] bg-cover bg-center group-hover:scale-105 transition-transform duration-[1.5s]"></div>
              <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/40"></div>
 
              {/* Play Interface */}
@@ -391,7 +391,7 @@ export const LandingPage: React.FC = () => {
               <div className="absolute -top-10 -right-10 w-2/3 h-2/3 bg-brand-gold/5 rounded-full blur-[80px]"></div>
               <div className="relative rounded-3xl overflow-hidden aspect-[3/4] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.5)] border border-white/5 group hover:border-brand-gold/20 transition-colors duration-700">
                  <img 
-                   src="/assets/DSC_1349.webp" 
+                   src="/DSC_1349.webp" 
                    alt="Dr. Javier Barrios" 
                    className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-105"
                  />
