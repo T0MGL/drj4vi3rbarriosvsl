@@ -102,16 +102,16 @@ export const getLeads = async (token: string): Promise<Lead[]> => {
             id: item.id || Math.random().toString(36),
             date: item.date || item.Fecha || new Date().toISOString(),
             name: item.name || item.Nombre || 'Sin nombre',
-            phone: item.phone || item.Whatsapp || '',
+            phone: String(item.phone || item.Whatsapp || '').replace(/^'/, ''), // Eliminar apóstrofe inicial si existe
             email: item.email || item.Email || '',
             location: item.location || item.Ubicacion || '',
             procedure: item.procedure || item.Procedimiento || '',
             budget: item.budget || item.Presupuesto || '',
             source: item.source || item.Fuente || '',
             motivation: item.motivation || item.Motivacion || '',
-            contacted: String(item.contacted).toLowerCase() === 'true',
-            converted: String(item.converted).toLowerCase() === 'true',
-            lost: String(item.lost).toLowerCase() === 'true'
+            contacted: String(item.contacted ?? false).toLowerCase() === 'true',
+            converted: String(item.converted ?? false).toLowerCase() === 'true',
+            lost: String(item.lost ?? false).toLowerCase() === 'true'
         })).reverse();
 
     } catch (error) {

@@ -299,7 +299,7 @@ export const CRM: React.FC = () => {
                                  </td>
                                  <td className="p-5">
                                     <div className="flex justify-center gap-2">
-                                       <a href={`https://wa.me/${lead.phone?.replace(/[^0-9]/g, '')}`} target="_blank" rel="noreferrer" className="flex items-center gap-2 px-3 py-1.5 bg-green-500/10 text-green-500 hover:bg-green-500 hover:text-white border border-green-500/20 hover:border-green-500 rounded-lg transition-all text-xs font-bold uppercase tracking-wide">
+                                       <a href={`https://wa.me/${(lead.phone || '').replace(/[^0-9]/g, '')}`} target="_blank" rel="noreferrer" className="flex items-center gap-2 px-3 py-1.5 bg-green-500/10 text-green-500 hover:bg-green-500 hover:text-white border border-green-500/20 hover:border-green-500 rounded-lg transition-all text-xs font-bold uppercase tracking-wide">
                                           <MessageCircle size={14} /> <span>Whatsapp</span>
                                        </a>
                                     </div>

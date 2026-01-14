@@ -1,0 +1,6 @@
+# robots.txt para Dr. Javier Barrios
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://drjavierbarrios.com/sitemap.xml
