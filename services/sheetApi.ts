@@ -33,12 +33,16 @@ export const submitLead = async (data: LeadData): Promise<boolean> => {
           ? (data.otherProcedure || 'Otro')
           : (data.procedure || 'No especificado');
 
+        // Formatear el número de WhatsApp para evitar que Google Sheets lo interprete como fórmula
+        // Agregamos un apóstrofe al inicio para forzar formato texto
+        const formattedWhatsapp = data.whatsapp ? `'${data.whatsapp}` : '';
+
         const payload = {
             action: 'create',
             id: Math.random().toString(36).substr(2, 9),
             Fecha: new Date().toLocaleString('es-PY'),
             Nombre: data.fullName,
-            Whatsapp: data.whatsapp,
+            Whatsapp: formattedWhatsapp,
             Email: data.email,
             Ubicacion: data.location,
             Procedimiento: finalProcedure,
