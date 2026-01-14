@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dr. Javier Barrios | Cirujano Plástico</title>
+    <meta name="description" content="Especialista en cirugía plástica, estética y reconstructiva. Resultados naturales y seguridad garantizada en Asunción. Agenda tu evaluación.">
+    
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://drjavierbarrios.com/" />
+    <meta property="og:title" content="Dr. Javier Barrios | Cirujano Plástico" />
+    <meta property="og:description" content="Diseñemos tu transformación. Medicina estética de alto nivel en Asunción." />
+    <meta property="og:image" content="/og-image.jpg" /> <!-- REEMPLAZAR: Sube una imagen de 1200x630px a tu carpeta public -->
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://drjavierbarrios.com/" />
+    <meta property="twitter:title" content="Dr. Javier Barrios | Cirujano Plástico" />
+    <meta property="twitter:description" content="Diseñemos tu transformación. Medicina estética de alto nivel en Asunción." />
+    <meta property="twitter:image" content="/og-image.jpg" />
+
+    <!-- Custom Fonts -->
+    <style>
+      @font-face {
+        font-family: 'Montserrat';
+        src: url('/assets/fonts/Montserrat-Regular.ttf') format('truetype');
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Marisa';
+        src: url('/assets/fonts/MarisaLight.ttf') format('truetype');
+        font-weight: 300;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Marisa';
+        src: url('/assets/fonts/MarisaRegular.ttf') format('truetype');
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Marisa';
+        src: url('/assets/fonts/MarisaMedium.ttf') format('truetype');
+        font-weight: 500;
+        font-style: normal;
+        font-display: swap;
+      }
+      @font-face {
+        font-family: 'Marisa';
+        src: url('/assets/fonts/MarisaBold.ttf') format('truetype');
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+      }
+    </style>
+
+    <!-- Google Fonts (fallback) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Montserrat', 'Inter', 'sans-serif'],
+              serif: ['Playfair Display', 'serif'],
+              display: ['Marisa', 'serif'],
+            },
+            colors: {
+              brand: {
+                gold: '#C5A059', // More muted, elegant gold
+                goldLight: '#E5D4A6',
+                goldDark: '#8C6E28',
+                dark: '#080808', // Nearly pitch black
+                charcoal: '#141414',
+                stone: '#1c1917'
+              }
+            },
+            animation: {
+              'fade-in': 'fadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
+              'fade-in-up': 'fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1)',
+              'slide-in-right': 'slideInRight 1s cubic-bezier(0.4, 0, 0.2, 1)',
+              'shimmer': 'shimmer 8s linear infinite',
+              'pulse-slow': 'pulseSlow 4s ease-in-out infinite',
+            },
+            keyframes: {
+              fadeIn: {
+                '0%': { opacity: '0' },
+                '100%': { opacity: '1' },
+              },
+              fadeInUp: {
+                '0%': { opacity: '0', transform: 'translateY(20px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              slideInRight: {
+                '0%': { opacity: '0', transform: 'translateX(30px)' },
+                '100%': { opacity: '1', transform: 'translateX(0)' },
+              },
+              shimmer: {
+                '0%': { backgroundPosition: '-200% center' },
+                '100%': { backgroundPosition: '200% center' }
+              },
+              pulseSlow: {
+                '0%, 100%': { opacity: '0.4' },
+                '50%': { opacity: '0.7' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      body {
+        background-color: #080808;
+        color: #e5e5e5;
+        overflow-x: hidden;
+      }
+      
+      /* Luxury Scrollbar */
+      ::-webkit-scrollbar {
+        width: 4px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #080808; 
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #333; 
+        border-radius: 2px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #C5A059; 
+      }
+
+      /* Refined Marble Texture - Softer, less noisy */
+      .marble-texture {
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 2000 1000' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.004' numOctaves='5' stitchTiles='stitch'/%3E%3Ccolormatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.3'/%3E%3C/svg%3E");
+        background-size: cover;
+      }
+      
+      .gold-gradient-text {
+        background: linear-gradient(to right, #C5A059, #E5D4A6, #C5A059);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-size: 200% auto;
+        animation: shimmer 8s linear infinite;
+      }
+
+      /* Subtle Vignette */
+      .vignette {
+        background: radial-gradient(circle at center, transparent 20%, #080808 140%);
+      }
+      
+      .glass-panel {
+        background: rgba(20, 20, 20, 0.4);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.03);
+      }
+
+      /* Scroll animations are loaded from index.css for better organization */
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react/": "https://esm.sh/react@^19.2.3/"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="antialiased selection:bg-brand-gold selection:text-black">
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
