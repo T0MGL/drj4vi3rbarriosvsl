@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { LeadData, PROCEDURES, BUDGET_RANGES, SOURCES } from '../types';
 import { ArrowRight, ArrowLeft, CheckCircle2, Sparkles, X, AlertCircle, ChevronDown, Loader2 } from 'lucide-react';
 import { submitLead } from '../services/sheetApi';
+import { trackFormConversion, trackFormStart, trackFormStep } from '../services/analytics';
 
 interface ConsultationFormProps {
   onClose?: () => void;
@@ -123,6 +124,8 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({ onClose }) =
     }
   };
 
+  const stepNames = ['intro', 'procedure', 'budget', 'contact', 'details', 'motivation'];
+
   const nextStep = () => {
     if (currentStep === 3) {
       if (!formData.whatsapp || errors.whatsapp || localPhone.length < 4) {
@@ -134,10 +137,19 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({ onClose }) =
     if (currentStep === 4) {
       if (formData.email && errors.email) {
         setTouched(prev => ({ ...prev, email: true }));
-        return; 
+        return;
       }
     }
-    if (currentStep < 5) setCurrentStep(prev => prev + 1);
+    if (currentStep < 5) {
+      const nextStepNum = currentStep + 1;
+      setCurrentStep(nextStepNum);
+
+      // Track form step progression
+      if (currentStep === 0) {
+        trackFormStart();
+      }
+      trackFormStep(nextStepNum, stepNames[nextStepNum]);
+    }
   };
 
   const prevStep = () => {
@@ -146,10 +158,20 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({ onClose }) =
 
   const handleSubmit = async () => {
     setIsSubmitting(true);
-    
+
     const success = await submitLead(formData);
 
     if (success) {
+      // Track conversion on successful submission
+      trackFormConversion({
+        procedure: formData.procedure === 'Otro procedimiento'
+          ? (formData.otherProcedure || 'Otro')
+          : formData.procedure,
+        budget: formData.budget,
+        source: formData.source,
+        location: formData.location,
+      });
+
       setSubmitted(true);
       setIsSubmitting(false);
     } else {
