@@ -100,6 +100,13 @@ export const LandingPage: React.FC = () => {
     setOpenFaqIndex(openFaqIndex === index ? null : index);
   };
 
+  const handleUnmute = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = false;
+      setShowUnmuteHint(false);
+    }
+  };
+
   // Prevent background scroll when modal is open
   useEffect(() => {
     if (isModalOpen) {
@@ -276,20 +283,22 @@ export const LandingPage: React.FC = () => {
                muted
                loop
                playsInline
-               preload="none"
-               poster="/DSC_1879.webp"
+               preload="auto"
                controlsList="nodownload"
              >
                <source src="/DRJAVIERBARRIOS.mp4" type="video/mp4" />
                Tu navegador no soporta la reproducción de video.
              </video>
 
-             {/* Sound Indicator - Subtle hint to unmute */}
+             {/* Sound Indicator - Clickable hint to unmute */}
              {showUnmuteHint && (
-               <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-sm px-3 py-1.5 rounded-full border border-white/10 flex items-center gap-2 animate-pulse transition-opacity duration-500">
-                 <div className="w-1.5 h-1.5 rounded-full bg-brand-gold"></div>
-                 <span className="text-white text-[10px] uppercase tracking-wider font-medium">Toca para activar audio</span>
-               </div>
+               <button
+                 onClick={handleUnmute}
+                 className="absolute top-4 right-4 bg-black/60 backdrop-blur-sm px-3 py-1.5 rounded-full border border-white/10 flex items-center gap-2 animate-pulse transition-all duration-500 hover:bg-brand-gold/20 hover:border-brand-gold/50 cursor-pointer group z-20"
+               >
+                 <div className="w-1.5 h-1.5 rounded-full bg-brand-gold group-hover:scale-125 transition-transform"></div>
+                 <span className="text-white text-[10px] uppercase tracking-wider font-medium group-hover:text-brand-gold transition-colors">Toca para activar audio</span>
+               </button>
              )}
           </div>
 
