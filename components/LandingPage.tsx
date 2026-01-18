@@ -214,21 +214,22 @@ export const LandingPage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
           <Logo size="sm" />
 
-          {/* Social Icons */}
-          <div className="flex items-center gap-3">
-            <a href="https://wa.me/595981003460" target="_blank" rel="noreferrer" className="text-stone-500 hover:text-brand-gold transition-colors p-2"><MessageCircle size={18}/></a>
-            <a href="https://www.instagram.com/dr.javierbarrios/" target="_blank" rel="noreferrer" className="text-stone-500 hover:text-brand-gold transition-colors p-2"><Instagram size={18}/></a>
-            <a href="https://www.facebook.com/share/1DUG8wnZFZ/?mibextid=wwXIfr" target="_blank" rel="noreferrer" className="text-stone-500 hover:text-brand-gold transition-colors p-2"><Facebook size={18}/></a>
-            <a href="https://www.tiktok.com/@dr.javierbarrios?_r=1&_t=ZM-932itBHEKzY" target="_blank" rel="noreferrer" className="text-stone-500 hover:text-brand-gold transition-colors p-2"><TiktokIcon size={18}/></a>
-          </div>
+          {/* Social Icons + Agendar Button */}
+          <div className="flex items-center gap-2">
+            <a href="https://wa.me/595981003460" target="_blank" rel="noreferrer" className="p-2.5 rounded-full bg-white/5 border border-white/10 text-stone-400 hover:text-brand-gold hover:border-brand-gold/50 transition-all duration-300"><MessageCircle size={16}/></a>
+            <a href="https://www.instagram.com/dr.javierbarrios/" target="_blank" rel="noreferrer" className="p-2.5 rounded-full bg-white/5 border border-white/10 text-stone-400 hover:text-brand-gold hover:border-brand-gold/50 transition-all duration-300"><Instagram size={16}/></a>
+            <a href="https://www.facebook.com/share/1DUG8wnZFZ/?mibextid=wwXIfr" target="_blank" rel="noreferrer" className="p-2.5 rounded-full bg-white/5 border border-white/10 text-stone-400 hover:text-brand-gold hover:border-brand-gold/50 transition-all duration-300"><Facebook size={16}/></a>
+            <a href="https://www.tiktok.com/@dr.javierbarrios?_r=1&_t=ZM-932itBHEKzY" target="_blank" rel="noreferrer" className="p-2.5 rounded-full bg-white/5 border border-white/10 text-stone-400 hover:text-brand-gold hover:border-brand-gold/50 transition-all duration-300"><TiktokIcon size={16}/></a>
 
-          <button
-            onClick={openModal}
-            className="group flex items-center gap-2 bg-white/5 hover:bg-brand-gold hover:text-black border border-white/10 text-white px-5 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all duration-300 hover:shadow-[0_0_20px_rgba(197,160,89,0.3)]"
-          >
-            <Calendar size={14} className="text-brand-gold group-hover:text-black transition-colors duration-300" />
-            <span className="hidden sm:inline">Agendar Cita</span>
-          </button>
+            {/* Agendar Button - hidden on mobile */}
+            <button
+              onClick={openModal}
+              className="hidden sm:flex items-center gap-2 ml-2 bg-white/5 hover:bg-brand-gold hover:text-black border border-white/10 text-white px-5 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all duration-300 hover:shadow-[0_0_20px_rgba(197,160,89,0.3)]"
+            >
+              <Calendar size={14} className="text-brand-gold group-hover:text-black transition-colors duration-300" />
+              <span>Agendar Cita</span>
+            </button>
+          </div>
         </div>
       </nav>
 
@@ -248,17 +249,18 @@ export const LandingPage: React.FC = () => {
             </h1>
           </div>
 
-          {/* VSL CONTAINER - GOOGLE DRIVE VIDEO */}
+          {/* VSL CONTAINER - HTML5 VIDEO */}
           <div className="hero-video relative w-full max-w-4xl aspect-video bg-stone-950 rounded-3xl overflow-hidden shadow-2xl border border-white/10 transition-all duration-700 hover:shadow-[0_20px_80px_rgba(197,160,89,0.15)] hover:border-brand-gold/30">
-             <iframe
-               src="https://drive.google.com/file/d/1yWEjEGmLXMkhFx2xd_CE5pEatq1bMnMC/preview"
-               width="100%"
-               height="100%"
-               allow="autoplay; fullscreen"
-               allowFullScreen
-               className="absolute inset-0 w-full h-full"
-               title="Video de presentación Dr. Javier Barrios"
-             ></iframe>
+             <video
+               className="absolute inset-0 w-full h-full object-cover"
+               controls
+               preload="metadata"
+               poster="/DSC_1879.webp"
+               playsInline
+             >
+               <source src="/DRJAVIERBARRIOS.MP4" type="video/mp4" />
+               Tu navegador no soporta la reproducción de video.
+             </video>
           </div>
 
           {/* Texto debajo del video */}
