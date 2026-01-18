@@ -254,9 +254,12 @@ export const LandingPage: React.FC = () => {
              <video
                className="absolute inset-0 w-full h-full object-cover"
                controls
-               preload="auto"
-               poster="/DSC_1879.webp"
+               autoPlay
+               muted
+               loop
                playsInline
+               preload="none"
+               poster="/DSC_1879.webp"
                controlsList="nodownload"
              >
                <source src="/DRJAVIERBARRIOS.mp4" type="video/mp4" />
