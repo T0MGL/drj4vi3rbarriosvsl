@@ -254,11 +254,12 @@ export const LandingPage: React.FC = () => {
              <video
                className="absolute inset-0 w-full h-full object-cover"
                controls
-               preload="metadata"
+               preload="auto"
                poster="/DSC_1879.webp"
                playsInline
+               controlsList="nodownload"
              >
-               <source src="/DRJAVIERBARRIOS.MP4" type="video/mp4" />
+               <source src="/DRJAVIERBARRIOS.mp4" type="video/mp4" />
                Tu navegador no soporta la reproducción de video.
              </video>
           </div>
@@ -387,9 +388,9 @@ export const LandingPage: React.FC = () => {
            <div className="w-full md:w-1/2 order-1 md:order-2 relative reveal-from-right delay-200">
               <div className="absolute -top-10 -right-10 w-2/3 h-2/3 bg-brand-gold/5 rounded-full blur-[80px]"></div>
               <div className="relative rounded-3xl overflow-hidden aspect-[3/4] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.5)] border border-white/5 group hover:border-brand-gold/20 transition-colors duration-700">
-                 <img 
-                   src="/DSC_1349.webp" 
-                   alt="Dr. Javier Barrios" 
+                 <img
+                   src="/drjavierbarrios.webp"
+                   alt="Dr. Javier Barrios"
                    className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-105"
                  />
                  <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-transparent to-transparent"></div>
