@@ -89,7 +89,9 @@ export const LandingPage: React.FC = () => {
   const [showStickyCta, setShowStickyCta] = useState(false);
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
   const [headerVisible, setHeaderVisible] = useState(true);
+  const [showUnmuteHint, setShowUnmuteHint] = useState(true);
   const heroCtaRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
@@ -106,6 +108,21 @@ export const LandingPage: React.FC = () => {
       document.body.style.overflow = 'unset';
     }
   }, [isModalOpen]);
+
+  // Hide unmute hint when video is unmuted
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const handleVolumeChange = () => {
+      if (!video.muted) {
+        setShowUnmuteHint(false);
+      }
+    };
+
+    video.addEventListener('volumechange', handleVolumeChange);
+    return () => video.removeEventListener('volumechange', handleVolumeChange);
+  }, []);
 
   // Hide header on scroll down, show on scroll up
   useEffect(() => {
@@ -252,6 +269,7 @@ export const LandingPage: React.FC = () => {
           {/* VSL CONTAINER - HTML5 VIDEO */}
           <div className="hero-video relative w-full max-w-4xl aspect-video bg-stone-950 rounded-3xl overflow-hidden shadow-2xl border border-white/10 transition-all duration-700 hover:shadow-[0_20px_80px_rgba(197,160,89,0.15)] hover:border-brand-gold/30">
              <video
+               ref={videoRef}
                className="absolute inset-0 w-full h-full object-cover"
                controls
                autoPlay
@@ -267,10 +285,12 @@ export const LandingPage: React.FC = () => {
              </video>
 
              {/* Sound Indicator - Subtle hint to unmute */}
-             <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-sm px-3 py-1.5 rounded-full border border-white/10 flex items-center gap-2 animate-pulse">
-               <div className="w-1.5 h-1.5 rounded-full bg-brand-gold"></div>
-               <span className="text-white text-[10px] uppercase tracking-wider font-medium">Toca para activar audio</span>
-             </div>
+             {showUnmuteHint && (
+               <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-sm px-3 py-1.5 rounded-full border border-white/10 flex items-center gap-2 animate-pulse transition-opacity duration-500">
+                 <div className="w-1.5 h-1.5 rounded-full bg-brand-gold"></div>
+                 <span className="text-white text-[10px] uppercase tracking-wider font-medium">Toca para activar audio</span>
+               </div>
+             )}
           </div>
 
           {/* Texto debajo del video */}
