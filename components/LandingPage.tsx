@@ -211,15 +211,15 @@ export const LandingPage: React.FC = () => {
 
       {/* === HEADER === */}
       <nav className={`fixed top-0 w-full z-40 bg-brand-dark/90 backdrop-blur-xl border-b border-white/5 transition-all duration-500 ${headerVisible ? 'translate-y-0' : '-translate-y-full'}`}>
-        <div className="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex justify-between items-center gap-3">
           <Logo size="sm" />
 
           {/* Social Icons + Agendar Button */}
-          <div className="flex items-center gap-2">
-            <a href="https://wa.me/595981003460" target="_blank" rel="noreferrer" className="p-2.5 rounded-full bg-white/5 border border-white/10 text-stone-400 hover:text-brand-gold hover:border-brand-gold/50 transition-all duration-300"><MessageCircle size={16}/></a>
-            <a href="https://www.instagram.com/dr.javierbarrios/" target="_blank" rel="noreferrer" className="p-2.5 rounded-full bg-white/5 border border-white/10 text-stone-400 hover:text-brand-gold hover:border-brand-gold/50 transition-all duration-300"><Instagram size={16}/></a>
-            <a href="https://www.facebook.com/share/1DUG8wnZFZ/?mibextid=wwXIfr" target="_blank" rel="noreferrer" className="p-2.5 rounded-full bg-white/5 border border-white/10 text-stone-400 hover:text-brand-gold hover:border-brand-gold/50 transition-all duration-300"><Facebook size={16}/></a>
-            <a href="https://www.tiktok.com/@dr.javierbarrios?_r=1&_t=ZM-932itBHEKzY" target="_blank" rel="noreferrer" className="p-2.5 rounded-full bg-white/5 border border-white/10 text-stone-400 hover:text-brand-gold hover:border-brand-gold/50 transition-all duration-300"><TiktokIcon size={16}/></a>
+          <div className="flex items-center gap-1.5 sm:gap-2">
+            <a href="https://wa.me/595981003460" target="_blank" rel="noreferrer" className="p-2 sm:p-2.5 rounded-full bg-white/5 border border-white/10 text-stone-400 hover:text-brand-gold hover:border-brand-gold/50 transition-all duration-300"><MessageCircle size={14} className="sm:w-4 sm:h-4"/></a>
+            <a href="https://www.instagram.com/dr.javierbarrios/" target="_blank" rel="noreferrer" className="p-2 sm:p-2.5 rounded-full bg-white/5 border border-white/10 text-stone-400 hover:text-brand-gold hover:border-brand-gold/50 transition-all duration-300"><Instagram size={14} className="sm:w-4 sm:h-4"/></a>
+            <a href="https://www.facebook.com/share/1DUG8wnZFZ/?mibextid=wwXIfr" target="_blank" rel="noreferrer" className="p-2 sm:p-2.5 rounded-full bg-white/5 border border-white/10 text-stone-400 hover:text-brand-gold hover:border-brand-gold/50 transition-all duration-300"><Facebook size={14} className="sm:w-4 sm:h-4"/></a>
+            <a href="https://www.tiktok.com/@dr.javierbarrios?_r=1&_t=ZM-932itBHEKzY" target="_blank" rel="noreferrer" className="p-2 sm:p-2.5 rounded-full bg-white/5 border border-white/10 text-stone-400 hover:text-brand-gold hover:border-brand-gold/50 transition-all duration-300"><TiktokIcon size={14} className="sm:w-4 sm:h-4"/></a>
 
             {/* Agendar Button - hidden on mobile */}
             <button
@@ -265,6 +265,12 @@ export const LandingPage: React.FC = () => {
                <source src="/DRJAVIERBARRIOS.mp4" type="video/mp4" />
                Tu navegador no soporta la reproducción de video.
              </video>
+
+             {/* Sound Indicator - Subtle hint to unmute */}
+             <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-sm px-3 py-1.5 rounded-full border border-white/10 flex items-center gap-2 animate-pulse">
+               <div className="w-1.5 h-1.5 rounded-full bg-brand-gold"></div>
+               <span className="text-white text-[10px] uppercase tracking-wider font-medium">Toca para activar audio</span>
+             </div>
           </div>
 
           {/* Texto debajo del video */}
