@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { LinktreeView } from './components/LinktreeView';
 import { LandingPage } from './components/LandingPage';
 import { CRM } from './components/CRM';
 
 const App: React.FC = () => {
-  const [currentView, setCurrentView] = useState<'links' | 'landing' | 'crm'>('links');
+  const [currentView, setCurrentView] = useState<'landing' | 'crm'>('landing');
 
   useEffect(() => {
     const path = window.location.pathname;
@@ -17,13 +16,7 @@ const App: React.FC = () => {
     return <CRM />;
   }
 
-  if (currentView === 'landing') {
-    return <LandingPage />;
-  }
-
-  return (
-    <LinktreeView onEnterSite={() => setCurrentView('landing')} />
-  );
+  return <LandingPage />;
 };
 
 export default App;

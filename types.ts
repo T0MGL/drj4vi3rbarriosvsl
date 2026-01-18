@@ -42,11 +42,10 @@ export const PROCEDURES = [
 ];
 
 export const BUDGET_RANGES = [
-  "8.000.000 - 15.000.000",
-  "15.000.000 - 25.000.000",
-  "25.000.000 - 35.000.000",
-  "35.000.000 - 45.000.000",
-  "45.000.000 o más"
+  "Menos de 10.000.000 Gs",
+  "Entre 10.000.000 y 20.000.000 Gs",
+  "Entre 20.000.000 y 30.000.000 Gs",
+  "Más de 30.000.000 Gs"
 ];
 
 export const SOURCES = [

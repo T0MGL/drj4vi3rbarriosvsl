@@ -51,34 +51,34 @@ const FAQS = [
   },
   {
     question: "¿Ofrecen planes de financiación?",
-    answer: "Entendemos que esto es una inversión en ti. Aceptamos diversas formas de pago y trabajamos con entidades financieras aliadas para ofrecer planes de cuotas. Todos los detalles se discuten con transparencia durante tu consulta."
+    answer: "Entendemos que esto es una inversión en ti. Aceptamos diversas formas de pago y trabajamos con entidades financieras aliadas para ofrecerte facilidades. Todos los detalles se discuten con transparencia durante tu consulta."
   },
   {
     question: "¿Cómo es la primera consulta?",
-    answer: "Es el momento más importante. El Dr. Barrios evaluará tu anatomía, escuchará tus deseos y te explicará con honestidad qué resultados podemos lograr. Incluye un análisis fotográfico y un plan quirúrgico a medida."
+    answer: "Es el momento más importante. El Dr. Barrios evaluará tu anatomía, escuchará tus deseos y te explicará con honestidad qué resultados podemos lograr, en base a esto haremos un plan quirúrgico a medida."
   }
 ];
 
 const SAFETY_STEPS = [
   {
     icon: Stethoscope,
-    title: "1. Valoración Médica",
-    desc: "Evaluación anatómica presencial. Escuchamos tus deseos y definimos si eres candidata/o desde un criterio médico y ético."
+    title: "1. Consulta Médica",
+    desc: "Evaluación inicial presencial o online. Escuchamos tus deseos y definimos si eres candidata/o desde un criterio médico y ético."
   },
   {
     icon: ShieldCheck,
     title: "2. Protocolo Pre-Quirúrgico",
-    desc: "Tu seguridad es innegociable. Realizamos análisis completos, riesgo cardiológico y planificación detallada de tu cirugía."
+    desc: "Tu seguridad es innegociable. Solicitamos análisis completos, evaluaciones clínicas y planificación detallada de tu cirugía."
   },
   {
     icon: Activity,
     title: "3. Tu Procedimiento",
-    desc: "Tecnología de punta en quirófanos certificados. Anestesia monitoreada por especialistas para tu total tranquilidad."
+    desc: "Trabajamos en hospitales con certificaciones internacionales, para ofrecerte lo mejor en seguridad y tecnología."
   },
   {
     icon: HeartHandshake,
     title: "4. Post-Operatorio Integral",
-    desc: "No te dejamos sola. Incluye drenajes linfáticos, curaciones y seguimiento continuo hasta tu alta definitiva."
+    desc: "No te dejamos sola/o. Incluye drenajes linfáticos, curaciones y seguimiento continuo hasta tu alta definitiva."
   }
 ];
 
@@ -213,6 +213,15 @@ export const LandingPage: React.FC = () => {
       <nav className={`fixed top-0 w-full z-40 bg-brand-dark/90 backdrop-blur-xl border-b border-white/5 transition-all duration-500 ${headerVisible ? 'translate-y-0' : '-translate-y-full'}`}>
         <div className="max-w-7xl mx-auto px-6 py-3 flex justify-between items-center">
           <Logo size="sm" />
+
+          {/* Social Icons */}
+          <div className="flex items-center gap-3">
+            <a href="https://wa.me/595981003460" target="_blank" rel="noreferrer" className="text-stone-500 hover:text-brand-gold transition-colors p-2"><MessageCircle size={18}/></a>
+            <a href="https://www.instagram.com/dr.javierbarrios/" target="_blank" rel="noreferrer" className="text-stone-500 hover:text-brand-gold transition-colors p-2"><Instagram size={18}/></a>
+            <a href="https://www.facebook.com/share/1DUG8wnZFZ/?mibextid=wwXIfr" target="_blank" rel="noreferrer" className="text-stone-500 hover:text-brand-gold transition-colors p-2"><Facebook size={18}/></a>
+            <a href="https://www.tiktok.com/@dr.javierbarrios?_r=1&_t=ZM-932itBHEKzY" target="_blank" rel="noreferrer" className="text-stone-500 hover:text-brand-gold transition-colors p-2"><TiktokIcon size={18}/></a>
+          </div>
+
           <button
             onClick={openModal}
             className="group flex items-center gap-2 bg-white/5 hover:bg-brand-gold hover:text-black border border-white/10 text-white px-5 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all duration-300 hover:shadow-[0_0_20px_rgba(197,160,89,0.3)]"
@@ -232,40 +241,30 @@ export const LandingPage: React.FC = () => {
         <div className="max-w-5xl mx-auto w-full flex flex-col items-center">
           
           {/* MAIN HEADLINE */}
-          <div className="mb-10 space-y-4">
-            <span className="hero-subtitle text-brand-gold text-[10px] md:text-xs uppercase tracking-[0.4em] font-medium block animate-pulse-slow">
-              Medicina Estética de Alto Nivel
-            </span>
+          <div className="mb-10">
             <h1 className="hero-title font-serif text-4xl md:text-6xl lg:text-7xl text-white leading-[1.1]">
               Diseñemos tu <br/>
               <span className="italic bg-clip-text text-transparent bg-gradient-to-r from-white via-stone-200 to-stone-500">Transformación</span>
             </h1>
           </div>
 
-          {/* VSL CONTAINER - SMOOTH CARD */}
-          <div
-             className="hero-video relative w-full max-w-4xl aspect-video bg-stone-950 rounded-3xl overflow-hidden shadow-2xl border border-white/10 group cursor-pointer transition-all duration-700 hover:shadow-[0_20px_80px_rgba(197,160,89,0.15)] hover:border-brand-gold/30 hover:scale-[1.01]"
-             onClick={openModal}
-          >
-             {/* Thumbnail Image */}
-             <div className="absolute inset-0 bg-[url('/DSC_1879.webp')] bg-cover bg-center group-hover:scale-105 transition-transform duration-[1.5s]"></div>
-             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black/40"></div>
-
-             {/* Play Interface */}
-             <div className="absolute inset-0 flex flex-col items-center justify-center z-20">
-                <div className="relative group-hover:-translate-y-2 transition-transform duration-500">
-                   <div className="absolute inset-0 bg-brand-gold/20 rounded-full animate-ping opacity-20"></div>
-                   <div className="relative w-20 h-20 md:w-24 md:h-24 rounded-full border border-white/20 backdrop-blur-md bg-white/5 flex items-center justify-center shadow-[0_0_40px_rgba(0,0,0,0.5)] group-hover:bg-brand-gold group-hover:border-brand-gold transition-colors duration-500">
-                      <Play className="w-8 h-8 md:w-10 md:h-10 text-white ml-1 group-hover:text-black transition-colors duration-500" fill="currentColor" />
-                   </div>
-                </div>
-                
-                <div className="mt-8 flex flex-col items-center gap-2">
-                    <span className="text-white font-medium text-lg md:text-xl tracking-wide group-hover:text-brand-gold transition-colors duration-300">Descubre el proceso</span>
-                    <span className="text-stone-400 text-sm font-light">Mira el video de 60 segundos</span>
-                </div>
-             </div>
+          {/* VSL CONTAINER - GOOGLE DRIVE VIDEO */}
+          <div className="hero-video relative w-full max-w-4xl aspect-video bg-stone-950 rounded-3xl overflow-hidden shadow-2xl border border-white/10 transition-all duration-700 hover:shadow-[0_20px_80px_rgba(197,160,89,0.15)] hover:border-brand-gold/30">
+             <iframe
+               src="https://drive.google.com/file/d/1yWEjEGmLXMkhFx2xd_CE5pEatq1bMnMC/preview"
+               width="100%"
+               height="100%"
+               allow="autoplay; fullscreen"
+               allowFullScreen
+               className="absolute inset-0 w-full h-full"
+               title="Video de presentación Dr. Javier Barrios"
+             ></iframe>
           </div>
+
+          {/* Texto debajo del video */}
+          <p className="mt-6 text-brand-gold text-sm md:text-base font-light italic">
+            Estoy aquí para responder tus preguntas y acompañarte en este proceso.
+          </p>
 
           {/* PRIMARY CTA - DIRECT TO MODAL */}
           <div ref={heroCtaRef} className="hero-cta mt-12 w-full flex flex-col items-center gap-6">
@@ -296,12 +295,8 @@ export const LandingPage: React.FC = () => {
                <span className="text-brand-gold text-xs uppercase tracking-[0.2em]">Pacientes Felices</span>
             </div>
             <div className="stat-number delay-100 space-y-2">
-               <span className="text-4xl md:text-6xl font-serif text-white block">15</span>
-               <span className="text-brand-gold text-xs uppercase tracking-[0.2em]">Años de Experiencia</span>
-            </div>
-            <div className="stat-number delay-200 space-y-2">
                <span className="text-4xl md:text-6xl font-serif text-white block">100%</span>
-               <span className="text-brand-gold text-xs uppercase tracking-[0.2em]">Atención Premium</span>
+               <span className="text-brand-gold text-xs uppercase tracking-[0.2em]">Atención Personalizada</span>
             </div>
          </div>
       </section>
