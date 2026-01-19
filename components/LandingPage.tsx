@@ -622,18 +622,16 @@ export const LandingPage: React.FC = () => {
             </div>
 
             {/* Copyright & Credit */}
-            <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 pt-4 border-t border-white/5 w-full">
-                <span className="text-[10px] text-brand-neutral-40 tracking-widest font-sans">
+            <div className="pt-4 border-t border-white/5 w-full text-center space-y-1">
+                <p className="text-[10px] text-brand-neutral-40 tracking-wider font-sans">
                    © {new Date().getFullYear()} Dr. Javier Barrios. Todos los derechos reservados.
-                </span>
+                </p>
                 <a
                   href="https://thebrightidea.ai"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[10px] text-border-brand-primary-50 hover:text-brand-neutral transition-colors uppercase tracking-widest font-sans"
-                >
-                  Desarrollado por Bright Idea
-                </a>
+                  className="inline-block text-[9px] text-brand-neutral-40/60 hover:text-brand-neutral-40 transition-colors font-sans"
+                >Desarrollado por Bright Idea</a>
             </div>
         </div>
       </section>
