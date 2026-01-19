@@ -207,21 +207,21 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({ onClose }) =
       case 0:
         return (
           <div className="animate-fade-in-up text-center md:text-left">
-            <span className="text-brand-accent text-xs uppercase tracking-[0.2em] font-bold mb-4 block">Evaluación Personalizada</span>
-            <h2 className="font-serif text-3xl md:text-4xl text-white mb-6 leading-tight">
+            <span className="text-brand-accent text-xs uppercase tracking-[0.2em] font-sans font-medium mb-4 block">Evaluación Personalizada</span>
+            <h2 className="font-display font-bold text-3xl md:text-4xl text-white mb-6 leading-tight tracking-tight">
               Cuéntanos tu historia.
             </h2>
-            <p className="text-brand-neutral text-base font-light mb-8 leading-relaxed">
+            <p className="text-brand-neutral text-base font-sans font-normal mb-8 leading-relaxed">
               Para ofrecerte la mejor solución, el Dr. Barrios necesita conocer algunos detalles clave. Tus respuestas son 100% confidenciales.
             </p>
-            <button 
+            <button
               onClick={nextStep}
-              className="w-full md:w-auto group flex items-center justify-center gap-4 bg-brand-accent text-black px-8 py-3 rounded-xl font-bold uppercase tracking-widest text-xs hover:bg-white transition-all duration-300"
+              className="w-full md:w-auto group flex items-center justify-center gap-4 bg-brand-accent text-black px-8 py-3 rounded-xl font-sans font-medium uppercase tracking-widest text-xs hover:bg-white transition-all duration-300"
             >
               Iniciar Cuestionario
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
             </button>
-            <div className="mt-6 flex items-center justify-center md:justify-start gap-2 text-brand-neutral text-[10px] uppercase tracking-wider">
+            <div className="mt-6 flex items-center justify-center md:justify-start gap-2 text-brand-neutral text-[10px] uppercase tracking-wider font-sans">
               <Sparkles size={12} className="text-brand-accent" />
               <span>Tiempo estimado: 2 minutos</span>
             </div>
@@ -231,8 +231,8 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({ onClose }) =
       case 1:
         return (
           <div className="animate-slide-in-right w-full">
-            <h3 className="font-serif text-2xl text-white mb-6">
-              <span className="text-brand-accent text-sm block mb-2 font-sans tracking-widest uppercase">Paso 01</span>
+            <h3 className="font-display font-bold text-2xl text-white mb-6 tracking-tight">
+              <span className="text-brand-accent text-sm block mb-2 font-sans font-medium tracking-widest uppercase">Paso 01</span>
               ¿Cuál es tu cirugía de interés?
             </h3>
             <div className="grid grid-cols-1 gap-2 max-h-[50vh] overflow-y-auto custom-scrollbar pr-2">
@@ -241,12 +241,12 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({ onClose }) =
                   key={p}
                   onClick={() => handleSelection('procedure', p)}
                   className={`text-left p-4 rounded-lg border transition-all duration-300 flex justify-between items-center group
-                    ${formData.procedure === p 
-                      ? 'bg-brand-accent text-black border-brand-accent shadow-lg shadow-brand-accent/20' 
+                    ${formData.procedure === p
+                      ? 'bg-brand-accent text-black border-brand-accent shadow-lg shadow-brand-accent/20'
                       : 'bg-brand-dark/40 border-border-brand-primary-50 text-brand-light hover:border-brand-accent/30 hover:bg-brand-dark'
                     }`}
                 >
-                  <span className="font-light tracking-wide text-sm md:text-base">{p}</span>
+                  <span className="font-sans font-normal tracking-wide text-sm md:text-base">{p}</span>
                   {formData.procedure === p && <CheckCircle2 size={18} />}
                 </button>
               ))}
@@ -261,9 +261,9 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({ onClose }) =
                     onChange={handleInputChange}
                     onKeyDown={handleKeyDown}
                     placeholder="Especifique el procedimiento..."
-                    className="w-full bg-transparent border-b border-brand-neutral-50 text-white text-lg py-2 focus:border-brand-accent outline-none placeholder:text-brand-neutral-60 transition-colors"
+                    className="w-full bg-transparent border-b border-brand-neutral-50 text-white text-lg py-2 focus:border-brand-accent outline-none placeholder:text-brand-neutral-60 transition-colors font-sans"
                  />
-                 <button onClick={nextStep} className="mt-4 text-brand-accent text-xs uppercase tracking-widest hover:text-white transition-colors">Continuar &rarr;</button>
+                 <button onClick={nextStep} className="mt-4 text-brand-accent text-xs uppercase tracking-widest hover:text-white transition-colors font-sans">Continuar &rarr;</button>
                </div>
             )}
           </div>
@@ -272,11 +272,11 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({ onClose }) =
       case 2:
          return (
           <div className="animate-slide-in-right w-full">
-            <h3 className="font-serif text-2xl text-white mb-2">
-              <span className="text-brand-accent text-sm block mb-2 font-sans tracking-widest uppercase">Paso 02</span>
+            <h3 className="font-display font-bold text-2xl text-white mb-2 tracking-tight">
+              <span className="text-brand-accent text-sm block mb-2 font-sans font-medium tracking-widest uppercase">Paso 02</span>
               Inversión estimada
             </h3>
-            <p className="text-brand-neutral text-sm mb-6 font-light">Para ofrecerte opciones realistas, selecciona tu rango de presupuesto.</p>
+            <p className="text-brand-neutral text-sm mb-6 font-sans font-normal">Para ofrecerte opciones realistas, selecciona tu rango de presupuesto.</p>
             <div className="space-y-2">
               {BUDGET_RANGES.map((range, idx) => (
                 <button
@@ -284,11 +284,11 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({ onClose }) =
                   onClick={() => handleSelection('budget', range)}
                   className={`w-full text-left p-4 rounded-lg border transition-all duration-300 flex justify-between items-center
                     ${formData.budget === range
-                      ? 'bg-border-brand-primary-50 border-brand-accent text-white' 
+                      ? 'bg-border-brand-primary-50 border-brand-accent text-white'
                       : 'bg-transparent border-border-brand-primary-50 text-brand-neutral hover:border-brand-neutral-50 hover:bg-brand-dark/30'
                     }`}
                 >
-                  <span className="font-light font-mono text-sm">{range} Gs</span>
+                  <span className="font-sans font-normal text-sm">{range} Gs</span>
                   {formData.budget === range && <div className="w-2 h-2 rounded-full bg-brand-accent"></div>}
                 </button>
               ))}
@@ -299,13 +299,13 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({ onClose }) =
       case 3:
         return (
           <div className="animate-slide-in-right w-full">
-             <h3 className="font-serif text-2xl text-white mb-6">
-              <span className="text-brand-accent text-sm block mb-2 font-sans tracking-widest uppercase">Paso 03</span>
+             <h3 className="font-display font-bold text-2xl text-white mb-6 tracking-tight">
+              <span className="text-brand-accent text-sm block mb-2 font-sans font-medium tracking-widest uppercase">Paso 03</span>
               Tus datos de contacto
             </h3>
             <div className="space-y-8">
               <div className="group">
-                <label className="block text-brand-accent text-[10px] uppercase tracking-widest mb-2">Nombre Completo</label>
+                <label className="block text-brand-accent text-[10px] uppercase tracking-widest mb-2 font-sans">Nombre Completo</label>
                 <input
                   ref={inputRef}
                   type="text"
@@ -314,17 +314,17 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({ onClose }) =
                   onChange={handleInputChange}
                   onKeyDown={handleKeyDown}
                   placeholder="Ej: María González"
-                  className="w-full bg-transparent border-b border-brand-neutral-40 text-xl md:text-2xl text-white py-2 focus:border-brand-accent outline-none transition-colors placeholder:text-brand-neutral-50 font-serif"
+                  className="w-full bg-transparent border-b border-brand-neutral-40 text-xl md:text-2xl text-white py-2 focus:border-brand-accent outline-none transition-colors placeholder:text-brand-neutral-50 font-display"
                 />
               </div>
               <div className="group relative">
-                <label className="block text-brand-accent text-[10px] uppercase tracking-widest mb-2 flex justify-between">
+                <label className="block text-brand-accent text-[10px] uppercase tracking-widest mb-2 flex justify-between font-sans">
                   Whatsapp
                   {errors.whatsapp && touched.whatsapp && <span className="text-red-400 normal-case tracking-normal font-sans">{errors.whatsapp}</span>}
                 </label>
                 <div className={`flex items-end gap-3 border-b pb-2 transition-colors ${getInputBorderClass('whatsapp')}`}>
                   <div className="relative shrink-0">
-                    <select 
+                    <select
                       value={countryCode}
                       onChange={handleCountryChange}
                       className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
@@ -336,7 +336,7 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({ onClose }) =
                       ))}
                       <option value="" className="bg-brand-dark text-white">Otro</option>
                     </select>
-                    <div className="flex items-center gap-2 text-brand-accent font-mono text-lg cursor-pointer">
+                    <div className="flex items-center gap-2 text-brand-accent font-sans text-lg cursor-pointer">
                       <span>{COUNTRIES.find(c => c.code === countryCode)?.flag || '🌐'}</span>
                       <span>{countryCode || '+'}</span>
                       <ChevronDown size={14} className="opacity-50" />
@@ -352,7 +352,7 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({ onClose }) =
                       onBlur={handleBlur}
                       onKeyDown={handleKeyDown}
                       placeholder="0981..."
-                      className="w-full bg-transparent text-xl md:text-2xl outline-none placeholder:text-brand-neutral-50 font-serif"
+                      className="w-full bg-transparent text-xl md:text-2xl outline-none placeholder:text-brand-neutral-50 font-display"
                     />
                     <div className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none">
                       {touched.whatsapp && errors.whatsapp && <AlertCircle className="text-red-500 animate-pulse" size={20} />}
@@ -361,12 +361,12 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({ onClose }) =
                   </div>
                 </div>
               </div>
-              <button 
-                onClick={nextStep} 
+              <button
+                onClick={nextStep}
                 disabled={!!errors.whatsapp && !!touched.whatsapp}
-                className={`mt-4 px-8 py-3 rounded-lg text-xs uppercase tracking-widest transition-all duration-300 w-full md:w-auto
-                   ${(errors.whatsapp && touched.whatsapp) 
-                      ? 'bg-border-brand-primary-50 text-brand-neutral cursor-not-allowed' 
+                className={`mt-4 px-8 py-3 rounded-lg text-xs uppercase tracking-widest transition-all duration-300 w-full md:w-auto font-sans font-medium
+                   ${(errors.whatsapp && touched.whatsapp)
+                      ? 'bg-border-brand-primary-50 text-brand-neutral cursor-not-allowed'
                       : 'bg-border-brand-primary-50 hover:bg-brand-neutral-40 text-white'
                    }`}
               >
@@ -379,13 +379,13 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({ onClose }) =
       case 4:
         return (
           <div className="animate-slide-in-right w-full">
-            <h3 className="font-serif text-2xl text-white mb-6">
-              <span className="text-brand-accent text-sm block mb-2 font-sans tracking-widest uppercase">Paso 04</span>
+            <h3 className="font-display font-bold text-2xl text-white mb-6 tracking-tight">
+              <span className="text-brand-accent text-sm block mb-2 font-sans font-medium tracking-widest uppercase">Paso 04</span>
               Detalles finales
             </h3>
             <div className="space-y-8">
                <div className="group">
-                <label className="block text-brand-accent text-[10px] uppercase tracking-widest mb-2">Ciudad / País</label>
+                <label className="block text-brand-accent text-[10px] uppercase tracking-widest mb-2 font-sans">Ciudad / País</label>
                 <input
                   ref={inputRef}
                   type="text"
@@ -393,11 +393,11 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({ onClose }) =
                   value={formData.location}
                   onChange={handleInputChange}
                   onKeyDown={handleKeyDown}
-                  className="w-full bg-transparent border-b border-brand-neutral-40 text-lg text-white py-2 focus:border-brand-accent outline-none transition-colors placeholder:text-brand-neutral-50"
+                  className="w-full bg-transparent border-b border-brand-neutral-40 text-lg text-white py-2 focus:border-brand-accent outline-none transition-colors placeholder:text-brand-neutral-50 font-sans"
                 />
               </div>
               <div className="group">
-                <label className="block text-brand-accent text-[10px] uppercase tracking-widest mb-2 flex justify-between">
+                <label className="block text-brand-accent text-[10px] uppercase tracking-widest mb-2 flex justify-between font-sans">
                    Correo Electrónico
                    {errors.email && touched.email && <span className="text-red-400 normal-case tracking-normal font-sans">{errors.email}</span>}
                 </label>
@@ -409,7 +409,7 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({ onClose }) =
                     onChange={handleInputChange}
                     onBlur={handleBlur}
                     onKeyDown={handleKeyDown}
-                    className={`w-full bg-transparent border-b text-lg py-2 outline-none transition-colors placeholder:text-brand-neutral-50 pr-8 ${getInputBorderClass('email')}`}
+                    className={`w-full bg-transparent border-b text-lg py-2 outline-none transition-colors placeholder:text-brand-neutral-50 pr-8 font-sans ${getInputBorderClass('email')}`}
                   />
                   <div className="absolute right-0 top-1/2 -translate-y-1/2 pointer-events-none">
                      {touched.email && errors.email && <AlertCircle className="text-red-500 animate-pulse" size={18} />}
@@ -418,20 +418,20 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({ onClose }) =
                 </div>
               </div>
               <div className="group">
-                <label className="block text-brand-accent text-[10px] uppercase tracking-widest mb-2">¿Cómo nos conociste?</label>
+                <label className="block text-brand-accent text-[10px] uppercase tracking-widest mb-2 font-sans">¿Cómo nos conociste?</label>
                 <select
                   name="source"
                   value={formData.source}
                   onChange={handleInputChange}
-                  className="w-full bg-transparent border-b border-brand-neutral-40 text-lg text-white py-2 focus:border-brand-accent outline-none transition-colors cursor-pointer appearance-none rounded-none"
+                  className="w-full bg-transparent border-b border-brand-neutral-40 text-lg text-white py-2 focus:border-brand-accent outline-none transition-colors cursor-pointer appearance-none rounded-none font-sans"
                 >
                   <option value="" disabled className="text-brand-neutral-40 bg-brand-dark">Seleccionar...</option>
                   {SOURCES.map(s => <option key={s} value={s} className="bg-brand-dark">{s}</option>)}
                 </select>
               </div>
-              <button 
-                onClick={nextStep} 
-                className="mt-4 bg-border-brand-primary-50 hover:bg-brand-neutral-40 text-white px-8 py-3 rounded-lg text-xs uppercase tracking-widest transition-colors w-full md:w-auto"
+              <button
+                onClick={nextStep}
+                className="mt-4 bg-border-brand-primary-50 hover:bg-brand-neutral-40 text-white px-8 py-3 rounded-lg text-xs uppercase tracking-widest transition-colors w-full md:w-auto font-sans font-medium"
               >
                 Siguiente
               </button>
@@ -442,11 +442,11 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({ onClose }) =
       case 5:
         return (
            <div className="animate-slide-in-right w-full">
-             <h3 className="font-serif text-2xl text-white mb-4">
-              <span className="text-brand-accent text-sm block mb-2 font-sans tracking-widest uppercase">Paso Final</span>
+             <h3 className="font-display font-bold text-2xl text-white mb-4 tracking-tight">
+              <span className="text-brand-accent text-sm block mb-2 font-sans font-medium tracking-widest uppercase">Paso Final</span>
               Tu Motivación
             </h3>
-            <p className="text-brand-neutral mb-6 text-sm font-light">¿Qué te motiva a considerar este procedimiento? (Opcional)</p>
+            <p className="text-brand-neutral mb-6 text-sm font-sans font-normal">¿Qué te motiva a considerar este procedimiento? (Opcional)</p>
             <textarea
               ref={inputRef}
               name="motivation"
@@ -455,13 +455,13 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({ onClose }) =
               onKeyDown={handleKeyDown}
               rows={3}
               placeholder="Escribe aquí..."
-              className="w-full bg-brand-dark/50 border border-brand-neutral-40 rounded-lg p-4 text-white focus:border-brand-accent outline-none resize-none placeholder:text-brand-neutral-60 text-sm"
+              className="w-full bg-brand-dark/50 border border-brand-neutral-40 rounded-lg p-4 text-white focus:border-brand-accent outline-none resize-none placeholder:text-brand-neutral-60 text-sm font-sans"
             />
             <div className="mt-8">
               <button
                 onClick={handleSubmit}
                 disabled={isSubmitting}
-                className="w-full bg-brand-accent hover:bg-brand-secondary text-brand-dark font-bold py-4 rounded-xl transition-all duration-300 transform hover:scale-[1.01] shadow-lg shadow-brand-accent/20 flex items-center justify-center gap-2 uppercase tracking-widest text-xs"
+                className="w-full bg-brand-accent hover:bg-brand-secondary text-brand-dark font-sans font-medium py-4 rounded-xl transition-all duration-300 transform hover:scale-[1.01] shadow-lg shadow-brand-accent/20 flex items-center justify-center gap-2 uppercase tracking-widest text-xs"
               >
                 {isSubmitting ? (
                    <>
@@ -475,7 +475,7 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({ onClose }) =
                    </>
                 )}
               </button>
-              <p className="text-center text-[10px] text-brand-neutral mt-4">
+              <p className="text-center text-[10px] text-brand-neutral mt-4 font-sans">
                 Al enviar aceptas ser contactado por nuestro equipo médico.
               </p>
             </div>
@@ -492,13 +492,13 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({ onClose }) =
         <div className="w-16 h-16 rounded-full bg-brand-accent/10 flex items-center justify-center mb-6 border border-brand-accent/20">
           <CheckCircle2 className="w-8 h-8 text-brand-accent" />
         </div>
-        <h3 className="font-serif text-3xl text-white mb-4">¡Solicitud Enviada!</h3>
-        <p className="text-brand-neutral mb-8 font-light text-base leading-relaxed max-w-sm mx-auto">
+        <h3 className="font-display font-bold text-3xl text-white mb-4 tracking-tight">¡Solicitud Enviada!</h3>
+        <p className="text-brand-neutral mb-8 font-sans font-normal text-base leading-relaxed max-w-sm mx-auto">
           Hemos recibido tus datos correctamente. El equipo del Dr. Javier Barrios te contactará muy pronto para coordinar los siguientes pasos.
         </p>
-        <button 
+        <button
           onClick={onClose}
-          className="text-white border-b border-brand-accent pb-1 text-xs uppercase tracking-widest hover:text-brand-accent transition-colors"
+          className="text-white border-b border-brand-accent pb-1 text-xs uppercase tracking-widest hover:text-brand-accent transition-colors font-sans"
         >
           Cerrar ventana
         </button>
@@ -522,12 +522,12 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({ onClose }) =
       {/* Progress Bar */}
       {currentStep > 0 && !submitted && (
         <div className="mb-8">
-          <div className="flex justify-between text-[10px] uppercase tracking-widest text-brand-neutral mb-2">
+          <div className="flex justify-between text-[10px] uppercase tracking-widest text-brand-neutral mb-2 font-sans">
             <span>Progreso</span>
             <span>{Math.round((currentStep / 5) * 100)}%</span>
           </div>
           <div className="w-full h-1 bg-border-brand-primary-50 rounded-full overflow-hidden">
-            <div 
+            <div
               className="h-full bg-brand-accent transition-all duration-500 ease-out"
               style={{ width: `${(currentStep / 5) * 100}%` }}
             ></div>
@@ -543,9 +543,9 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({ onClose }) =
       {/* Back Button */}
       {currentStep > 0 && !submitted && (
         <div className="mt-8 pt-4 border-t border-white/5 flex justify-start">
-           <button 
+           <button
              onClick={prevStep}
-             className="flex items-center gap-2 text-brand-neutral hover:text-white transition-colors text-xs uppercase tracking-wider"
+             className="flex items-center gap-2 text-brand-neutral hover:text-white transition-colors text-xs uppercase tracking-wider font-sans"
            >
              <ArrowLeft size={14} />
              Atrás

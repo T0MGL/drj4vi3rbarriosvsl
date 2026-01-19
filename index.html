@@ -107,9 +107,12 @@
         theme: {
           extend: {
             fontFamily: {
-              sans: ['Montserrat', 'Inter', 'sans-serif'],
-              serif: ['Playfair Display', 'serif'],
-              display: ['Marisa', 'serif'],
+              // Montserrat Regular - Body text, paragraphs, labels, buttons
+              sans: ['Montserrat', 'Inter', 'system-ui', 'sans-serif'],
+              // Marisa Bold - Main headings (H1, H2, H3)
+              display: ['Marisa', 'Georgia', 'serif'],
+              // Legacy serif for compatibility
+              serif: ['Marisa', 'Georgia', 'serif'],
             },
             colors: {
               brand: {

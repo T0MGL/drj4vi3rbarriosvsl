@@ -146,8 +146,8 @@ export const CRM: React.FC = () => {
         </a>
         <div className="w-full max-w-md bg-brand-dark/80 backdrop-blur-xl border border-white/10 rounded-3xl p-8 shadow-2xl text-center relative z-10">
            <Logo size="xl" centered className="mx-auto mb-8" />
-           <h2 className="text-2xl font-serif text-white mb-2">Acceso Privado</h2>
-           <p className="text-brand-neutral text-sm mb-8 tracking-wide">Gestión de Pacientes Dr. Barrios</p>
+           <h2 className="text-2xl font-display font-bold text-white mb-2 tracking-tight">Acceso Privado</h2>
+           <p className="text-brand-neutral text-sm mb-8 tracking-wide font-sans">Gestión de Pacientes Dr. Barrios</p>
            <form onSubmit={handleLogin} className="space-y-4">
               <div className="relative group">
                  <Lock className="absolute left-3 top-1/2 -translate-y-1/2 text-brand-neutral group-focus-within:text-brand-accent transition-colors" size={18} />
@@ -156,15 +156,15 @@ export const CRM: React.FC = () => {
                    value={passwordInput}
                    onChange={(e) => setPasswordInput(e.target.value)}
                    placeholder="Ingresa tu contraseña"
-                   className="w-full bg-brand-darker border border-border-brand-primary-50 rounded-xl py-4 pl-10 text-white focus:border-brand-accent outline-none transition-all placeholder:text-brand-neutral-40 text-sm"
+                   className="w-full bg-brand-darker border border-border-brand-primary-50 rounded-xl py-4 pl-10 text-white focus:border-brand-accent outline-none transition-all placeholder:text-brand-neutral-40 text-sm font-sans"
                    disabled={loginLoading}
                  />
               </div>
-              {error && <div className="p-3 bg-red-900/20 border border-red-900/50 rounded-lg text-red-400 text-xs flex items-center justify-center gap-2"><Lock size={12}/> {error}</div>}
+              {error && <div className="p-3 bg-red-900/20 border border-red-900/50 rounded-lg text-red-400 text-xs flex items-center justify-center gap-2 font-sans"><Lock size={12}/> {error}</div>}
               <button
                 type="submit"
                 disabled={loginLoading}
-                className="w-full bg-gradient-to-r from-brand-accent to-brand-primary hover:brightness-110 text-white font-bold py-4 rounded-xl transition-all uppercase tracking-widest text-xs shadow-lg shadow-brand-accent/10 mt-2 flex items-center justify-center gap-2 disabled:opacity-50"
+                className="w-full bg-gradient-to-r from-brand-accent to-brand-primary hover:brightness-110 text-white font-sans font-medium py-4 rounded-xl transition-all uppercase tracking-widest text-xs shadow-lg shadow-brand-accent/10 mt-2 flex items-center justify-center gap-2 disabled:opacity-50"
               >
                 {loginLoading ? (
                   <>
@@ -204,17 +204,17 @@ export const CRM: React.FC = () => {
          <div className="flex flex-col gap-6 mb-8">
             <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
               <div>
-                 <h1 className="text-2xl font-serif text-white mb-1">Pacientes Recientes</h1>
-                 <p className="text-brand-neutral text-sm">Gestiona las solicitudes de pre-agendamiento.</p>
+                 <h1 className="text-2xl font-display font-bold text-white mb-1 tracking-tight">Pacientes Recientes</h1>
+                 <p className="text-brand-neutral text-sm font-sans">Gestiona las solicitudes de pre-agendamiento.</p>
               </div>
-              <button onClick={downloadCSV} className="px-6 py-3 bg-brand-dark hover:bg-border-brand-primary-50 border border-white/10 hover:border-brand-accent/30 rounded-xl text-xs font-bold text-brand-accent transition-all flex items-center justify-center gap-2 uppercase tracking-wider shadow-sm w-full lg:w-auto">
+              <button onClick={downloadCSV} className="px-6 py-3 bg-brand-dark hover:bg-border-brand-primary-50 border border-white/10 hover:border-brand-accent/30 rounded-xl text-xs font-sans font-medium text-brand-accent transition-all flex items-center justify-center gap-2 uppercase tracking-wider shadow-sm w-full lg:w-auto">
                   <Download size={16} /> Exportar Excel
               </button>
             </div>
             <div className="flex flex-col md:flex-row gap-4 bg-brand-dark/30 p-4 rounded-2xl border border-white/5">
                 <div className="relative flex-1 group">
                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-brand-neutral group-focus-within:text-brand-accent transition-colors" size={16} />
-                   <input type="text" placeholder="Buscar por nombre, whatsapp o procedimiento..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} className="w-full bg-brand-dark border border-white/10 rounded-xl py-2.5 pl-10 text-white focus:border-brand-accent outline-none text-sm transition-all shadow-sm h-full" />
+                   <input type="text" placeholder="Buscar por nombre, whatsapp o procedimiento..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} className="w-full bg-brand-dark border border-white/10 rounded-xl py-2.5 pl-10 text-white focus:border-brand-accent outline-none text-sm transition-all shadow-sm h-full font-sans" />
                 </div>
                 {searchTerm && (
                     <button onClick={() => setSearchTerm('')} className="px-4 py-2 bg-red-900/20 hover:bg-red-900/40 text-red-400 rounded-xl text-xs font-bold uppercase tracking-wider transition-colors flex items-center justify-center"><X size={16} /></button>
@@ -224,8 +224,8 @@ export const CRM: React.FC = () => {
 
          <div className="bg-brand-dark/40 backdrop-blur-sm border border-white/5 rounded-2xl overflow-hidden shadow-2xl">
             <div className="overflow-x-auto custom-scrollbar">
-               <table className="w-full text-left text-sm whitespace-nowrap">
-                  <thead className="bg-brand-darker text-brand-neutral uppercase tracking-wider text-[10px] font-bold border-b border-white/5">
+               <table className="w-full text-left text-sm whitespace-nowrap font-sans">
+                  <thead className="bg-brand-darker text-brand-neutral uppercase tracking-wider text-[10px] font-medium border-b border-white/5">
                      <tr>
                         <th className="p-5">Fecha</th>
                         <th className="p-5">Paciente</th>
@@ -261,15 +261,15 @@ export const CRM: React.FC = () => {
                                           {isConverted ? <DollarSign size={14} /> : <User size={14} />}
                                        </div>
                                        <div>
-                                          <div className={`font-bold text-sm ${isConverted ? 'text-green-400' : 'text-white'}`}>{lead.name}</div>
-                                          <div className="text-[10px] text-brand-neutral uppercase tracking-wide">{lead.location}</div>
+                                          <div className={`font-display font-bold text-sm ${isConverted ? 'text-green-400' : 'text-white'}`}>{lead.name}</div>
+                                          <div className="text-[10px] text-brand-neutral uppercase tracking-wide font-sans">{lead.location}</div>
                                        </div>
                                     </div>
                                  </td>
                                  <td className="p-5">
                                     <div className="flex flex-col gap-1">
-                                        <span className="font-medium text-stone-300">{lead.procedure}</span>
-                                        <span className="text-[10px] text-brand-neutral">{lead.budget}</span>
+                                        <span className="font-sans font-medium text-stone-300">{lead.procedure}</span>
+                                        <span className="text-[10px] text-brand-neutral font-sans">{lead.budget}</span>
                                     </div>
                                  </td>
                                  <td className="p-5">
@@ -299,7 +299,7 @@ export const CRM: React.FC = () => {
                                  </td>
                                  <td className="p-5">
                                     <div className="flex justify-center gap-2">
-                                       <a href={`https://wa.me/${(lead.phone || '').replace(/[^0-9]/g, '')}`} target="_blank" rel="noreferrer" className="flex items-center gap-2 px-3 py-1.5 bg-green-500/10 text-green-500 hover:bg-green-500 hover:text-white border border-green-500/20 hover:border-green-500 rounded-lg transition-all text-xs font-bold uppercase tracking-wide">
+                                       <a href={`https://wa.me/${(lead.phone || '').replace(/[^0-9]/g, '')}`} target="_blank" rel="noreferrer" className="flex items-center gap-2 px-3 py-1.5 bg-green-500/10 text-green-500 hover:bg-green-500 hover:text-white border border-green-500/20 hover:border-green-500 rounded-lg transition-all text-xs font-sans font-medium uppercase tracking-wide">
                                           <MessageCircle size={14} /> <span>Whatsapp</span>
                                        </a>
                                     </div>

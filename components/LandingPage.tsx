@@ -223,8 +223,8 @@ export const LandingPage: React.FC = () => {
   }, []);
 
   // Premium CTA classes - warm cream color for high contrast
-  const ctaPremiumClass = "cta-premium rounded-full font-bold uppercase tracking-widest";
-  const ctaOutlineClass = "cta-outline rounded-full font-bold uppercase tracking-widest";
+  const ctaPremiumClass = "cta-premium rounded-full font-sans font-medium uppercase tracking-widest";
+  const ctaOutlineClass = "cta-outline rounded-full font-sans font-medium uppercase tracking-widest";
 
   return (
     <div className="min-h-screen bg-brand-darker text-brand-light overflow-x-hidden font-sans selection:bg-brand-accent selection:text-white">
@@ -270,9 +270,9 @@ export const LandingPage: React.FC = () => {
           
           {/* MAIN HEADLINE */}
           <div className="mb-10">
-            <h1 className="hero-title font-serif text-4xl md:text-6xl lg:text-7xl text-white leading-[1.1]">
+            <h1 className="hero-title font-display font-bold text-4xl md:text-6xl lg:text-7xl text-white leading-[1.1] tracking-tight">
               Diseñemos tu <br/>
-              <span className="italic warm-gradient-text">Transformación</span>
+              <span className="warm-gradient-text">Transformación</span>
             </h1>
           </div>
 
@@ -341,12 +341,12 @@ export const LandingPage: React.FC = () => {
 
          <div className="max-w-6xl mx-auto px-6 flex flex-wrap justify-center gap-16 md:gap-40 text-center">
             <div className="stat-number space-y-3 group">
-               <span className="text-5xl md:text-7xl font-serif text-brand-cream block glow-text transition-all duration-500 group-hover:scale-105">+1000</span>
-               <span className="text-brand-warm text-xs uppercase tracking-[0.3em] font-medium">Pacientes Felices</span>
+               <span className="text-5xl md:text-7xl font-display font-bold text-brand-cream block glow-text transition-all duration-500 group-hover:scale-105">+1000</span>
+               <span className="text-brand-warm text-xs uppercase tracking-[0.3em] font-sans font-medium">Pacientes Felices</span>
             </div>
             <div className="stat-number delay-100 space-y-3 group">
-               <span className="text-5xl md:text-7xl font-serif text-brand-cream block glow-text transition-all duration-500 group-hover:scale-105">100%</span>
-               <span className="text-brand-warm text-xs uppercase tracking-[0.3em] font-medium">Atención Personalizada</span>
+               <span className="text-5xl md:text-7xl font-display font-bold text-brand-cream block glow-text transition-all duration-500 group-hover:scale-105">100%</span>
+               <span className="text-brand-warm text-xs uppercase tracking-[0.3em] font-sans font-medium">Atención Personalizada</span>
             </div>
          </div>
 
@@ -358,11 +358,11 @@ export const LandingPage: React.FC = () => {
       <section className="relative z-10 py-24 px-6 max-w-6xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-20 reveal-on-scroll">
-            <span className="text-brand-cream/80 text-xs tracking-[0.4em] uppercase mb-4 block font-bold">Protocolo Dr. Barrios</span>
-            <h2 className="font-serif text-3xl md:text-5xl text-white mb-6">
+            <span className="text-brand-cream/80 text-xs tracking-[0.4em] uppercase mb-4 block font-sans font-medium">Protocolo Dr. Barrios</span>
+            <h2 className="font-display font-bold text-3xl md:text-5xl text-white mb-6 tracking-tight">
               Tu seguridad en <span className="warm-gradient-text">cada etapa</span>
             </h2>
-            <p className="text-brand-neutral font-light max-w-2xl mx-auto leading-relaxed">
+            <p className="text-brand-neutral font-sans font-normal max-w-2xl mx-auto leading-relaxed">
               La cirugía plástica es un viaje médico, no solo estético. Hemos diseñado un protocolo estricto para acompañarte antes, durante y después de tu transformación.
             </p>
         </div>
@@ -388,8 +388,8 @@ export const LandingPage: React.FC = () => {
                       <step.icon size={26} strokeWidth={1.5} />
                    </div>
                    <div>
-                      <h3 className="font-serif text-xl text-white mb-3 group-hover:text-brand-cream transition-colors duration-300">{step.title}</h3>
-                      <p className="text-brand-neutral font-light text-sm leading-relaxed">
+                      <h3 className="font-display font-bold text-xl text-white mb-3 group-hover:text-brand-cream transition-colors duration-300">{step.title}</h3>
+                      <p className="text-brand-neutral font-sans font-normal text-sm leading-relaxed">
                         {step.desc}
                       </p>
                    </div>
@@ -408,17 +408,17 @@ export const LandingPage: React.FC = () => {
 
            {/* Text Content */}
            <div className="w-full md:w-1/2 order-2 md:order-1 reveal-from-left">
-              <span className="text-brand-cream/70 text-xs tracking-[0.4em] uppercase mb-6 block font-bold">El Especialista</span>
-              <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-white mb-8 leading-tight">
+              <span className="text-brand-cream/70 text-xs tracking-[0.4em] uppercase mb-6 block font-sans font-medium">El Especialista</span>
+              <h2 className="font-display font-bold text-4xl md:text-5xl lg:text-6xl text-white mb-8 leading-tight tracking-tight">
                 Arte y Ciencia <br/> en <span className="warm-gradient-text">Equilibrio.</span>
               </h2>
 
-              <div className="space-y-6 text-brand-neutral font-light leading-relaxed text-base md:text-lg text-justify md:text-left">
+              <div className="space-y-6 text-brand-neutral font-sans font-normal leading-relaxed text-base md:text-lg text-justify md:text-left">
                 <p>
-                  El <strong className="text-white">Dr. Javier Barrios</strong> no solo es cirujano; es un artista apasionado por la simetría y la belleza natural. Su filosofía se basa en potenciar tu mejor versión sin perder tu esencia.
+                  El <strong className="text-white font-medium">Dr. Javier Barrios</strong> no solo es cirujano; es un artista apasionado por la simetría y la belleza natural. Su filosofía se basa en potenciar tu mejor versión sin perder tu esencia.
                 </p>
                 <p>
-                  Con una formación internacional y miembro de la prestigiosa <strong className="text-brand-cream">Sociedad Paraguaya de Cirugía Plástica</strong>, combina tecnología de vanguardia con un trato humano inigualable.
+                  Con una formación internacional y miembro de la prestigiosa <strong className="text-brand-cream font-medium">Sociedad Paraguaya de Cirugía Plástica</strong>, combina tecnología de vanguardia con un trato humano inigualable.
                 </p>
               </div>
 
@@ -428,15 +428,15 @@ export const LandingPage: React.FC = () => {
                     <div className="w-10 h-10 rounded-xl bg-brand-cream/10 flex items-center justify-center mb-4 group-hover:bg-brand-cream/20 transition-colors duration-300">
                       <Award className="text-brand-cream" size={20} />
                     </div>
-                    <h4 className="text-brand-cream text-sm font-bold uppercase mb-2 tracking-wide">Certificado</h4>
-                    <p className="text-brand-neutral text-xs leading-relaxed">Miembro Titular de la Sociedad Paraguaya de Cirugía Plástica.</p>
+                    <h4 className="text-brand-cream text-sm font-sans font-medium uppercase mb-2 tracking-wide">Certificado</h4>
+                    <p className="text-brand-neutral text-xs font-sans font-normal leading-relaxed">Miembro Titular de la Sociedad Paraguaya de Cirugía Plástica.</p>
                  </div>
                  <div className="group p-6 bg-gradient-to-br from-brand-dark/50 to-brand-darker/50 backdrop-blur-md rounded-2xl border border-brand-cream/5 hover:border-brand-cream/20 card-lift transition-all duration-500">
                     <div className="w-10 h-10 rounded-xl bg-brand-cream/10 flex items-center justify-center mb-4 group-hover:bg-brand-cream/20 transition-colors duration-300">
                       <Star className="text-brand-cream" size={20} />
                     </div>
-                    <h4 className="text-brand-cream text-sm font-bold uppercase mb-2 tracking-wide">Excelencia</h4>
-                    <p className="text-brand-neutral text-xs leading-relaxed">Enfoque en resultados naturales y recuperación rápida.</p>
+                    <h4 className="text-brand-cream text-sm font-sans font-medium uppercase mb-2 tracking-wide">Excelencia</h4>
+                    <p className="text-brand-neutral text-xs font-sans font-normal leading-relaxed">Enfoque en resultados naturales y recuperación rápida.</p>
                  </div>
               </div>
            </div>
@@ -472,8 +472,8 @@ export const LandingPage: React.FC = () => {
 
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16 reveal-blur">
-            <span className="text-brand-cream/70 text-xs tracking-[0.4em] uppercase mb-4 block font-bold">Dudas Frecuentes</span>
-            <h2 className="font-serif text-3xl md:text-5xl text-white">
+            <span className="text-brand-cream/70 text-xs tracking-[0.4em] uppercase mb-4 block font-sans font-medium">Dudas Frecuentes</span>
+            <h2 className="font-display font-bold text-3xl md:text-5xl text-white tracking-tight">
               Todo lo que necesitas <span className="warm-gradient-text">saber</span>
             </h2>
           </div>
@@ -489,7 +489,7 @@ export const LandingPage: React.FC = () => {
                   onClick={() => toggleFaq(index)}
                   className="w-full flex items-center justify-between p-6 text-left"
                 >
-                  <span className={`font-serif text-lg md:text-xl transition-colors duration-300 ${openFaqIndex === index ? 'text-brand-cream' : 'text-brand-light group-hover:text-white'}`}>
+                  <span className={`font-display font-bold text-lg md:text-xl transition-colors duration-300 ${openFaqIndex === index ? 'text-brand-cream' : 'text-brand-light group-hover:text-white'}`}>
                     {faq.question}
                   </span>
                   <div className={`p-2 rounded-full border transition-all duration-500 ${openFaqIndex === index ? 'border-brand-cream text-brand-cream bg-brand-cream/10 rotate-180' : 'border-white/10 text-brand-neutral group-hover:text-white group-hover:border-brand-cream/30'}`}>
@@ -500,7 +500,7 @@ export const LandingPage: React.FC = () => {
                 <div
                   className={`transition-[max-height,opacity] duration-500 ease-in-out ${openFaqIndex === index ? 'max-h-48 opacity-100' : 'max-h-0 opacity-0'}`}
                 >
-                  <div className="p-6 pt-0 text-brand-neutral font-light leading-relaxed border-t border-brand-cream/10">
+                  <div className="p-6 pt-0 text-brand-neutral font-sans font-normal leading-relaxed border-t border-brand-cream/10">
                     {faq.answer}
                   </div>
                 </div>
@@ -509,10 +509,10 @@ export const LandingPage: React.FC = () => {
           </div>
 
           <div className="text-center mt-16 reveal-on-scroll delay-300">
-            <p className="text-brand-neutral text-sm mb-6">¿Tienes otra pregunta?</p>
+            <p className="text-brand-neutral text-sm font-sans font-normal mb-6">¿Tienes otra pregunta?</p>
             <button
               onClick={openModal}
-              className={`px-8 py-3 text-xs ${ctaOutlineClass}`}
+              className={`px-8 py-3 text-xs font-sans ${ctaOutlineClass}`}
             >
               Contactar al equipo
             </button>
@@ -532,8 +532,8 @@ export const LandingPage: React.FC = () => {
             {/* Info Column */}
             <div className="space-y-12 reveal-from-left">
                 <div>
-                   <h2 className="font-serif text-4xl text-white mb-6">Visítanos</h2>
-                   <p className="text-brand-neutral font-light max-w-sm">
+                   <h2 className="font-display font-bold text-4xl text-white mb-6 tracking-tight">Visítanos</h2>
+                   <p className="text-brand-neutral font-sans font-normal max-w-sm">
                       Un espacio diseñado para tu confort y privacidad en el corazón de Asunción.
                    </p>
                 </div>
@@ -544,11 +544,11 @@ export const LandingPage: React.FC = () => {
                            <MapPin size={20} />
                        </div>
                        <div>
-                          <h4 className="text-brand-cream text-sm font-bold uppercase mb-1 tracking-wide">Ubicación</h4>
-                          <p className="text-brand-neutral text-sm leading-relaxed">
+                          <h4 className="text-brand-cream text-sm font-sans font-medium uppercase mb-1 tracking-wide">Ubicación</h4>
+                          <p className="text-brand-neutral text-sm font-sans font-normal leading-relaxed">
                              Padre de la Cruz Ortigoza 2349,<br/> Asunción
                           </p>
-                          <a href="https://www.google.com/maps/place/Padre+de+la+Cruz+Ortigoza+2349,+Asunci%C3%B3n+001531/@-25.2687133,-57.5789495,17z/data=!3m1!4b1!4m6!3m5!1s0x945da63e043fa309:0x7049c4ea90862a9b!8m2!3d-25.2687133!4d-57.5763746!16s%2Fg%2F11k5t559p_?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoKLDEwMDc5MjA3M0gBUAM%3D" target="_blank" rel="noreferrer" className="text-brand-cream/70 text-xs mt-2 inline-block hover:text-brand-cream transition-colors">Abrir Mapa →</a>
+                          <a href="https://www.google.com/maps/place/Padre+de+la+Cruz+Ortigoza+2349,+Asunci%C3%B3n+001531/@-25.2687133,-57.5789495,17z/data=!3m1!4b1!4m6!3m5!1s0x945da63e043fa309:0x7049c4ea90862a9b!8m2!3d-25.2687133!4d-57.5763746!16s%2Fg%2F11k5t559p_?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoKLDEwMDc5MjA3M0gBUAM%3D" target="_blank" rel="noreferrer" className="text-brand-cream/70 text-xs font-sans mt-2 inline-block hover:text-brand-cream transition-colors">Abrir Mapa →</a>
                        </div>
                     </div>
 
@@ -557,8 +557,8 @@ export const LandingPage: React.FC = () => {
                            <Clock size={20} />
                        </div>
                        <div>
-                          <h4 className="text-brand-cream text-sm font-bold uppercase mb-1 tracking-wide">Horarios</h4>
-                          <p className="text-brand-neutral text-sm leading-relaxed">
+                          <h4 className="text-brand-cream text-sm font-sans font-medium uppercase mb-1 tracking-wide">Horarios</h4>
+                          <p className="text-brand-neutral text-sm font-sans font-normal leading-relaxed">
                              Lun - Vie: 09:00 - 18:00<br/> Sáb: Con cita previa
                           </p>
                        </div>
@@ -581,7 +581,7 @@ export const LandingPage: React.FC = () => {
                     ></iframe>
                  </div>
                  <a href="https://www.google.com/maps/place/Padre+de+la+Cruz+Ortigoza+2349,+Asunci%C3%B3n+001531/@-25.2687133,-57.5789495,17z/data=!3m1!4b1!4m6!3m5!1s0x945da63e043fa309:0x7049c4ea90862a9b!8m2!3d-25.2687133!4d-57.5763746!16s%2Fg%2F11k5t559p_?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoKLDEwMDc5MjA3M0gBUAM%3D" target="_blank" rel="noreferrer" className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/30 z-10">
-                     <span className="cta-premium px-6 py-3 rounded-full font-bold text-xs uppercase tracking-widest shadow-xl transform translate-y-2 group-hover:translate-y-0 transition-transform">Ver en Google Maps</span>
+                     <span className="cta-premium px-6 py-3 rounded-full font-sans font-medium text-xs uppercase tracking-widest shadow-xl transform translate-y-2 group-hover:translate-y-0 transition-transform">Ver en Google Maps</span>
                  </a>
             </div>
 
@@ -623,14 +623,14 @@ export const LandingPage: React.FC = () => {
 
             {/* Copyright & Credit */}
             <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 pt-4 border-t border-white/5 w-full">
-                <span className="text-[10px] text-brand-neutral-40 tracking-widest">
+                <span className="text-[10px] text-brand-neutral-40 tracking-widest font-sans">
                    © {new Date().getFullYear()} Dr. Javier Barrios. Todos los derechos reservados.
                 </span>
                 <a
                   href="https://thebrightidea.ai"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[10px] text-border-brand-primary-50 hover:text-brand-neutral transition-colors uppercase tracking-widest"
+                  className="text-[10px] text-border-brand-primary-50 hover:text-brand-neutral transition-colors uppercase tracking-widest font-sans"
                 >
                   Desarrollado por Bright Idea
                 </a>
