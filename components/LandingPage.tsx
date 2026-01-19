@@ -222,7 +222,9 @@ export const LandingPage: React.FC = () => {
     };
   }, []);
 
-  const brandGradientButtonClass = "bg-gradient-to-r from-brand-secondary via-brand-accent to-brand-secondary bg-[length:200%_auto] animate-shimmer";
+  // Premium CTA classes - warm cream color for high contrast
+  const ctaPremiumClass = "cta-premium rounded-full font-bold uppercase tracking-widest";
+  const ctaOutlineClass = "cta-outline rounded-full font-bold uppercase tracking-widest";
 
   return (
     <div className="min-h-screen bg-brand-darker text-brand-light overflow-x-hidden font-sans selection:bg-brand-accent selection:text-white">
@@ -240,17 +242,17 @@ export const LandingPage: React.FC = () => {
 
           {/* Social Icons + Agendar Button */}
           <div className="flex items-center gap-1.5 sm:gap-2">
-            <a href="https://wa.me/595981003460" target="_blank" rel="noreferrer" className="p-2 sm:p-2.5 rounded-full bg-white/5 border border-white/10 text-brand-neutral hover:text-brand-accent hover:border-brand-accent/50 transition-all duration-300"><MessageCircle size={14} className="sm:w-4 sm:h-4"/></a>
-            <a href="https://www.instagram.com/dr.javierbarrios/" target="_blank" rel="noreferrer" className="p-2 sm:p-2.5 rounded-full bg-white/5 border border-white/10 text-brand-neutral hover:text-brand-accent hover:border-brand-accent/50 transition-all duration-300"><Instagram size={14} className="sm:w-4 sm:h-4"/></a>
-            <a href="https://www.facebook.com/share/1DUG8wnZFZ/?mibextid=wwXIfr" target="_blank" rel="noreferrer" className="p-2 sm:p-2.5 rounded-full bg-white/5 border border-white/10 text-brand-neutral hover:text-brand-accent hover:border-brand-accent/50 transition-all duration-300"><Facebook size={14} className="sm:w-4 sm:h-4"/></a>
-            <a href="https://www.tiktok.com/@dr.javierbarrios?_r=1&_t=ZM-932itBHEKzY" target="_blank" rel="noreferrer" className="p-2 sm:p-2.5 rounded-full bg-white/5 border border-white/10 text-brand-neutral hover:text-brand-accent hover:border-brand-accent/50 transition-all duration-300"><TiktokIcon size={14} className="sm:w-4 sm:h-4"/></a>
+            <a href="https://wa.me/595981003460" target="_blank" rel="noreferrer" className="p-2 sm:p-2.5 rounded-full bg-white/5 border border-white/10 text-brand-neutral hover:text-brand-cream hover:border-brand-cream/40 hover:bg-brand-cream/10 transition-all duration-300"><MessageCircle size={14} className="sm:w-4 sm:h-4"/></a>
+            <a href="https://www.instagram.com/dr.javierbarrios/" target="_blank" rel="noreferrer" className="p-2 sm:p-2.5 rounded-full bg-white/5 border border-white/10 text-brand-neutral hover:text-brand-cream hover:border-brand-cream/40 hover:bg-brand-cream/10 transition-all duration-300"><Instagram size={14} className="sm:w-4 sm:h-4"/></a>
+            <a href="https://www.facebook.com/share/1DUG8wnZFZ/?mibextid=wwXIfr" target="_blank" rel="noreferrer" className="p-2 sm:p-2.5 rounded-full bg-white/5 border border-white/10 text-brand-neutral hover:text-brand-cream hover:border-brand-cream/40 hover:bg-brand-cream/10 transition-all duration-300"><Facebook size={14} className="sm:w-4 sm:h-4"/></a>
+            <a href="https://www.tiktok.com/@dr.javierbarrios?_r=1&_t=ZM-932itBHEKzY" target="_blank" rel="noreferrer" className="p-2 sm:p-2.5 rounded-full bg-white/5 border border-white/10 text-brand-neutral hover:text-brand-cream hover:border-brand-cream/40 hover:bg-brand-cream/10 transition-all duration-300"><TiktokIcon size={14} className="sm:w-4 sm:h-4"/></a>
 
             {/* Agendar Button - hidden on mobile */}
             <button
               onClick={openModal}
-              className="hidden sm:flex items-center gap-2 ml-2 bg-white/5 hover:bg-brand-accent hover:text-white border border-white/10 text-white px-5 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all duration-300 hover:shadow-[0_0_20px_rgba(197,160,89,0.3)]"
+              className="hidden sm:flex items-center gap-2 ml-2 cta-premium px-5 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest"
             >
-              <Calendar size={14} className="text-brand-accent group-hover:text-white transition-colors duration-300" />
+              <Calendar size={14} />
               <span>Agendar Cita</span>
             </button>
           </div>
@@ -259,9 +261,10 @@ export const LandingPage: React.FC = () => {
 
       {/* === HERO SECTION (VSL INTEGRATED) === */}
       <section className="relative z-10 pt-32 pb-24 px-4 min-h-screen flex flex-col justify-center items-center text-center">
-        
-        {/* Glow Effects */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-brand-accent/5 rounded-full blur-[100px] pointer-events-none"></div>
+
+        {/* Glow Effects - Warm tones */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-brand-cream/5 rounded-full blur-[120px] pointer-events-none morph-blob"></div>
+        <div className="absolute top-1/4 right-0 w-[300px] h-[300px] bg-brand-accent/5 rounded-full blur-[80px] pointer-events-none"></div>
 
         <div className="max-w-5xl mx-auto w-full flex flex-col items-center">
           
@@ -269,12 +272,12 @@ export const LandingPage: React.FC = () => {
           <div className="mb-10">
             <h1 className="hero-title font-serif text-4xl md:text-6xl lg:text-7xl text-white leading-[1.1]">
               Diseñemos tu <br/>
-              <span className="italic bg-clip-text text-transparent bg-gradient-to-r from-white via-brand-light to-brand-neutral">Transformación</span>
+              <span className="italic warm-gradient-text">Transformación</span>
             </h1>
           </div>
 
           {/* VSL CONTAINER - HTML5 VIDEO */}
-          <div className="hero-video relative w-full max-w-4xl aspect-video bg-brand-darker rounded-3xl overflow-hidden shadow-2xl border border-white/10 transition-all duration-700 hover:shadow-[0_20px_80px_rgba(68,132,196,0.20)] hover:border-brand-accent/30">
+          <div className="hero-video video-premium relative w-full max-w-4xl aspect-video bg-brand-darker rounded-3xl overflow-hidden shadow-2xl border border-brand-cream/10">
              <video
                ref={videoRef}
                className="absolute inset-0 w-full h-full object-cover"
@@ -309,116 +312,130 @@ export const LandingPage: React.FC = () => {
 
           {/* PRIMARY CTA - DIRECT TO MODAL */}
           <div ref={heroCtaRef} className="hero-cta mt-12 w-full flex flex-col items-center gap-6">
-             <button 
+             <button
                 onClick={openModal}
-                className={`group relative overflow-hidden rounded-full px-12 py-5 transition-all duration-300 hover:shadow-[0_0_40px_rgba(68,132,196,0.5)] hover:scale-105 ${brandGradientButtonClass}`}
+                className={`group px-12 py-5 text-sm ${ctaPremiumClass}`}
              >
-                <div className="relative z-10 flex items-center gap-3 font-bold text-black uppercase tracking-widest text-sm">
+                <span className="relative z-10 flex items-center gap-3">
                    Iniciar mi Transformación
-                   <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                </div>
+                   <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform duration-300" />
+                </span>
              </button>
-             
-             <div className="flex items-center gap-2 text-brand-neutral text-xs">
-                <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></div>
-                <span>Agenda abierta para nuevos pacientes</span>
+
+             <div className="flex items-center gap-3 text-brand-neutral/80 text-xs">
+                <div className="relative">
+                  <div className="w-2 h-2 rounded-full bg-emerald-400"></div>
+                  <div className="absolute inset-0 w-2 h-2 rounded-full bg-emerald-400 animate-ping"></div>
+                </div>
+                <span className="tracking-wide">Agenda abierta para nuevos pacientes</span>
              </div>
           </div>
 
         </div>
       </section>
 
-      {/* === STATS SECTION - MINIMALIST === */}
-      <section className="relative z-10 py-16 border-y border-white/5 bg-brand-dark/20 backdrop-blur-sm">
-         <div className="max-w-6xl mx-auto px-6 flex flex-wrap justify-center gap-12 md:gap-32 text-center">
-            <div className="stat-number space-y-2">
-               <span className="text-4xl md:text-6xl font-serif text-white block">+1000</span>
-               <span className="text-brand-accent text-xs uppercase tracking-[0.2em]">Pacientes Felices</span>
+      {/* === STATS SECTION - ENHANCED === */}
+      <section className="relative z-10 py-20">
+         {/* Premium divider top */}
+         <div className="section-divider mb-16"></div>
+
+         <div className="max-w-6xl mx-auto px-6 flex flex-wrap justify-center gap-16 md:gap-40 text-center">
+            <div className="stat-number space-y-3 group">
+               <span className="text-5xl md:text-7xl font-serif text-brand-cream block glow-text transition-all duration-500 group-hover:scale-105">+1000</span>
+               <span className="text-brand-warm text-xs uppercase tracking-[0.3em] font-medium">Pacientes Felices</span>
             </div>
-            <div className="stat-number delay-100 space-y-2">
-               <span className="text-4xl md:text-6xl font-serif text-white block">100%</span>
-               <span className="text-brand-accent text-xs uppercase tracking-[0.2em]">Atención Personalizada</span>
+            <div className="stat-number delay-100 space-y-3 group">
+               <span className="text-5xl md:text-7xl font-serif text-brand-cream block glow-text transition-all duration-500 group-hover:scale-105">100%</span>
+               <span className="text-brand-warm text-xs uppercase tracking-[0.3em] font-medium">Atención Personalizada</span>
             </div>
          </div>
+
+         {/* Premium divider bottom */}
+         <div className="section-divider mt-16"></div>
       </section>
 
-      {/* === SAFETY / PROCESS SECTION - WHITE BACKGROUND === */}
-      <section className="relative z-10 py-24 px-6 bg-white">
-        <div className="max-w-6xl mx-auto">
-          {/* Section Header */}
-          <div className="text-center mb-20 reveal-on-scroll">
-              <span className="text-brand-accent text-xs tracking-[0.4em] uppercase mb-4 block font-bold">Protocolo Dr. Barrios</span>
-              <h2 className="font-serif text-3xl md:text-5xl text-brand-primary mb-6">
-                Tu seguridad en cada etapa
-              </h2>
-              <p className="text-brand-neutral font-light max-w-2xl mx-auto leading-relaxed">
-                La cirugía plástica es un viaje médico, no solo estético. Hemos diseñado un protocolo estricto para acompañarte antes, durante y después de tu transformación.
-              </p>
-          </div>
+      {/* === SAFETY / PROCESS SECTION === */}
+      <section className="relative z-10 py-24 px-6 max-w-6xl mx-auto">
+        {/* Section Header */}
+        <div className="text-center mb-20 reveal-on-scroll">
+            <span className="text-brand-cream/80 text-xs tracking-[0.4em] uppercase mb-4 block font-bold">Protocolo Dr. Barrios</span>
+            <h2 className="font-serif text-3xl md:text-5xl text-white mb-6">
+              Tu seguridad en <span className="warm-gradient-text">cada etapa</span>
+            </h2>
+            <p className="text-brand-neutral font-light max-w-2xl mx-auto leading-relaxed">
+              La cirugía plástica es un viaje médico, no solo estético. Hemos diseñado un protocolo estricto para acompañarte antes, durante y después de tu transformación.
+            </p>
+        </div>
 
-          {/* Process Grid */}
-          <div className="grid md:grid-cols-2 gap-6 relative">
-            {/* Subtle connecting line for desktop visualization */}
-            <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-brand-accent/30 to-transparent hidden md:block reveal-on-scroll"></div>
+        {/* Process Grid */}
+        <div className="grid md:grid-cols-2 gap-6 relative">
+          {/* Subtle connecting line for desktop visualization */}
+          <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-brand-cream/20 to-transparent hidden md:block reveal-on-scroll"></div>
 
-            {SAFETY_STEPS.map((step, index) => (
-               <div
-                 key={index}
-                 style={{ transitionDelay: `${index * 150}ms` }}
-                 className={`process-card card-lift relative p-8 rounded-2xl border border-brand-primary/10 bg-brand-cream hover:bg-white hover:border-brand-accent/40 hover:shadow-xl transition-all duration-500 group ${index % 2 === 0 ? 'md:mr-8' : 'md:ml-8'}`}
-               >
-                  {/* Connector Dot for Desktop */}
-                  <div className={`hidden md:block absolute top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-white border-2 border-brand-accent z-10 ${index % 2 === 0 ? '-right-[42px]' : '-left-[42px]'}`}>
-                     <div className="w-full h-full bg-brand-accent rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                  </div>
+          {SAFETY_STEPS.map((step, index) => (
+             <div
+               key={index}
+               style={{ transitionDelay: `${index * 150}ms` }}
+               className={`process-card card-lift relative p-8 rounded-2xl border border-white/5 bg-brand-dark/40 backdrop-blur-sm hover:bg-brand-dark/80 hover:border-brand-cream/20 transition-all duration-500 group ${index % 2 === 0 ? 'md:mr-8' : 'md:ml-8'}`}
+             >
+                {/* Connector Dot for Desktop */}
+                <div className={`hidden md:block absolute top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-brand-darker border border-brand-cream/50 z-10 ${index % 2 === 0 ? '-right-[42px]' : '-left-[42px]'}`}>
+                   <div className="w-full h-full bg-brand-cream rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                </div>
 
-                  <div className="flex flex-col gap-4">
-                     <div className="w-12 h-12 rounded-full bg-brand-primary/10 border border-brand-primary/20 flex items-center justify-center text-brand-accent group-hover:scale-110 group-hover:bg-brand-accent group-hover:text-white transition-all duration-500">
-                        <step.icon size={24} />
-                     </div>
-                     <div>
-                        <h3 className="font-serif text-xl text-brand-primary mb-3 group-hover:text-brand-accent transition-colors">{step.title}</h3>
-                        <p className="text-brand-neutral font-light text-sm leading-relaxed">
-                          {step.desc}
-                        </p>
-                     </div>
-                  </div>
-               </div>
-            ))}
-          </div>
+                <div className="flex flex-col gap-4">
+                   <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-brand-dark to-brand-darker border border-brand-cream/10 flex items-center justify-center text-brand-cream group-hover:scale-110 group-hover:border-brand-cream/30 transition-all duration-500 shadow-lg">
+                      <step.icon size={26} strokeWidth={1.5} />
+                   </div>
+                   <div>
+                      <h3 className="font-serif text-xl text-white mb-3 group-hover:text-brand-cream transition-colors duration-300">{step.title}</h3>
+                      <p className="text-brand-neutral font-light text-sm leading-relaxed">
+                        {step.desc}
+                      </p>
+                   </div>
+                </div>
+             </div>
+          ))}
         </div>
       </section>
 
       {/* === BIO SECTION - EDITORIAL LAYOUT === */}
-      <section className="relative z-10 py-32 px-6 max-w-7xl mx-auto border-t border-white/5">
+      <section className="relative z-10 py-32 px-6 max-w-7xl mx-auto">
+        {/* Premium divider */}
+        <div className="section-divider mb-24"></div>
+
         <div className="flex flex-col md:flex-row items-center gap-16 lg:gap-24">
-           
+
            {/* Text Content */}
            <div className="w-full md:w-1/2 order-2 md:order-1 reveal-from-left">
-              <span className="text-brand-accent text-xs tracking-[0.4em] uppercase mb-6 block font-bold">El Especialista</span>
+              <span className="text-brand-cream/70 text-xs tracking-[0.4em] uppercase mb-6 block font-bold">El Especialista</span>
               <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-white mb-8 leading-tight">
-                Arte y Ciencia <br/> en Equilibrio.
+                Arte y Ciencia <br/> en <span className="warm-gradient-text">Equilibrio.</span>
               </h2>
-              
+
               <div className="space-y-6 text-brand-neutral font-light leading-relaxed text-base md:text-lg text-justify md:text-left">
                 <p>
                   El <strong className="text-white">Dr. Javier Barrios</strong> no solo es cirujano; es un artista apasionado por la simetría y la belleza natural. Su filosofía se basa en potenciar tu mejor versión sin perder tu esencia.
                 </p>
                 <p>
-                  Con una formación internacional y miembro de la prestigiosa <strong className="text-brand-accent">Sociedad Paraguaya de Cirugía Plástica</strong>, combina tecnología de vanguardia con un trato humano inigualable.
+                  Con una formación internacional y miembro de la prestigiosa <strong className="text-brand-cream">Sociedad Paraguaya de Cirugía Plástica</strong>, combina tecnología de vanguardia con un trato humano inigualable.
                 </p>
               </div>
 
               {/* Smooth Cards for Credentials */}
               <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                 <div className="group p-6 bg-brand-dark/30 backdrop-blur-md rounded-2xl border border-white/5 hover:border-brand-accent/30 hover:bg-brand-dark/60 card-lift transition-all duration-500">
-                    <Award className="text-brand-accent mb-4 group-hover:scale-110 transition-transform duration-500" size={24} />
-                    <h4 className="text-white text-sm font-bold uppercase mb-2">Certificado</h4>
+                 <div className="group p-6 bg-gradient-to-br from-brand-dark/50 to-brand-darker/50 backdrop-blur-md rounded-2xl border border-brand-cream/5 hover:border-brand-cream/20 card-lift transition-all duration-500">
+                    <div className="w-10 h-10 rounded-xl bg-brand-cream/10 flex items-center justify-center mb-4 group-hover:bg-brand-cream/20 transition-colors duration-300">
+                      <Award className="text-brand-cream" size={20} />
+                    </div>
+                    <h4 className="text-brand-cream text-sm font-bold uppercase mb-2 tracking-wide">Certificado</h4>
                     <p className="text-brand-neutral text-xs leading-relaxed">Miembro Titular de la Sociedad Paraguaya de Cirugía Plástica.</p>
                  </div>
-                 <div className="group p-6 bg-brand-dark/30 backdrop-blur-md rounded-2xl border border-white/5 hover:border-brand-accent/30 hover:bg-brand-dark/60 card-lift transition-all duration-500">
-                    <Star className="text-brand-accent mb-4 group-hover:scale-110 transition-transform duration-500" size={24} />
-                    <h4 className="text-white text-sm font-bold uppercase mb-2">Excelencia</h4>
+                 <div className="group p-6 bg-gradient-to-br from-brand-dark/50 to-brand-darker/50 backdrop-blur-md rounded-2xl border border-brand-cream/5 hover:border-brand-cream/20 card-lift transition-all duration-500">
+                    <div className="w-10 h-10 rounded-xl bg-brand-cream/10 flex items-center justify-center mb-4 group-hover:bg-brand-cream/20 transition-colors duration-300">
+                      <Star className="text-brand-cream" size={20} />
+                    </div>
+                    <h4 className="text-brand-cream text-sm font-bold uppercase mb-2 tracking-wide">Excelencia</h4>
                     <p className="text-brand-neutral text-xs leading-relaxed">Enfoque en resultados naturales y recuperación rápida.</p>
                  </div>
               </div>
@@ -426,98 +443,38 @@ export const LandingPage: React.FC = () => {
 
            {/* Image Layout - Floating */}
            <div className="w-full md:w-1/2 order-1 md:order-2 relative reveal-from-right delay-200">
-              <div className="absolute -top-10 -right-10 w-2/3 h-2/3 bg-brand-accent/5 rounded-full blur-[80px]"></div>
-              <div className="relative rounded-3xl overflow-hidden aspect-[3/4] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.5)] border border-white/5 group hover:border-brand-accent/20 transition-colors duration-700">
+              <div className="absolute -top-10 -right-10 w-2/3 h-2/3 bg-brand-cream/5 rounded-full blur-[100px]"></div>
+              <div className="relative rounded-3xl overflow-hidden aspect-[3/4] shadow-[0_30px_80px_-20px_rgba(0,0,0,0.6)] border border-brand-cream/10 group hover:border-brand-cream/25 transition-all duration-700">
                  <img
                    src="/drjavierbarrios.webp"
                    alt="Dr. Javier Barrios"
                    className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-105"
                  />
-                 <div className="absolute inset-0 bg-gradient-to-t from-brand-primary/80 via-transparent to-transparent"></div>
-                 
+                 <div className="absolute inset-0 bg-gradient-to-t from-brand-primary/90 via-brand-primary/20 to-transparent"></div>
+
                  {/* Signature overlay effect */}
                  <div className="absolute bottom-6 left-6">
                      <Logo size="lg" className="opacity-60" />
                  </div>
+
+                 {/* Premium corner accent */}
+                 <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-brand-cream/10 to-transparent"></div>
               </div>
            </div>
 
         </div>
       </section>
 
-      {/* === TRUST / CONFIDENCE SECTION - WHITE === */}
-      <section className="relative z-10 py-20 px-6 bg-white">
-        <div className="max-w-5xl mx-auto">
-          {/* Section Header */}
-          <div className="text-center mb-16 reveal-on-scroll">
-            <span className="text-brand-accent text-xs tracking-[0.4em] uppercase mb-4 block font-bold">Respaldo Profesional</span>
-            <h2 className="font-serif text-3xl md:text-4xl text-brand-primary mb-6">
-              Tu confianza, nuestra prioridad
-            </h2>
-          </div>
-
-          {/* Trust Badges Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 reveal-on-scroll delay-100">
-            <div className="text-center group">
-              <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-brand-primary/5 border border-brand-primary/10 flex items-center justify-center group-hover:bg-brand-accent/10 group-hover:border-brand-accent/30 transition-all duration-500">
-                <ShieldCheck size={32} className="text-brand-accent" />
-              </div>
-              <h4 className="text-brand-primary font-bold text-sm mb-1">Certificado</h4>
-              <p className="text-brand-neutral text-xs">Sociedad Paraguaya de Cirugía Plástica</p>
-            </div>
-
-            <div className="text-center group">
-              <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-brand-primary/5 border border-brand-primary/10 flex items-center justify-center group-hover:bg-brand-accent/10 group-hover:border-brand-accent/30 transition-all duration-500">
-                <Award size={32} className="text-brand-accent" />
-              </div>
-              <h4 className="text-brand-primary font-bold text-sm mb-1">+10 Años</h4>
-              <p className="text-brand-neutral text-xs">De experiencia quirúrgica</p>
-            </div>
-
-            <div className="text-center group">
-              <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-brand-primary/5 border border-brand-primary/10 flex items-center justify-center group-hover:bg-brand-accent/10 group-hover:border-brand-accent/30 transition-all duration-500">
-                <Lock size={32} className="text-brand-accent" />
-              </div>
-              <h4 className="text-brand-primary font-bold text-sm mb-1">Hospitales</h4>
-              <p className="text-brand-neutral text-xs">De alta complejidad</p>
-            </div>
-
-            <div className="text-center group">
-              <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-brand-primary/5 border border-brand-primary/10 flex items-center justify-center group-hover:bg-brand-accent/10 group-hover:border-brand-accent/30 transition-all duration-500">
-                <HeartHandshake size={32} className="text-brand-accent" />
-              </div>
-              <h4 className="text-brand-primary font-bold text-sm mb-1">Seguimiento</h4>
-              <p className="text-brand-neutral text-xs">Post-operatorio integral</p>
-            </div>
-          </div>
-
-          {/* Testimonial Quote */}
-          <div className="mt-16 text-center reveal-on-scroll delay-200">
-            <div className="inline-block p-8 md:p-12 bg-gradient-to-br from-brand-primary/5 to-brand-accent/5 rounded-3xl border border-brand-primary/10 max-w-3xl">
-              <p className="text-brand-primary/80 font-serif text-lg md:text-xl italic leading-relaxed mb-6">
-                "El Dr. Barrios no solo transformó mi cuerpo, transformó mi confianza. Cada consulta fue un espacio de escucha y profesionalismo."
-              </p>
-              <div className="flex items-center justify-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-brand-accent/20 flex items-center justify-center">
-                  <span className="text-brand-accent font-bold text-sm">MC</span>
-                </div>
-                <div className="text-left">
-                  <p className="text-brand-primary font-bold text-sm">María C.</p>
-                  <p className="text-brand-neutral text-xs">Paciente verificada</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* === FAQ SECTION === */}
-      <section className="relative z-10 py-24 px-6 bg-brand-dark/20">
+      <section className="relative z-10 py-24 px-6">
+        {/* Premium divider */}
+        <div className="section-divider mb-20"></div>
+
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16 reveal-blur">
-            <span className="text-brand-accent text-xs tracking-[0.4em] uppercase mb-4 block font-bold">Dudas Frecuentes</span>
+            <span className="text-brand-cream/70 text-xs tracking-[0.4em] uppercase mb-4 block font-bold">Dudas Frecuentes</span>
             <h2 className="font-serif text-3xl md:text-5xl text-white">
-              Todo lo que necesitas saber
+              Todo lo que necesitas <span className="warm-gradient-text">saber</span>
             </h2>
           </div>
 
@@ -526,36 +483,36 @@ export const LandingPage: React.FC = () => {
               <div
                 key={index}
                 style={{ transitionDelay: `${index * 100}ms` }}
-                className={`faq-item group border rounded-2xl transition-all duration-500 overflow-hidden ${openFaqIndex === index ? 'border-brand-accent/30 bg-brand-dark/60' : 'border-white/5 bg-transparent hover:bg-brand-dark/30'}`}
+                className={`faq-item group border rounded-2xl transition-all duration-500 overflow-hidden ${openFaqIndex === index ? 'border-brand-cream/30 bg-brand-dark/60 shadow-lg shadow-brand-cream/5' : 'border-white/5 bg-transparent hover:bg-brand-dark/30 hover:border-brand-cream/10'}`}
               >
-                <button 
+                <button
                   onClick={() => toggleFaq(index)}
                   className="w-full flex items-center justify-between p-6 text-left"
                 >
-                  <span className={`font-serif text-lg md:text-xl transition-colors ${openFaqIndex === index ? 'text-brand-accent' : 'text-brand-light group-hover:text-white'}`}>
+                  <span className={`font-serif text-lg md:text-xl transition-colors duration-300 ${openFaqIndex === index ? 'text-brand-cream' : 'text-brand-light group-hover:text-white'}`}>
                     {faq.question}
                   </span>
-                  <div className={`p-2 rounded-full border transition-all duration-500 ${openFaqIndex === index ? 'border-brand-accent text-brand-accent rotate-180' : 'border-white/10 text-brand-neutral group-hover:text-white'}`}>
+                  <div className={`p-2 rounded-full border transition-all duration-500 ${openFaqIndex === index ? 'border-brand-cream text-brand-cream bg-brand-cream/10 rotate-180' : 'border-white/10 text-brand-neutral group-hover:text-white group-hover:border-brand-cream/30'}`}>
                      {openFaqIndex === index ? <Minus size={16} /> : <Plus size={16} />}
                   </div>
                 </button>
-                
-                <div 
-                  className={`transition-[max-height] duration-500 ease-in-out ${openFaqIndex === index ? 'max-h-48 opacity-100' : 'max-h-0 opacity-0'}`}
+
+                <div
+                  className={`transition-[max-height,opacity] duration-500 ease-in-out ${openFaqIndex === index ? 'max-h-48 opacity-100' : 'max-h-0 opacity-0'}`}
                 >
-                  <div className="p-6 pt-0 text-brand-neutral font-light leading-relaxed border-t border-white/5">
+                  <div className="p-6 pt-0 text-brand-neutral font-light leading-relaxed border-t border-brand-cream/10">
                     {faq.answer}
                   </div>
                 </div>
               </div>
             ))}
           </div>
-          
-          <div className="text-center mt-12 reveal-on-scroll delay-300">
-            <p className="text-brand-neutral text-sm mb-4">¿Tienes otra pregunta?</p>
-            <button 
+
+          <div className="text-center mt-16 reveal-on-scroll delay-300">
+            <p className="text-brand-neutral text-sm mb-6">¿Tienes otra pregunta?</p>
+            <button
               onClick={openModal}
-              className="text-white border-b border-brand-accent pb-1 text-xs uppercase tracking-widest hover:text-brand-accent transition-colors"
+              className={`px-8 py-3 text-xs ${ctaOutlineClass}`}
             >
               Contactar al equipo
             </button>
@@ -563,46 +520,15 @@ export const LandingPage: React.FC = () => {
         </div>
       </section>
 
-      {/* === FINAL CTA SECTION - WHITE === */}
-      <section className="relative z-10 py-24 px-6 bg-white overflow-hidden">
-        {/* Subtle decorative elements */}
-        <div className="absolute top-0 left-0 w-96 h-96 bg-brand-accent/5 rounded-full blur-[100px] -translate-x-1/2 -translate-y-1/2"></div>
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-brand-primary/5 rounded-full blur-[100px] translate-x-1/2 translate-y-1/2"></div>
-
-        <div className="max-w-4xl mx-auto text-center relative">
-          <div className="reveal-on-scroll">
-            <span className="text-brand-accent text-xs tracking-[0.4em] uppercase mb-4 block font-bold">Da el Primer Paso</span>
-            <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-brand-primary mb-6 leading-tight">
-              Tu transformación <br className="hidden md:block"/>comienza hoy
-            </h2>
-            <p className="text-brand-neutral font-light text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
-              Agenda tu consulta personalizada y descubre cómo podemos ayudarte a alcanzar la mejor versión de ti.
-            </p>
-
-            <button
-              onClick={openModal}
-              className={`group relative overflow-hidden rounded-full px-12 py-5 transition-all duration-300 hover:shadow-[0_0_40px_rgba(68,132,196,0.4)] hover:scale-105 ${brandGradientButtonClass}`}
-            >
-              <div className="relative z-10 flex items-center gap-3 font-bold text-black uppercase tracking-widest text-sm">
-                Agendar mi Consulta
-                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-              </div>
-            </button>
-
-            <p className="mt-6 text-brand-neutral/60 text-sm">
-              Consulta sin compromiso · Respuesta en menos de 24 horas
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* === LOCATION & FOOTER SECTION === */}
       {/* Added extra bottom padding on mobile (pb-32) so the sticky CTA doesn't cover the footer text */}
-      <section className="relative z-10 pt-24 pb-32 md:pb-12 px-6 bg-brand-darker border-t border-white/5">
-        
+      <section className="relative z-10 pt-24 pb-32 md:pb-12 px-6 bg-brand-darker">
+        {/* Premium divider */}
+        <div className="section-divider mb-20"></div>
+
         {/* Main Footer Grid */}
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 mb-20">
-            
+
             {/* Info Column */}
             <div className="space-y-12 reveal-from-left">
                 <div>
@@ -612,26 +538,26 @@ export const LandingPage: React.FC = () => {
                    </p>
                 </div>
 
-                <div className="space-y-8">
-                    <div className="flex items-start gap-4 p-4 rounded-2xl hover:bg-white/5 transition-colors duration-300 cursor-pointer group">
-                       <div className="bg-brand-dark p-3 rounded-full text-brand-accent border border-white/5 group-hover:border-brand-accent group-hover:bg-brand-accent group-hover:text-black transition-all">
+                <div className="space-y-6">
+                    <div className="flex items-start gap-4 p-5 rounded-2xl bg-brand-dark/30 border border-brand-cream/5 hover:border-brand-cream/20 hover:bg-brand-dark/50 transition-all duration-300 cursor-pointer group">
+                       <div className="bg-brand-cream/10 p-3 rounded-xl text-brand-cream border border-brand-cream/10 group-hover:bg-brand-cream/20 transition-all">
                            <MapPin size={20} />
                        </div>
                        <div>
-                          <h4 className="text-white text-sm font-bold uppercase mb-1">Ubicación</h4>
+                          <h4 className="text-brand-cream text-sm font-bold uppercase mb-1 tracking-wide">Ubicación</h4>
                           <p className="text-brand-neutral text-sm leading-relaxed">
                              Padre de la Cruz Ortigoza 2349,<br/> Asunción
                           </p>
-                          <a href="https://www.google.com/maps/place/Padre+de+la+Cruz+Ortigoza+2349,+Asunci%C3%B3n+001531/@-25.2687133,-57.5789495,17z/data=!3m1!4b1!4m6!3m5!1s0x945da63e043fa309:0x7049c4ea90862a9b!8m2!3d-25.2687133!4d-57.5763746!16s%2Fg%2F11k5t559p_?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoKLDEwMDc5MjA3M0gBUAM%3D" target="_blank" rel="noreferrer" className="text-brand-accent text-xs mt-2 inline-block hover:underline">Abrir Mapa</a>
+                          <a href="https://www.google.com/maps/place/Padre+de+la+Cruz+Ortigoza+2349,+Asunci%C3%B3n+001531/@-25.2687133,-57.5789495,17z/data=!3m1!4b1!4m6!3m5!1s0x945da63e043fa309:0x7049c4ea90862a9b!8m2!3d-25.2687133!4d-57.5763746!16s%2Fg%2F11k5t559p_?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoKLDEwMDc5MjA3M0gBUAM%3D" target="_blank" rel="noreferrer" className="text-brand-cream/70 text-xs mt-2 inline-block hover:text-brand-cream transition-colors">Abrir Mapa →</a>
                        </div>
                     </div>
 
-                    <div className="flex items-start gap-4 p-4 rounded-2xl hover:bg-white/5 transition-colors duration-300">
-                       <div className="bg-brand-dark p-3 rounded-full text-brand-accent border border-white/5">
+                    <div className="flex items-start gap-4 p-5 rounded-2xl bg-brand-dark/30 border border-brand-cream/5 hover:border-brand-cream/20 hover:bg-brand-dark/50 transition-all duration-300 group">
+                       <div className="bg-brand-cream/10 p-3 rounded-xl text-brand-cream border border-brand-cream/10 group-hover:bg-brand-cream/20 transition-all">
                            <Clock size={20} />
                        </div>
                        <div>
-                          <h4 className="text-white text-sm font-bold uppercase mb-1">Horarios</h4>
+                          <h4 className="text-brand-cream text-sm font-bold uppercase mb-1 tracking-wide">Horarios</h4>
                           <p className="text-brand-neutral text-sm leading-relaxed">
                              Lun - Vie: 09:00 - 18:00<br/> Sáb: Con cita previa
                           </p>
@@ -641,7 +567,7 @@ export const LandingPage: React.FC = () => {
             </div>
 
             {/* Map/Image Card */}
-            <div className="reveal-from-right delay-200 relative h-full min-h-[300px] rounded-3xl overflow-hidden border border-white/10 shadow-2xl group hover:border-brand-accent/30 transition-colors duration-500">
+            <div className="reveal-from-right delay-200 relative h-full min-h-[300px] rounded-3xl overflow-hidden border border-brand-cream/10 shadow-2xl group hover:border-brand-cream/25 transition-all duration-500">
                  <div className="absolute inset-0 bg-brand-dark">
                     <iframe 
                       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3608.287042857484!2d-57.5789495!3d-25.2687133!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x945da63e043fa309%3A0x7049c4ea90862a9b!2sPadre%20de%20la%20Cruz%20Ortigoza%202349%2C%20Asunci%C3%B3n!5e0!3m2!1ses-419!2spy"
@@ -654,15 +580,15 @@ export const LandingPage: React.FC = () => {
                       className="opacity-70 transition-opacity duration-500 group-hover:opacity-50"
                     ></iframe>
                  </div>
-                 <a href="https://www.google.com/maps/place/Padre+de+la+Cruz+Ortigoza+2349,+Asunci%C3%B3n+001531/@-25.2687133,-57.5789495,17z/data=!3m1!4b1!4m6!3m5!1s0x945da63e043fa309:0x7049c4ea90862a9b!8m2!3d-25.2687133!4d-57.5763746!16s%2Fg%2F11k5t559p_?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoKLDEwMDc5MjA3M0gBUAM%3D" target="_blank" rel="noreferrer" className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/20 z-10">
-                     <span className="bg-white text-black px-6 py-3 rounded-full font-bold text-xs uppercase tracking-widest shadow-xl transform translate-y-2 group-hover:translate-y-0 transition-transform">Ver en Google Maps</span>
+                 <a href="https://www.google.com/maps/place/Padre+de+la+Cruz+Ortigoza+2349,+Asunci%C3%B3n+001531/@-25.2687133,-57.5789495,17z/data=!3m1!4b1!4m6!3m5!1s0x945da63e043fa309:0x7049c4ea90862a9b!8m2!3d-25.2687133!4d-57.5763746!16s%2Fg%2F11k5t559p_?entry=ttu&g_ep=EgoyMDI2MDEwNy4wIKXMDSoKLDEwMDc5MjA3M0gBUAM%3D" target="_blank" rel="noreferrer" className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/30 z-10">
+                     <span className="cta-premium px-6 py-3 rounded-full font-bold text-xs uppercase tracking-widest shadow-xl transform translate-y-2 group-hover:translate-y-0 transition-transform">Ver en Google Maps</span>
                  </a>
             </div>
 
         </div>
 
         {/* Separator */}
-        <div className="h-px w-full bg-white/5 my-12" />
+        <div className="section-divider my-12" />
 
         {/* Professional Footer - Centered Layout */}
         <div className="reveal-scale max-w-7xl mx-auto flex flex-col items-center gap-8">
@@ -671,11 +597,11 @@ export const LandingPage: React.FC = () => {
             <Logo size="xl" centered className="opacity-80" />
 
             {/* Socials */}
-            <div className="flex gap-5 opacity-50 hover:opacity-100 transition-opacity duration-300">
-                <a href="https://www.instagram.com/dr.javierbarrios/" target="_blank" rel="noreferrer" className="text-brand-neutral hover:text-brand-accent transition-colors"><Instagram size={18}/></a>
-                <a href="https://www.facebook.com/share/1DUG8wnZFZ/?mibextid=wwXIfr" target="_blank" rel="noreferrer" className="text-brand-neutral hover:text-brand-accent transition-colors"><Facebook size={18}/></a>
-                <a href="https://wa.me/595981003460" target="_blank" rel="noreferrer" className="text-brand-neutral hover:text-brand-accent transition-colors"><MessageCircle size={18}/></a>
-                <a href="https://www.tiktok.com/@dr.javierbarrios?_r=1&_t=ZM-932itBHEKzY" target="_blank" rel="noreferrer" className="text-brand-neutral hover:text-brand-accent transition-colors"><TiktokIcon size={18}/></a>
+            <div className="flex gap-4">
+                <a href="https://www.instagram.com/dr.javierbarrios/" target="_blank" rel="noreferrer" className="p-3 rounded-full bg-brand-cream/5 border border-brand-cream/10 text-brand-neutral hover:text-brand-cream hover:border-brand-cream/30 hover:bg-brand-cream/10 transition-all duration-300"><Instagram size={18}/></a>
+                <a href="https://www.facebook.com/share/1DUG8wnZFZ/?mibextid=wwXIfr" target="_blank" rel="noreferrer" className="p-3 rounded-full bg-brand-cream/5 border border-brand-cream/10 text-brand-neutral hover:text-brand-cream hover:border-brand-cream/30 hover:bg-brand-cream/10 transition-all duration-300"><Facebook size={18}/></a>
+                <a href="https://wa.me/595981003460" target="_blank" rel="noreferrer" className="p-3 rounded-full bg-brand-cream/5 border border-brand-cream/10 text-brand-neutral hover:text-brand-cream hover:border-brand-cream/30 hover:bg-brand-cream/10 transition-all duration-300"><MessageCircle size={18}/></a>
+                <a href="https://www.tiktok.com/@dr.javierbarrios?_r=1&_t=ZM-932itBHEKzY" target="_blank" rel="noreferrer" className="p-3 rounded-full bg-brand-cream/5 border border-brand-cream/10 text-brand-neutral hover:text-brand-cream hover:border-brand-cream/30 hover:bg-brand-cream/10 transition-all duration-300"><TiktokIcon size={18}/></a>
             </div>
 
             {/* Legal Links */}
@@ -722,23 +648,23 @@ export const LandingPage: React.FC = () => {
           ></div>
 
           {/* Modal Content */}
-          <div className="modal-content relative w-full max-w-2xl bg-brand-darker border border-white/10 rounded-3xl shadow-[0_0_50px_rgba(0,0,0,0.8)] overflow-hidden flex flex-col max-h-[90vh]">
+          <div className="modal-content relative w-full max-w-2xl bg-brand-darker border border-brand-cream/10 rounded-3xl shadow-[0_0_80px_rgba(0,0,0,0.9)] overflow-hidden flex flex-col max-h-[90vh]">
               {/* Modal Header Decoration */}
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-brand-accent to-transparent opacity-50"></div>
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-transparent via-brand-cream/50 to-transparent"></div>
               
               <div className="p-8 md:p-12 overflow-y-auto custom-scrollbar relative">
                   <ConsultationForm onClose={closeModal} />
                   
                   {/* Minimalist Developer Credit Inside Modal */}
-                  <div className="mt-8 pt-6 border-t border-white/5 flex justify-center">
-                     <a 
-                      href="https://thebrightidea.ai" 
-                      target="_blank" 
+                  <div className="mt-8 pt-6 border-t border-brand-cream/5 flex justify-center">
+                     <a
+                      href="https://thebrightidea.ai"
+                      target="_blank"
                       rel="noopener noreferrer"
                       className="group flex items-center gap-1 text-[9px] text-brand-neutral-40 hover:text-brand-neutral transition-colors tracking-widest opacity-50 hover:opacity-100"
                     >
                       <span>Desarrollado por</span>
-                      <span className="font-bold group-hover:text-brand-accent transition-colors">Bright Idea</span>
+                      <span className="font-bold group-hover:text-brand-cream transition-colors">Bright Idea</span>
                     </a>
                   </div>
               </div>
@@ -751,12 +677,12 @@ export const LandingPage: React.FC = () => {
       <TermsModal isOpen={isTermsOpen} onClose={() => setIsTermsOpen(false)} />
 
       {/* === MOBILE FLOAT CTA === */}
-      <div 
+      <div
         className={`md:hidden fixed bottom-6 left-6 right-6 z-40 transition-all duration-500 ease-in-out transform ${showStickyCta && !isModalOpen && !isPrivacyOpen && !isTermsOpen ? 'translate-y-0 opacity-100' : 'translate-y-32 opacity-0'}`}
       >
-         <button 
+         <button
             onClick={openModal}
-            className={`w-full shadow-[0_0_20px_rgba(68,132,196,0.4)] text-black py-4 rounded-full font-bold uppercase tracking-widest text-xs flex items-center justify-center gap-2 backdrop-blur-md ${brandGradientButtonClass}`}
+            className={`w-full py-4 text-xs flex items-center justify-center gap-2 ${ctaPremiumClass}`}
          >
             Iniciar Transformación <ArrowRight size={16}/>
          </button>
