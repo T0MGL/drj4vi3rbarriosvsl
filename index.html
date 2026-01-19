@@ -113,12 +113,25 @@
             },
             colors: {
               brand: {
-                gold: '#C5A059', // More muted, elegant gold
-                goldLight: '#E5D4A6',
-                goldDark: '#8C6E28',
-                dark: '#080808', // Nearly pitch black
-                charcoal: '#141414',
-                stone: '#1c1917'
+                // Official Brand Colors from Brand Guidelines
+                primary: '#284b65',      // Azul principal oscuro
+                'primary-50': 'rgba(40, 75, 101, 0.5)',
+                'primary-40': 'rgba(40, 75, 101, 0.4)',
+                'primary-30': 'rgba(40, 75, 101, 0.3)',
+                secondary: '#315f86',    // Azul medio
+                accent: '#4484c4',       // Azul claro/acento
+                neutral: '#9ba6a4',      // Gris medio
+                'neutral-60': 'rgba(155, 166, 164, 0.6)',
+                'neutral-50': 'rgba(155, 166, 164, 0.5)',
+                'neutral-40': 'rgba(155, 166, 164, 0.4)',
+                light: '#dadad8',        // Gris claro
+                // Background variants
+                dark: '#1a2f3f',         // Fondo oscuro basado en primary
+                darker: '#0f1f2b',       // Fondo más oscuro
+                // Legacy aliases for gradual migration
+                gold: '#4484c4',
+                goldLight: '#dadad8',
+                goldDark: '#284b65'
               }
             },
             animation: {
@@ -156,24 +169,24 @@
     </script>
     <style>
       body {
-        background-color: #080808;
-        color: #e5e5e5;
+        background-color: #0f1f2b;
+        color: #dadad8;
         overflow-x: hidden;
       }
-      
-      /* Luxury Scrollbar */
+
+      /* Premium Scrollbar */
       ::-webkit-scrollbar {
         width: 4px;
       }
       ::-webkit-scrollbar-track {
-        background: #080808; 
+        background: #0f1f2b;
       }
       ::-webkit-scrollbar-thumb {
-        background: #333; 
+        background: #315f86;
         border-radius: 2px;
       }
       ::-webkit-scrollbar-thumb:hover {
-        background: #C5A059; 
+        background: #4484c4;
       }
 
       /* Refined Marble Texture - Softer, less noisy */
@@ -182,8 +195,17 @@
         background-size: cover;
       }
       
+      .brand-gradient-text {
+        background: linear-gradient(to right, #4484c4, #315f86, #4484c4);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-size: 200% auto;
+        animation: shimmer 8s linear infinite;
+      }
+
+      /* Legacy alias */
       .gold-gradient-text {
-        background: linear-gradient(to right, #C5A059, #E5D4A6, #C5A059);
+        background: linear-gradient(to right, #4484c4, #315f86, #4484c4);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-size: 200% auto;
@@ -192,14 +214,14 @@
 
       /* Subtle Vignette */
       .vignette {
-        background: radial-gradient(circle at center, transparent 20%, #080808 140%);
+        background: radial-gradient(circle at center, transparent 20%, #0f1f2b 140%);
       }
-      
+
       .glass-panel {
-        background: rgba(20, 20, 20, 0.4);
+        background: rgba(40, 75, 101, 0.25);
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(68, 132, 196, 0.15);
       }
 
       /* Scroll animations are loaded from index.css for better organization */
@@ -216,7 +238,7 @@
 </script>
 <link rel="stylesheet" href="/index.css">
 </head>
-  <body class="antialiased selection:bg-brand-gold selection:text-black">
+  <body class="antialiased selection:bg-brand-accent selection:text-white">
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NP4M2976"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>

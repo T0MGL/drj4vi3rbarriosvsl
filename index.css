@@ -264,10 +264,10 @@ html {
 /* === GLOW PULSE (Subtle) === */
 @keyframes glowPulse {
   0%, 100% {
-    box-shadow: 0 0 30px rgba(197, 160, 89, 0.08);
+    box-shadow: 0 0 30px rgba(68, 132, 196, 0.12);
   }
   50% {
-    box-shadow: 0 0 50px rgba(197, 160, 89, 0.15);
+    box-shadow: 0 0 50px rgba(68, 132, 196, 0.20);
   }
 }
 
@@ -278,10 +278,10 @@ html {
 /* === BORDER GLOW (Gentle pulse) === */
 @keyframes borderGlow {
   0%, 100% {
-    border-color: rgba(197, 160, 89, 0.15);
+    border-color: rgba(68, 132, 196, 0.20);
   }
   50% {
-    border-color: rgba(197, 160, 89, 0.35);
+    border-color: rgba(68, 132, 196, 0.45);
   }
 }
 
@@ -295,17 +295,17 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: #080808;
+  background: #0f1f2b;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #2a2a2a, #1a1a1a);
+  background: linear-gradient(180deg, #315f86, #284b65);
   border-radius: 3px;
   transition: background 0.3s ease;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #C5A059, #8C6E28);
+  background: linear-gradient(180deg, #4484c4, #315f86);
 }
 
 /* === MODAL SCROLLBAR === */
@@ -318,12 +318,12 @@ html {
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(197, 160, 89, 0.25);
+  background: rgba(68, 132, 196, 0.30);
   border-radius: 2px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: rgba(197, 160, 89, 0.4);
+  background: rgba(68, 132, 196, 0.50);
 }
 
 /* === GPU ACCELERATION === */

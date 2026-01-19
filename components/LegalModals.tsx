@@ -23,12 +23,12 @@ const BaseModal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) =
   return (
     <div className="fixed inset-0 z-[60] flex items-center justify-center p-4">
       <div className="absolute inset-0 bg-black/80 backdrop-blur-md animate-fade-in" onClick={onClose}></div>
-      <div className="relative w-full max-w-2xl bg-stone-950 border border-white/10 rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[85vh] animate-fade-in-up">
+      <div className="relative w-full max-w-2xl bg-brand-darker border border-white/10 rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[85vh] animate-fade-in-up">
         
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-white/5 bg-stone-900/50">
-          <h3 className="font-serif text-xl text-brand-gold">{title}</h3>
-          <button onClick={onClose} className="text-stone-500 hover:text-white transition-colors">
+        <div className="flex items-center justify-between p-6 border-b border-white/5 bg-brand-dark/50">
+          <h3 className="font-serif text-xl text-brand-accent">{title}</h3>
+          <button onClick={onClose} className="text-brand-neutral hover:text-white transition-colors">
             <X size={20} />
           </button>
         </div>
@@ -49,7 +49,7 @@ export const PrivacyPolicyModal: React.FC<{ isOpen: boolean; onClose: () => void
     <h4 className="text-white font-medium mt-4">1. Responsable del Tratamiento</h4>
     <p>
       El responsable del tratamiento de sus datos personales es el <strong>Dr. Javier Barrios</strong>, con RUC <strong>4189490-1</strong>. 
-      Puede contactarnos para cualquier duda relacionada con su privacidad en: <a href="mailto:consultoriodrjavierbarrios@gmail.com" className="text-brand-gold hover:underline">consultoriodrjavierbarrios@gmail.com</a>.
+      Puede contactarnos para cualquier duda relacionada con su privacidad en: <a href="mailto:consultoriodrjavierbarrios@gmail.com" className="text-brand-accent hover:underline">consultoriodrjavierbarrios@gmail.com</a>.
     </p>
 
     <h4 className="text-white font-medium mt-4">2. Información que Recopilamos</h4>

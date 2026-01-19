@@ -25,9 +25,9 @@ export const SocialButton: React.FC<SocialButtonProps> = ({
   `;
 
   const variants = {
-    light: 'bg-white/80 text-brand-dark hover:bg-white border border-stone-200 hover:border-brand-gold/50 backdrop-blur-sm',
-    dark: 'bg-stone-900/60 text-stone-200 hover:bg-stone-800 hover:text-white border border-stone-800 hover:border-brand-gold/30 backdrop-blur-sm',
-    gold: 'bg-gradient-to-r from-brand-gold to-brand-goldDark text-white hover:brightness-110 border border-transparent shadow-lg shadow-brand-gold/20'
+    light: 'bg-white/80 text-brand-dark hover:bg-white border border-stone-200 hover:border-brand-accent/50 backdrop-blur-sm',
+    dark: 'bg-brand-dark/60 text-brand-light hover:bg-border-brand-primary-50 hover:text-white border border-border-brand-primary-50 hover:border-brand-accent/30 backdrop-blur-sm',
+    gold: 'bg-gradient-to-r from-brand-accent to-brand-primary text-white hover:brightness-110 border border-transparent shadow-lg shadow-brand-accent/20'
   };
 
   const Component = href ? 'a' : 'button';
@@ -40,7 +40,7 @@ export const SocialButton: React.FC<SocialButtonProps> = ({
       {...props}
       className={`${baseClasses} ${variants[variant]} ${className}`}
     >
-      <Icon size={20} className={variant === 'gold' ? 'text-white' : (variant === 'dark' ? 'text-brand-gold' : 'text-brand-dark')} />
+      <Icon size={20} className={variant === 'gold' ? 'text-white' : (variant === 'dark' ? 'text-brand-accent' : 'text-brand-dark')} />
       <span>{label}</span>
     </Component>
   );

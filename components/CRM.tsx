@@ -141,22 +141,22 @@ export const CRM: React.FC = () => {
     return (
       <div className="min-h-screen bg-brand-dark flex flex-col items-center justify-center p-4 relative overflow-hidden">
         <div className="absolute inset-0 marble-texture opacity-20"></div>
-        <a href="/" className="absolute top-6 left-6 text-stone-500 hover:text-brand-gold transition-colors flex items-center gap-2 text-sm z-20">
+        <a href="/" className="absolute top-6 left-6 text-brand-neutral hover:text-brand-accent transition-colors flex items-center gap-2 text-sm z-20">
           <ArrowLeft size={16} /> Volver al sitio
         </a>
-        <div className="w-full max-w-md bg-stone-900/80 backdrop-blur-xl border border-white/10 rounded-3xl p-8 shadow-2xl text-center relative z-10">
+        <div className="w-full max-w-md bg-brand-dark/80 backdrop-blur-xl border border-white/10 rounded-3xl p-8 shadow-2xl text-center relative z-10">
            <Logo size="xl" centered className="mx-auto mb-8" />
            <h2 className="text-2xl font-serif text-white mb-2">Acceso Privado</h2>
-           <p className="text-stone-500 text-sm mb-8 tracking-wide">Gestión de Pacientes Dr. Barrios</p>
+           <p className="text-brand-neutral text-sm mb-8 tracking-wide">Gestión de Pacientes Dr. Barrios</p>
            <form onSubmit={handleLogin} className="space-y-4">
               <div className="relative group">
-                 <Lock className="absolute left-3 top-1/2 -translate-y-1/2 text-stone-500 group-focus-within:text-brand-gold transition-colors" size={18} />
+                 <Lock className="absolute left-3 top-1/2 -translate-y-1/2 text-brand-neutral group-focus-within:text-brand-accent transition-colors" size={18} />
                  <input
                    type="password"
                    value={passwordInput}
                    onChange={(e) => setPasswordInput(e.target.value)}
                    placeholder="Ingresa tu contraseña"
-                   className="w-full bg-stone-950 border border-stone-800 rounded-xl py-4 pl-10 text-white focus:border-brand-gold outline-none transition-all placeholder:text-stone-700 text-sm"
+                   className="w-full bg-brand-darker border border-border-brand-primary-50 rounded-xl py-4 pl-10 text-white focus:border-brand-accent outline-none transition-all placeholder:text-brand-neutral-40 text-sm"
                    disabled={loginLoading}
                  />
               </div>
@@ -164,7 +164,7 @@ export const CRM: React.FC = () => {
               <button
                 type="submit"
                 disabled={loginLoading}
-                className="w-full bg-gradient-to-r from-brand-gold to-brand-goldDark hover:brightness-110 text-white font-bold py-4 rounded-xl transition-all uppercase tracking-widest text-xs shadow-lg shadow-brand-gold/10 mt-2 flex items-center justify-center gap-2 disabled:opacity-50"
+                className="w-full bg-gradient-to-r from-brand-accent to-brand-primary hover:brightness-110 text-white font-bold py-4 rounded-xl transition-all uppercase tracking-widest text-xs shadow-lg shadow-brand-accent/10 mt-2 flex items-center justify-center gap-2 disabled:opacity-50"
               >
                 {loginLoading ? (
                   <>
@@ -182,14 +182,14 @@ export const CRM: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-stone-950 text-stone-200 font-sans selection:bg-brand-gold selection:text-black">
-      <nav className="border-b border-white/5 bg-stone-900/50 backdrop-blur-md sticky top-0 z-20">
+    <div className="min-h-screen bg-brand-darker text-brand-light font-sans selection:bg-brand-accent selection:text-black">
+      <nav className="border-b border-white/5 bg-brand-dark/50 backdrop-blur-md sticky top-0 z-20">
         <div className="max-w-7xl mx-auto px-4 md:px-6 py-4 flex justify-between items-center">
            <div className="flex items-center">
               <Logo size="lg" />
            </div>
            <div className="flex items-center gap-3">
-              <button onClick={fetchLeads} className="p-2.5 hover:bg-white/5 rounded-full text-stone-400 hover:text-brand-gold transition-all active:scale-95 border border-transparent hover:border-white/5" title="Actualizar Lista">
+              <button onClick={fetchLeads} className="p-2.5 hover:bg-white/5 rounded-full text-stone-400 hover:text-brand-accent transition-all active:scale-95 border border-transparent hover:border-white/5" title="Actualizar Lista">
                  <RefreshCw size={18} className={loading ? 'animate-spin' : ''} />
               </button>
               <div className="h-6 w-px bg-white/10 mx-1"></div>
@@ -205,16 +205,16 @@ export const CRM: React.FC = () => {
             <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
               <div>
                  <h1 className="text-2xl font-serif text-white mb-1">Pacientes Recientes</h1>
-                 <p className="text-stone-500 text-sm">Gestiona las solicitudes de pre-agendamiento.</p>
+                 <p className="text-brand-neutral text-sm">Gestiona las solicitudes de pre-agendamiento.</p>
               </div>
-              <button onClick={downloadCSV} className="px-6 py-3 bg-stone-900 hover:bg-stone-800 border border-white/10 hover:border-brand-gold/30 rounded-xl text-xs font-bold text-brand-gold transition-all flex items-center justify-center gap-2 uppercase tracking-wider shadow-sm w-full lg:w-auto">
+              <button onClick={downloadCSV} className="px-6 py-3 bg-brand-dark hover:bg-border-brand-primary-50 border border-white/10 hover:border-brand-accent/30 rounded-xl text-xs font-bold text-brand-accent transition-all flex items-center justify-center gap-2 uppercase tracking-wider shadow-sm w-full lg:w-auto">
                   <Download size={16} /> Exportar Excel
               </button>
             </div>
-            <div className="flex flex-col md:flex-row gap-4 bg-stone-900/30 p-4 rounded-2xl border border-white/5">
+            <div className="flex flex-col md:flex-row gap-4 bg-brand-dark/30 p-4 rounded-2xl border border-white/5">
                 <div className="relative flex-1 group">
-                   <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-stone-600 group-focus-within:text-brand-gold transition-colors" size={16} />
-                   <input type="text" placeholder="Buscar por nombre, whatsapp o procedimiento..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} className="w-full bg-stone-900 border border-white/10 rounded-xl py-2.5 pl-10 text-white focus:border-brand-gold outline-none text-sm transition-all shadow-sm h-full" />
+                   <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-brand-neutral group-focus-within:text-brand-accent transition-colors" size={16} />
+                   <input type="text" placeholder="Buscar por nombre, whatsapp o procedimiento..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} className="w-full bg-brand-dark border border-white/10 rounded-xl py-2.5 pl-10 text-white focus:border-brand-accent outline-none text-sm transition-all shadow-sm h-full" />
                 </div>
                 {searchTerm && (
                     <button onClick={() => setSearchTerm('')} className="px-4 py-2 bg-red-900/20 hover:bg-red-900/40 text-red-400 rounded-xl text-xs font-bold uppercase tracking-wider transition-colors flex items-center justify-center"><X size={16} /></button>
@@ -222,10 +222,10 @@ export const CRM: React.FC = () => {
             </div>
          </div>
 
-         <div className="bg-stone-900/40 backdrop-blur-sm border border-white/5 rounded-2xl overflow-hidden shadow-2xl">
+         <div className="bg-brand-dark/40 backdrop-blur-sm border border-white/5 rounded-2xl overflow-hidden shadow-2xl">
             <div className="overflow-x-auto custom-scrollbar">
                <table className="w-full text-left text-sm whitespace-nowrap">
-                  <thead className="bg-stone-950 text-stone-500 uppercase tracking-wider text-[10px] font-bold border-b border-white/5">
+                  <thead className="bg-brand-darker text-brand-neutral uppercase tracking-wider text-[10px] font-bold border-b border-white/5">
                      <tr>
                         <th className="p-5">Fecha</th>
                         <th className="p-5">Paciente</th>
@@ -236,9 +236,9 @@ export const CRM: React.FC = () => {
                   </thead>
                   <tbody className="divide-y divide-white/5">
                      {loading ? (
-                        <tr><td colSpan={5} className="p-12 text-center text-stone-500 animate-pulse">Sincronizando...</td></tr>
+                        <tr><td colSpan={5} className="p-12 text-center text-brand-neutral animate-pulse">Sincronizando...</td></tr>
                      ) : filteredLeads.length === 0 ? (
-                        <tr><td colSpan={5} className="p-12 text-center text-stone-500">Sin resultados.</td></tr>
+                        <tr><td colSpan={5} className="p-12 text-center text-brand-neutral">Sin resultados.</td></tr>
                      ) : (
                         filteredLeads.map((lead, idx) => {
                            let dateStr = lead.date;
@@ -257,19 +257,19 @@ export const CRM: React.FC = () => {
                                  <td className="p-5 text-stone-400 text-xs font-mono">{dateStr}</td>
                                  <td className="p-5">
                                     <div className="flex items-center gap-3">
-                                       <div className={`w-8 h-8 rounded-full flex items-center justify-center ${isConverted ? 'bg-green-500 text-black' : 'bg-brand-gold/10 text-brand-gold'}`}>
+                                       <div className={`w-8 h-8 rounded-full flex items-center justify-center ${isConverted ? 'bg-green-500 text-black' : 'bg-brand-accent/10 text-brand-accent'}`}>
                                           {isConverted ? <DollarSign size={14} /> : <User size={14} />}
                                        </div>
                                        <div>
                                           <div className={`font-bold text-sm ${isConverted ? 'text-green-400' : 'text-white'}`}>{lead.name}</div>
-                                          <div className="text-[10px] text-stone-500 uppercase tracking-wide">{lead.location}</div>
+                                          <div className="text-[10px] text-brand-neutral uppercase tracking-wide">{lead.location}</div>
                                        </div>
                                     </div>
                                  </td>
                                  <td className="p-5">
                                     <div className="flex flex-col gap-1">
                                         <span className="font-medium text-stone-300">{lead.procedure}</span>
-                                        <span className="text-[10px] text-stone-500">{lead.budget}</span>
+                                        <span className="text-[10px] text-brand-neutral">{lead.budget}</span>
                                     </div>
                                  </td>
                                  <td className="p-5">
@@ -277,21 +277,21 @@ export const CRM: React.FC = () => {
                                        <button
                                           onClick={() => handleToggleContacted(lead)}
                                           title="Marcar como Contactado"
-                                          className={`p-1.5 rounded-md border transition-all ${lead.contacted ? 'bg-blue-500/20 border-blue-500 text-blue-400' : 'bg-stone-800 border-white/10 text-stone-600 hover:text-white'}`}
+                                          className={`p-1.5 rounded-md border transition-all ${lead.contacted ? 'bg-blue-500/20 border-blue-500 text-blue-400' : 'bg-border-brand-primary-50 border-white/10 text-brand-neutral hover:text-white'}`}
                                        >
                                           <MessageCircle size={14} />
                                        </button>
                                        <button
                                           onClick={() => handleToggleConverted(lead)}
                                           title="Marcar como Venta Cerrada"
-                                          className={`p-1.5 rounded-md border transition-all ${lead.converted ? 'bg-green-500/20 border-green-500 text-green-400' : 'bg-stone-800 border-white/10 text-stone-600 hover:text-white'}`}
+                                          className={`p-1.5 rounded-md border transition-all ${lead.converted ? 'bg-green-500/20 border-green-500 text-green-400' : 'bg-border-brand-primary-50 border-white/10 text-brand-neutral hover:text-white'}`}
                                        >
                                           <Check size={14} />
                                        </button>
                                        <button
                                           onClick={() => handleToggleLost(lead)}
                                           title="Marcar como Perdido"
-                                          className={`p-1.5 rounded-md border transition-all ${lead.lost ? 'bg-red-500/20 border-red-500 text-red-400' : 'bg-stone-800 border-white/10 text-stone-600 hover:text-white'}`}
+                                          className={`p-1.5 rounded-md border transition-all ${lead.lost ? 'bg-red-500/20 border-red-500 text-red-400' : 'bg-border-brand-primary-50 border-white/10 text-brand-neutral hover:text-white'}`}
                                        >
                                           <Ban size={14} />
                                        </button>
