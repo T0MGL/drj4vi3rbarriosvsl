@@ -29,9 +29,21 @@ const postToApi = async (payload: object, token?: string): Promise<boolean> => {
 
 export const submitLead = async (data: LeadData): Promise<boolean> => {
     try {
-        const finalProcedure = data.procedure === 'Otro procedimiento'
-          ? (data.otherProcedure || 'Otro')
-          : (data.procedure || 'No especificado');
+        // Procesar múltiples procedimientos
+        let proceduresArray = [...(data.procedures || [])];
+
+        // Si incluye "Otro procedimiento", reemplazarlo con el texto especificado
+        const otroIndex = proceduresArray.indexOf('Otro procedimiento');
+        if (otroIndex !== -1 && data.otherProcedure) {
+            proceduresArray[otroIndex] = data.otherProcedure;
+        } else if (otroIndex !== -1) {
+            proceduresArray[otroIndex] = 'Otro';
+        }
+
+        // Unir procedimientos con coma para enviar al CRM/Google Sheet
+        const finalProcedure = proceduresArray.length > 0
+            ? proceduresArray.join(', ')
+            : 'No especificado';
 
         // Formatear el número de WhatsApp para evitar que Google Sheets lo interprete como fórmula
         // Agregamos un apóstrofe al inicio para forzar formato texto

@@ -1,6 +1,24 @@
-# robots.txt para Dr. Javier Barrios
+# robots.txt para Dr. Javier Barrios - Cirugía Plástica
+# https://drjavierbarrios.com
+
 User-agent: *
 Allow: /
 
+# Bloquear recursos innecesarios para crawlers
+Disallow: /crm
+Disallow: /crm/
+Disallow: /*.json$
+Disallow: /assets/*.js.map
+
+# Permitir recursos importantes
+Allow: /assets/*.css
+Allow: /assets/*.js
+Allow: /*.webp
+Allow: /*.png
+Allow: /*.svg
+
 # Sitemap
 Sitemap: https://drjavierbarrios.com/sitemap.xml
+
+# Crawl-delay para ser amigables con el servidor
+Crawl-delay: 1

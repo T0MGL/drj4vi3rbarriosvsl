@@ -4,7 +4,7 @@ export interface LeadData {
   email: string;
   whatsapp: string;
   location: string;
-  procedure: string;
+  procedures: string[];  // Array para múltiples procedimientos
   otherProcedure: string;
   budget: string;
   source: string;

@@ -1,20 +1,29 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Dr. Javier Barrios - Landing Page y CRM
 
-# Run and deploy your AI Studio app
+Aplicación web para la práctica de cirugía plástica del Dr. Javier Barrios. Incluye landing page de captura de leads y panel CRM para gestión de prospectos.
 
-This contains everything you need to run your app locally.
+## Comandos
 
-View your app in AI Studio: https://ai.studio/apps/drive/1QtoO5JeMyJD4kxZNooJNjxd13L1Qce53
+```bash
+npm install       # Instalar dependencias
+npm run dev       # Servidor de desarrollo (puerto 3000)
+npm run build     # Build de producción
+npm run preview   # Vista previa del build
+```
 
-## Run Locally
+## Despliegue
 
-**Prerequisites:**  Node.js
+La aplicación está configurada para desplegarse en **Vercel**.
 
+### Variables de Entorno Requeridas
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+Configurar en Vercel > Settings > Environment Variables:
+
+- `GOOGLE_SCRIPT_URL` - URL del Google Apps Script
+- `CRM_PASSWORD` - Contraseña de acceso al CRM
+
+## Estructura
+
+- `/` - Vista Linktree con enlaces sociales
+- `/landing` - Página de marketing con formulario
+- `/crm` - Dashboard de gestión de leads (protegido)
