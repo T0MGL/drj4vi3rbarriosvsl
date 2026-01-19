@@ -270,7 +270,7 @@ export const LandingPage: React.FC = () => {
           
           {/* MAIN HEADLINE */}
           <div className="mb-10">
-            <h1 className="hero-title font-display font-bold text-4xl md:text-6xl lg:text-7xl text-white leading-[1.1] tracking-tight">
+            <h1 className="hero-title font-body font-normal text-4xl md:text-6xl lg:text-7xl text-white leading-[1.1] tracking-tight">
               Diseñemos tu <br/>
               <span className="warm-gradient-text">Transformación</span>
             </h1>
@@ -682,7 +682,7 @@ export const LandingPage: React.FC = () => {
             onClick={openModal}
             className={`w-full py-4 text-xs flex items-center justify-center gap-2 ${ctaPremiumClass}`}
          >
-            Iniciar Transformación <ArrowRight size={16}/>
+            Iniciar formulario <ArrowRight size={16}/>
          </button>
       </div>
 
