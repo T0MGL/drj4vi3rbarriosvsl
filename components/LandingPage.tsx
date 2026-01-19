@@ -317,7 +317,7 @@ export const LandingPage: React.FC = () => {
                 className={`group px-12 py-5 text-sm ${ctaPremiumClass}`}
              >
                 <span className="relative z-10 flex items-center gap-3">
-                   Iniciar mi Transformación
+                   Iniciar formulario
                    <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform duration-300" />
                 </span>
              </button>
