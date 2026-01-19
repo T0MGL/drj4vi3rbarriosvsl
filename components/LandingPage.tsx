@@ -342,48 +342,50 @@ export const LandingPage: React.FC = () => {
          </div>
       </section>
 
-      {/* === SAFETY / PROCESS SECTION === */}
-      <section className="relative z-10 py-24 px-6 max-w-6xl mx-auto">
-        {/* Section Header */}
-        <div className="text-center mb-20 reveal-on-scroll">
-            <span className="text-brand-accent text-xs tracking-[0.4em] uppercase mb-4 block font-bold">Protocolo Dr. Barrios</span>
-            <h2 className="font-serif text-3xl md:text-5xl text-white mb-6">
-              Tu seguridad en cada etapa
-            </h2>
-            <p className="text-brand-neutral font-light max-w-2xl mx-auto leading-relaxed">
-              La cirugía plástica es un viaje médico, no solo estético. Hemos diseñado un protocolo estricto para acompañarte antes, durante y después de tu transformación.
-            </p>
-        </div>
+      {/* === SAFETY / PROCESS SECTION - WHITE BACKGROUND === */}
+      <section className="relative z-10 py-24 px-6 bg-white">
+        <div className="max-w-6xl mx-auto">
+          {/* Section Header */}
+          <div className="text-center mb-20 reveal-on-scroll">
+              <span className="text-brand-accent text-xs tracking-[0.4em] uppercase mb-4 block font-bold">Protocolo Dr. Barrios</span>
+              <h2 className="font-serif text-3xl md:text-5xl text-brand-primary mb-6">
+                Tu seguridad en cada etapa
+              </h2>
+              <p className="text-brand-neutral font-light max-w-2xl mx-auto leading-relaxed">
+                La cirugía plástica es un viaje médico, no solo estético. Hemos diseñado un protocolo estricto para acompañarte antes, durante y después de tu transformación.
+              </p>
+          </div>
 
-        {/* Process Grid */}
-        <div className="grid md:grid-cols-2 gap-6 relative">
-          {/* Subtle connecting line for desktop visualization */}
-          <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-brand-accent/20 to-transparent hidden md:block reveal-on-scroll"></div>
+          {/* Process Grid */}
+          <div className="grid md:grid-cols-2 gap-6 relative">
+            {/* Subtle connecting line for desktop visualization */}
+            <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-brand-accent/30 to-transparent hidden md:block reveal-on-scroll"></div>
 
-          {SAFETY_STEPS.map((step, index) => (
-             <div
-               key={index}
-               style={{ transitionDelay: `${index * 150}ms` }}
-               className={`process-card card-lift relative p-8 rounded-2xl border border-white/5 bg-brand-dark/40 backdrop-blur-sm hover:bg-brand-dark/80 hover:border-brand-accent/30 transition-all duration-500 group ${index % 2 === 0 ? 'md:mr-8' : 'md:ml-8'}`}
-             >
-                {/* Connector Dot for Desktop */}
-                <div className={`hidden md:block absolute top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-brand-darker border border-brand-accent z-10 ${index % 2 === 0 ? '-right-[42px]' : '-left-[42px]'}`}>
-                   <div className="w-full h-full bg-brand-accent rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                </div>
+            {SAFETY_STEPS.map((step, index) => (
+               <div
+                 key={index}
+                 style={{ transitionDelay: `${index * 150}ms` }}
+                 className={`process-card card-lift relative p-8 rounded-2xl border border-brand-primary/10 bg-brand-cream hover:bg-white hover:border-brand-accent/40 hover:shadow-xl transition-all duration-500 group ${index % 2 === 0 ? 'md:mr-8' : 'md:ml-8'}`}
+               >
+                  {/* Connector Dot for Desktop */}
+                  <div className={`hidden md:block absolute top-1/2 -translate-y-1/2 w-4 h-4 rounded-full bg-white border-2 border-brand-accent z-10 ${index % 2 === 0 ? '-right-[42px]' : '-left-[42px]'}`}>
+                     <div className="w-full h-full bg-brand-accent rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                  </div>
 
-                <div className="flex flex-col gap-4">
-                   <div className="w-12 h-12 rounded-full bg-brand-dark border border-white/10 flex items-center justify-center text-brand-accent group-hover:scale-110 group-hover:bg-brand-accent group-hover:text-black transition-all duration-500 shadow-[0_0_20px_rgba(0,0,0,0.5)]">
-                      <step.icon size={24} />
-                   </div>
-                   <div>
-                      <h3 className="font-serif text-xl text-white mb-3 group-hover:text-brand-accent transition-colors">{step.title}</h3>
-                      <p className="text-brand-neutral font-light text-sm leading-relaxed">
-                        {step.desc}
-                      </p>
-                   </div>
-                </div>
-             </div>
-          ))}
+                  <div className="flex flex-col gap-4">
+                     <div className="w-12 h-12 rounded-full bg-brand-primary/10 border border-brand-primary/20 flex items-center justify-center text-brand-accent group-hover:scale-110 group-hover:bg-brand-accent group-hover:text-white transition-all duration-500">
+                        <step.icon size={24} />
+                     </div>
+                     <div>
+                        <h3 className="font-serif text-xl text-brand-primary mb-3 group-hover:text-brand-accent transition-colors">{step.title}</h3>
+                        <p className="text-brand-neutral font-light text-sm leading-relaxed">
+                          {step.desc}
+                        </p>
+                     </div>
+                  </div>
+               </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -443,6 +445,72 @@ export const LandingPage: React.FC = () => {
         </div>
       </section>
 
+      {/* === TRUST / CONFIDENCE SECTION - WHITE === */}
+      <section className="relative z-10 py-20 px-6 bg-white">
+        <div className="max-w-5xl mx-auto">
+          {/* Section Header */}
+          <div className="text-center mb-16 reveal-on-scroll">
+            <span className="text-brand-accent text-xs tracking-[0.4em] uppercase mb-4 block font-bold">Respaldo Profesional</span>
+            <h2 className="font-serif text-3xl md:text-4xl text-brand-primary mb-6">
+              Tu confianza, nuestra prioridad
+            </h2>
+          </div>
+
+          {/* Trust Badges Grid */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 reveal-on-scroll delay-100">
+            <div className="text-center group">
+              <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-brand-primary/5 border border-brand-primary/10 flex items-center justify-center group-hover:bg-brand-accent/10 group-hover:border-brand-accent/30 transition-all duration-500">
+                <ShieldCheck size={32} className="text-brand-accent" />
+              </div>
+              <h4 className="text-brand-primary font-bold text-sm mb-1">Certificado</h4>
+              <p className="text-brand-neutral text-xs">Sociedad Paraguaya de Cirugía Plástica</p>
+            </div>
+
+            <div className="text-center group">
+              <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-brand-primary/5 border border-brand-primary/10 flex items-center justify-center group-hover:bg-brand-accent/10 group-hover:border-brand-accent/30 transition-all duration-500">
+                <Award size={32} className="text-brand-accent" />
+              </div>
+              <h4 className="text-brand-primary font-bold text-sm mb-1">+10 Años</h4>
+              <p className="text-brand-neutral text-xs">De experiencia quirúrgica</p>
+            </div>
+
+            <div className="text-center group">
+              <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-brand-primary/5 border border-brand-primary/10 flex items-center justify-center group-hover:bg-brand-accent/10 group-hover:border-brand-accent/30 transition-all duration-500">
+                <Lock size={32} className="text-brand-accent" />
+              </div>
+              <h4 className="text-brand-primary font-bold text-sm mb-1">Hospitales</h4>
+              <p className="text-brand-neutral text-xs">De alta complejidad</p>
+            </div>
+
+            <div className="text-center group">
+              <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-brand-primary/5 border border-brand-primary/10 flex items-center justify-center group-hover:bg-brand-accent/10 group-hover:border-brand-accent/30 transition-all duration-500">
+                <HeartHandshake size={32} className="text-brand-accent" />
+              </div>
+              <h4 className="text-brand-primary font-bold text-sm mb-1">Seguimiento</h4>
+              <p className="text-brand-neutral text-xs">Post-operatorio integral</p>
+            </div>
+          </div>
+
+          {/* Testimonial Quote */}
+          <div className="mt-16 text-center reveal-on-scroll delay-200">
+            <div className="inline-block p-8 md:p-12 bg-gradient-to-br from-brand-primary/5 to-brand-accent/5 rounded-3xl border border-brand-primary/10 max-w-3xl">
+              <p className="text-brand-primary/80 font-serif text-lg md:text-xl italic leading-relaxed mb-6">
+                "El Dr. Barrios no solo transformó mi cuerpo, transformó mi confianza. Cada consulta fue un espacio de escucha y profesionalismo."
+              </p>
+              <div className="flex items-center justify-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-brand-accent/20 flex items-center justify-center">
+                  <span className="text-brand-accent font-bold text-sm">MC</span>
+                </div>
+                <div className="text-left">
+                  <p className="text-brand-primary font-bold text-sm">María C.</p>
+                  <p className="text-brand-neutral text-xs">Paciente verificada</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* === FAQ SECTION === */}
       <section className="relative z-10 py-24 px-6 bg-brand-dark/20">
         <div className="max-w-4xl mx-auto">
@@ -491,6 +559,39 @@ export const LandingPage: React.FC = () => {
             >
               Contactar al equipo
             </button>
+          </div>
+        </div>
+      </section>
+
+      {/* === FINAL CTA SECTION - WHITE === */}
+      <section className="relative z-10 py-24 px-6 bg-white overflow-hidden">
+        {/* Subtle decorative elements */}
+        <div className="absolute top-0 left-0 w-96 h-96 bg-brand-accent/5 rounded-full blur-[100px] -translate-x-1/2 -translate-y-1/2"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-brand-primary/5 rounded-full blur-[100px] translate-x-1/2 translate-y-1/2"></div>
+
+        <div className="max-w-4xl mx-auto text-center relative">
+          <div className="reveal-on-scroll">
+            <span className="text-brand-accent text-xs tracking-[0.4em] uppercase mb-4 block font-bold">Da el Primer Paso</span>
+            <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-brand-primary mb-6 leading-tight">
+              Tu transformación <br className="hidden md:block"/>comienza hoy
+            </h2>
+            <p className="text-brand-neutral font-light text-lg max-w-2xl mx-auto mb-10 leading-relaxed">
+              Agenda tu consulta personalizada y descubre cómo podemos ayudarte a alcanzar la mejor versión de ti.
+            </p>
+
+            <button
+              onClick={openModal}
+              className={`group relative overflow-hidden rounded-full px-12 py-5 transition-all duration-300 hover:shadow-[0_0_40px_rgba(68,132,196,0.4)] hover:scale-105 ${brandGradientButtonClass}`}
+            >
+              <div className="relative z-10 flex items-center gap-3 font-bold text-black uppercase tracking-widest text-sm">
+                Agendar mi Consulta
+                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+              </div>
+            </button>
+
+            <p className="mt-6 text-brand-neutral/60 text-sm">
+              Consulta sin compromiso · Respuesta en menos de 24 horas
+            </p>
           </div>
         </div>
       </section>
