@@ -131,6 +131,36 @@ export const LandingPage: React.FC = () => {
     return () => video.removeEventListener('volumechange', handleVolumeChange);
   }, []);
 
+  // Pause video when it leaves the viewport, play when it enters
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          // Video is visible - play it
+          video.play().catch(() => {
+            // Autoplay may be blocked, ignore error
+          });
+        } else {
+          // Video is not visible - pause it
+          video.pause();
+        }
+      },
+      {
+        threshold: 0.25, // Trigger when at least 25% of the video is visible
+        rootMargin: "0px"
+      }
+    );
+
+    observer.observe(video);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   // Hide header on scroll down, show on scroll up
   useEffect(() => {
     let lastScroll = 0;
@@ -284,7 +314,6 @@ export const LandingPage: React.FC = () => {
                controls
                autoPlay
                muted
-               loop
                playsInline
                preload="auto"
                controlsList="nodownload"
