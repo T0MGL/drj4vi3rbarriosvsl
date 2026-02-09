@@ -21,6 +21,7 @@ import {
 import { Logo } from './Logo';
 import { ConsultationForm } from './ConsultationForm';
 import { PrivacyPolicyModal, TermsModal } from './LegalModals';
+import { trackVideoView, trackFormInitiated } from '../services/analytics';
 
 // Helper Icon for TikTok
 const TiktokIcon = ({ size, className }: { size?: number, className?: string }) => (
@@ -93,7 +94,11 @@ export const LandingPage: React.FC = () => {
   const heroCtaRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  const openModal = () => setIsModalOpen(true);
+  const openModal = () => {
+    setIsModalOpen(true);
+    // Track when user opens the form (Meta Pixel InitiateCheckout event)
+    trackFormInitiated();
+  };
   const closeModal = () => setIsModalOpen(false);
 
   const toggleFaq = (index: number) => {
@@ -129,6 +134,24 @@ export const LandingPage: React.FC = () => {
 
     video.addEventListener('volumechange', handleVolumeChange);
     return () => video.removeEventListener('volumechange', handleVolumeChange);
+  }, []);
+
+  // Track video view when user starts playing (Meta Pixel ViewContent event)
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    let hasTrackedView = false;
+
+    const handlePlay = () => {
+      if (!hasTrackedView) {
+        trackVideoView();
+        hasTrackedView = true;
+      }
+    };
+
+    video.addEventListener('play', handlePlay);
+    return () => video.removeEventListener('play', handlePlay);
   }, []);
 
   // Pause video when it leaves the viewport, play when it enters
