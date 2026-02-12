@@ -3,6 +3,7 @@ import { CheckCircle2, ArrowLeft, Instagram, Facebook, MessageCircle } from 'luc
 import { Link, useLocation } from 'react-router-dom';
 import { Logo } from './Logo';
 import { trackFormConversion } from '../services/analytics';
+import { trackPixelSequence, debugPixelStatus } from '../utils/pixelHelpers';
 
 interface LocationState {
   conversionData?: {
@@ -19,31 +20,87 @@ export const ThankYouPage: React.FC = () => {
 
   // CRÍTICO: Disparar conversión de Meta Pixel AL CARGAR /gracias
   useEffect(() => {
-    // IMPORTANTE: En SPA, el PageView NO se dispara automáticamente en rutas nuevas
-    // Debemos dispararlo manualmente para que Meta detecte el cambio de página
-    if (typeof window !== 'undefined' && window.fbq) {
-      // 1. Disparar PageView para la página /gracias
-      window.fbq('track', 'PageView');
+    console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+    console.log('🎯 ThankYouPage montado - Iniciando tracking');
+    console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
 
-      // 2. Disparar el evento de conversión SOLO si hay datos
+    // Debug: Mostrar estado del pixel
+    debugPixelStatus();
+
+    // Función async para manejar los eventos
+    const trackConversion = async () => {
+      // IMPORTANTE: En SPA, el PageView NO se dispara automáticamente en rutas nuevas
+      // Debemos dispararlo manualmente para que Meta detecte el cambio de página
+
+      // Preparar eventos a disparar
+      const events = [
+        {
+          type: 'track' as const,
+          name: 'PageView',
+          delay: 0
+        }
+      ];
+
+      // Si hay datos de conversión, agregar eventos de conversión
       if (state?.conversionData) {
-        // Pequeño delay para asegurar que PageView se registre primero
-        setTimeout(() => {
-          trackFormConversion(state.conversionData);
+        console.log('✅ Datos de conversión encontrados:', state.conversionData);
 
-          // Log para debugging
-          if (process.env.NODE_ENV === 'development') {
-            console.log('🎯 PageView disparado en /gracias');
-            console.log('🎯 CONVERSIÓN DISPARADA EN /gracias:', state.conversionData);
+        const { procedure, budget, source, location } = state.conversionData;
+
+        // Calcular valor del presupuesto
+        const getBudgetValue = (budget: string): number => {
+          const budgetMap: Record<string, number> = {
+            '8.000.000 - 15.000.000': 11500000,
+            '15.000.000 - 25.000.000': 20000000,
+            '25.000.000 - 35.000.000': 30000000,
+            '35.000.000 - 45.000.000': 40000000,
+            '45.000.000 o más': 50000000,
+          };
+          return budgetMap[budget] || 0;
+        };
+
+        events.push(
+          {
+            type: 'track' as const,
+            name: 'Lead',
+            params: {
+              content_name: procedure,
+              content_category: 'Consultation Request',
+              value: getBudgetValue(budget),
+              currency: 'PYG',
+              status: 'completed',
+              predicted_ltv: getBudgetValue(budget),
+            },
+            delay: 300 // Delay de 300ms después de PageView
+          },
+          {
+            type: 'trackCustom' as const,
+            name: 'ConsultationRequested',
+            params: {
+              procedure,
+              budget_range: budget,
+              source,
+              location,
+            },
+            delay: 100 // Delay de 100ms después de Lead
           }
-        }, 100);
+        );
       } else {
-        // Si alguien accede directamente a /gracias sin completar el formulario
-        console.warn('⚠️ Acceso directo a /gracias sin datos de conversión');
+        console.warn('⚠️ No hay datos de conversión - Usuario accedió directamente a /gracias');
       }
-    } else {
-      console.error('❌ Meta Pixel (fbq) no está disponible');
-    }
+
+      // Disparar secuencia de eventos
+      await trackPixelSequence(events);
+
+      console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+      console.log('✅ Tracking completado en /gracias');
+      console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+    };
+
+    // Ejecutar tracking
+    trackConversion().catch(error => {
+      console.error('❌ Error en tracking de conversión:', error);
+    });
   }, []); // Solo ejecutar una vez al montar
 
   return (
