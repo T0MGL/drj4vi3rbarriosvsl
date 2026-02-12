@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { LeadData, PROCEDURES, BUDGET_RANGES, SOURCES } from '../types';
 import { ArrowRight, ArrowLeft, CheckCircle2, Sparkles, X, AlertCircle, ChevronDown, Loader2, Check } from 'lucide-react';
 import { submitLead } from '../services/sheetApi';
@@ -27,6 +28,7 @@ const COUNTRIES = [
 ];
 
 export const ConsultationForm: React.FC<ConsultationFormProps> = ({ onClose }) => {
+  const navigate = useNavigate();
   const [currentStep, setCurrentStep] = useState(0);
   const [formData, setFormData] = useState<LeadData>({
     fullName: '',
@@ -209,15 +211,18 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({ onClose }) =
         ? formData.procedures.map(p => p === 'Otro procedimiento' ? (formData.otherProcedure || 'Otro') : p).join(', ')
         : formData.procedures.join(', ');
 
-      trackFormConversion({
-        procedure: proceduresString || 'No especificado',
-        budget: formData.budget,
-        source: formData.source,
-        location: formData.location,
+      // IMPORTANTE: La conversión se dispara EN /gracias, no aquí
+      // Pasamos los datos vía state para que ThankYouPage dispare el evento
+      navigate('/gracias', {
+        state: {
+          conversionData: {
+            procedure: proceduresString || 'No especificado',
+            budget: formData.budget,
+            source: formData.source,
+            location: formData.location,
+          }
+        }
       });
-
-      setSubmitted(true);
-      setIsSubmitting(false);
     } else {
       setIsSubmitting(false);
       alert("Hubo un problema al enviar sus datos. Por favor, verifique su conexión e intente nuevamente.");
