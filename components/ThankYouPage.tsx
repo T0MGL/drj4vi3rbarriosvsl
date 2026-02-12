@@ -19,17 +19,30 @@ export const ThankYouPage: React.FC = () => {
 
   // CRÍTICO: Disparar conversión de Meta Pixel AL CARGAR /gracias
   useEffect(() => {
-    // Disparar el evento de conversión SOLO si hay datos
-    if (state?.conversionData) {
-      trackFormConversion(state.conversionData);
+    // IMPORTANTE: En SPA, el PageView NO se dispara automáticamente en rutas nuevas
+    // Debemos dispararlo manualmente para que Meta detecte el cambio de página
+    if (typeof window !== 'undefined' && window.fbq) {
+      // 1. Disparar PageView para la página /gracias
+      window.fbq('track', 'PageView');
 
-      // Log para debugging
-      if (process.env.NODE_ENV === 'development') {
-        console.log('🎯 CONVERSIÓN DISPARADA EN /gracias:', state.conversionData);
+      // 2. Disparar el evento de conversión SOLO si hay datos
+      if (state?.conversionData) {
+        // Pequeño delay para asegurar que PageView se registre primero
+        setTimeout(() => {
+          trackFormConversion(state.conversionData);
+
+          // Log para debugging
+          if (process.env.NODE_ENV === 'development') {
+            console.log('🎯 PageView disparado en /gracias');
+            console.log('🎯 CONVERSIÓN DISPARADA EN /gracias:', state.conversionData);
+          }
+        }, 100);
+      } else {
+        // Si alguien accede directamente a /gracias sin completar el formulario
+        console.warn('⚠️ Acceso directo a /gracias sin datos de conversión');
       }
     } else {
-      // Si alguien accede directamente a /gracias sin completar el formulario
-      console.warn('⚠️ Acceso directo a /gracias sin datos de conversión');
+      console.error('❌ Meta Pixel (fbq) no está disponible');
     }
   }, []); // Solo ejecutar una vez al montar
 
