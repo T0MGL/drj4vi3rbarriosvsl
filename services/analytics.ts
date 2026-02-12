@@ -42,7 +42,7 @@ export const trackVideoView = (): void => {
   if (typeof window !== 'undefined' && window.fbq) {
     window.fbq('track', 'ViewContent', {
       content_name: 'Video Presentación Dr. Javier Barrios',
-      content_type: 'video',
+      content_type: 'product', // Meta Pixel requiere 'product' o 'product_group'
       content_category: 'VSL',
     });
   }
