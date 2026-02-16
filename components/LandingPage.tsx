@@ -341,7 +341,7 @@ export const LandingPage: React.FC = () => {
                preload="auto"
                controlsList="nodownload"
              >
-               <source src="/DRJAVIERBARRIOS.mp4" type="video/mp4" />
+               <source src="https://pub-9e97f25fce9c438b8a736147993624ef.r2.dev/DRJAVIERBARRIOS.mp4" type="video/mp4" />
                Tu navegador no soporta la reproducción de video.
              </video>
 
