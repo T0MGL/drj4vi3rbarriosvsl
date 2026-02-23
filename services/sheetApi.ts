@@ -111,16 +111,16 @@ export const getLeads = async (token: string): Promise<Lead[]> => {
         if (!Array.isArray(data)) return [];
 
         return data.map((item: any) => ({
-            id: item.id || Math.random().toString(36),
-            date: item.date || item.Fecha || new Date().toISOString(),
-            name: item.name || item.Nombre || 'Sin nombre',
+            id: String(item.id || Math.random().toString(36)),
+            date: String(item.date || item.Fecha || new Date().toISOString()),
+            name: String(item.name || item.Nombre || 'Sin nombre'),
             phone: String(item.phone || item.Whatsapp || '').replace(/^'/, ''), // Eliminar apóstrofe inicial si existe
-            email: item.email || item.Email || '',
-            location: item.location || item.Ubicacion || '',
-            procedure: item.procedure || item.Procedimiento || '',
-            budget: item.budget || item.Presupuesto || '',
-            source: item.source || item.Fuente || '',
-            motivation: item.motivation || item.Motivacion || '',
+            email: String(item.email || item.Email || ''),
+            location: String(item.location || item.Ubicacion || ''),
+            procedure: String(item.procedure || item.Procedimiento || ''),
+            budget: String(item.budget || item.Presupuesto || ''),
+            source: String(item.source || item.Fuente || ''),
+            motivation: String(item.motivation || item.Motivacion || ''),
             contacted: String(item.contacted ?? false).toLowerCase() === 'true',
             converted: String(item.converted ?? false).toLowerCase() === 'true',
             lost: String(item.lost ?? false).toLowerCase() === 'true'
