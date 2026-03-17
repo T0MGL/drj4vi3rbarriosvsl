@@ -32,61 +32,64 @@ export const ThankYouPage: React.FC = () => {
       // IMPORTANTE: En SPA, el PageView NO se dispara automáticamente en rutas nuevas
       // Debemos dispararlo manualmente para que Meta detecte el cambio de página
 
+      // Calcular valor del presupuesto
+      const getBudgetValue = (budget: string): number => {
+        const budgetMap: Record<string, number> = {
+          '8.000.000 - 15.000.000': 11500000,
+          '15.000.000 - 25.000.000': 20000000,
+          '25.000.000 - 35.000.000': 30000000,
+          '35.000.000 - 45.000.000': 40000000,
+          '45.000.000 o más': 50000000,
+        };
+        return budgetMap[budget] || 0;
+      };
+
       // Preparar eventos a disparar
+      // Lead siempre se dispara al llegar a /gracias — los params son opcionales
+      const leadParams: Record<string, unknown> = {
+        content_category: 'Consultation Request',
+        currency: 'PYG',
+        status: 'completed',
+      };
+
+      if (state?.conversionData) {
+        console.log('✅ Datos de conversión encontrados:', state.conversionData);
+        const { procedure, budget } = state.conversionData;
+        leadParams.content_name = procedure;
+        leadParams.value = getBudgetValue(budget);
+        leadParams.predicted_ltv = getBudgetValue(budget);
+      } else {
+        console.warn('⚠️ Sin conversionData — disparando Lead sin params extra');
+      }
+
       const events = [
         {
           type: 'track' as const,
           name: 'PageView',
           delay: 0
+        },
+        {
+          type: 'track' as const,
+          name: 'Lead',
+          params: leadParams,
+          delay: 300
         }
       ];
 
-      // Si hay datos de conversión, agregar eventos de conversión
+      // Evento custom adicional solo si hay datos completos
       if (state?.conversionData) {
-        console.log('✅ Datos de conversión encontrados:', state.conversionData);
-
         const { procedure, budget, source, location } = state.conversionData;
-
-        // Calcular valor del presupuesto
-        const getBudgetValue = (budget: string): number => {
-          const budgetMap: Record<string, number> = {
-            '8.000.000 - 15.000.000': 11500000,
-            '15.000.000 - 25.000.000': 20000000,
-            '25.000.000 - 35.000.000': 30000000,
-            '35.000.000 - 45.000.000': 40000000,
-            '45.000.000 o más': 50000000,
-          };
-          return budgetMap[budget] || 0;
-        };
-
-        events.push(
-          {
-            type: 'track' as const,
-            name: 'Lead',
-            params: {
-              content_name: procedure,
-              content_category: 'Consultation Request',
-              value: getBudgetValue(budget),
-              currency: 'PYG',
-              status: 'completed',
-              predicted_ltv: getBudgetValue(budget),
-            },
-            delay: 300 // Delay de 300ms después de PageView
+        events.push({
+          type: 'trackCustom' as const,
+          name: 'ConsultationRequested',
+          params: {
+            procedure,
+            budget_range: budget,
+            source,
+            location,
           },
-          {
-            type: 'trackCustom' as const,
-            name: 'ConsultationRequested',
-            params: {
-              procedure,
-              budget_range: budget,
-              source,
-              location,
-            },
-            delay: 100 // Delay de 100ms después de Lead
-          }
-        );
-      } else {
-        console.warn('⚠️ No hay datos de conversión - Usuario accedió directamente a /gracias');
+          delay: 100
+        });
       }
 
       // Disparar secuencia de eventos
