@@ -32,32 +32,15 @@ export const ThankYouPage: React.FC = () => {
       // IMPORTANTE: En SPA, el PageView NO se dispara automáticamente en rutas nuevas
       // Debemos dispararlo manualmente para que Meta detecte el cambio de página
 
-      // Calcular valor del presupuesto
-      const getBudgetValue = (budget: string): number => {
-        const budgetMap: Record<string, number> = {
-          '8.000.000 - 15.000.000': 11500000,
-          '15.000.000 - 25.000.000': 20000000,
-          '25.000.000 - 35.000.000': 30000000,
-          '35.000.000 - 45.000.000': 40000000,
-          '45.000.000 o más': 50000000,
-        };
-        return budgetMap[budget] || 0;
-      };
-
       // Preparar eventos a disparar
-      // Lead siempre se dispara al llegar a /gracias — los params son opcionales
+      // Lead siempre se dispara al llegar a /gracias — params mínimos, sin valor financiero
       const leadParams: Record<string, unknown> = {
         content_category: 'Consultation Request',
-        currency: 'PYG',
-        status: 'completed',
       };
 
       if (state?.conversionData) {
         console.log('✅ Datos de conversión encontrados:', state.conversionData);
-        const { procedure, budget } = state.conversionData;
-        leadParams.content_name = procedure;
-        leadParams.value = getBudgetValue(budget);
-        leadParams.predicted_ltv = getBudgetValue(budget);
+        leadParams.content_name = state.conversionData.procedure;
       } else {
         console.warn('⚠️ Sin conversionData — disparando Lead sin params extra');
       }
