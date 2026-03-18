@@ -32,32 +32,32 @@ export const ThankYouPage: React.FC = () => {
       // IMPORTANTE: En SPA, el PageView NO se dispara automáticamente en rutas nuevas
       // Debemos dispararlo manualmente para que Meta detecte el cambio de página
 
-      // Preparar eventos a disparar
-      // Lead siempre se dispara al llegar a /gracias — params mínimos, sin valor financiero
-      const leadParams: Record<string, unknown> = {
-        content_category: 'Consultation Request',
-      };
-
-      if (state?.conversionData) {
-        console.log('✅ Datos de conversión encontrados:', state.conversionData);
-        leadParams.content_name = state.conversionData.procedure;
-      } else {
-        console.warn('⚠️ Sin conversionData — disparando Lead sin params extra');
-      }
-
-      const events = [
+      const events: Array<{ type: 'track' | 'trackCustom'; name: string; params?: Record<string, unknown>; delay?: number }> = [
         {
           type: 'track' as const,
           name: 'PageView',
           delay: 0
-        },
-        {
-          type: 'track' as const,
-          name: 'Schedule',
-          params: leadParams,
-          delay: 300
         }
       ];
+
+      if (state?.conversionData) {
+        console.log('✅ Datos de conversión encontrados:', state.conversionData);
+        const { procedure, budget, source, location } = state.conversionData;
+        events.push({
+          type: 'trackCustom' as const,
+          name: 'ConsultationRequested',
+          params: {
+            procedure,
+            budget_range: budget,
+            source,
+            location,
+            content_category: 'Consultation Request',
+          },
+          delay: 300
+        });
+      } else {
+        console.warn('⚠️ Sin conversionData — solo PageView');
+      }
 
       // Disparar secuencia de eventos
       await trackPixelSequence(events);
