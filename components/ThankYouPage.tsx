@@ -52,7 +52,7 @@ export const ThankYouPage: React.FC = () => {
           delay: 0
         },
         {
-          type: 'track' as const,
+          type: 'trackCustom' as const,
           name: 'Lead',
           params: leadParams,
           delay: 300
