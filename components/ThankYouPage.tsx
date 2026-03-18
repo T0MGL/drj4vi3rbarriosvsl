@@ -59,22 +59,6 @@ export const ThankYouPage: React.FC = () => {
         }
       ];
 
-      // Evento custom adicional solo si hay datos completos
-      if (state?.conversionData) {
-        const { procedure, budget, source, location } = state.conversionData;
-        events.push({
-          type: 'trackCustom' as const,
-          name: 'ConsultationRequested',
-          params: {
-            procedure,
-            budget_range: budget,
-            source,
-            location,
-          },
-          delay: 100
-        });
-      }
-
       // Disparar secuencia de eventos
       await trackPixelSequence(events);
 
