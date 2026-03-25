@@ -299,7 +299,10 @@ export const CRM: React.FC = () => {
                                        </div>
                                        <div className="min-w-0">
                                           <div className={`font-display font-bold text-sm truncate ${isConverted ? 'text-green-400' : 'text-white'}`}>{lead.name}</div>
-                                          <div className="text-[10px] text-brand-neutral uppercase tracking-wide font-sans truncate">{lead.location}</div>
+                                          <div className="flex items-center gap-2 min-w-0">
+                                             <span className="text-[10px] text-brand-neutral uppercase tracking-wide font-sans truncate">{lead.location}</span>
+                                             {lead.source && <span className="text-[10px] text-brand-accent/70 font-sans truncate">{lead.source}</span>}
+                                          </div>
                                        </div>
                                     </div>
                                  </td>
@@ -307,6 +310,7 @@ export const CRM: React.FC = () => {
                                     <div className="flex flex-col gap-1">
                                         <span className="font-sans font-medium text-stone-300 line-clamp-2">{lead.procedure}</span>
                                         <span className="text-[10px] text-brand-neutral font-sans">{lead.budget}</span>
+                                        {lead.motivation && <span className="text-[10px] text-stone-500 font-sans italic truncate">{lead.motivation}</span>}
                                     </div>
                                  </td>
                                  <td className="px-4 py-4 whitespace-nowrap">
