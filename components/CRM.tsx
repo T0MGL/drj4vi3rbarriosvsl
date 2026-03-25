@@ -253,13 +253,13 @@ export const CRM: React.FC = () => {
 
          <div className="bg-brand-dark/40 backdrop-blur-sm border border-white/5 rounded-2xl overflow-hidden shadow-2xl">
             <div className="overflow-x-auto custom-scrollbar">
-               <table className="w-full text-left text-sm whitespace-nowrap font-sans">
+               <table className="w-full text-left text-sm font-sans table-fixed">
                   <thead className="bg-brand-darker text-brand-neutral uppercase tracking-wider text-[10px] font-medium border-b border-white/5">
                      <tr>
-                        <th className="px-4 py-4">Fecha</th>
+                        <th className="px-4 py-4 w-[100px]">Fecha</th>
                         <th className="px-4 py-4">Paciente</th>
                         <th className="px-4 py-4">Procedimiento</th>
-                        <th className="px-4 py-4 text-right">Acciones</th>
+                        <th className="px-4 py-4 text-right w-[200px]">Acciones</th>
                      </tr>
                   </thead>
                   <tbody className="divide-y divide-white/5">
@@ -288,28 +288,28 @@ export const CRM: React.FC = () => {
 
                            return (
                               <tr key={idx} className={`hover:bg-white/5 transition-colors group ${isLost ? 'opacity-50 grayscale' : ''} ${isConverted ? 'bg-green-900/5' : ''}`}>
-                                 <td className="px-4 py-4 text-stone-400 text-xs font-mono">
+                                 <td className="px-4 py-4 text-stone-400 text-xs font-mono whitespace-nowrap">
                                     <div>{dateLine}</div>
                                     {timeLine && <div className="text-stone-500 text-[10px]">{timeLine}</div>}
                                  </td>
                                  <td className="px-4 py-4">
-                                    <div className="flex items-center gap-3">
+                                    <div className="flex items-center gap-3 min-w-0">
                                        <div className={`w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center ${isConverted ? 'bg-green-500 text-black' : 'bg-brand-accent/10 text-brand-accent'}`}>
                                           {isConverted ? <DollarSign size={14} /> : <User size={14} />}
                                        </div>
-                                       <div>
-                                          <div className={`font-display font-bold text-sm ${isConverted ? 'text-green-400' : 'text-white'}`}>{lead.name}</div>
-                                          <div className="text-[10px] text-brand-neutral uppercase tracking-wide font-sans">{lead.location}</div>
+                                       <div className="min-w-0">
+                                          <div className={`font-display font-bold text-sm truncate ${isConverted ? 'text-green-400' : 'text-white'}`}>{lead.name}</div>
+                                          <div className="text-[10px] text-brand-neutral uppercase tracking-wide font-sans truncate">{lead.location}</div>
                                        </div>
                                     </div>
                                  </td>
                                  <td className="px-4 py-4">
                                     <div className="flex flex-col gap-1">
-                                        <span className="font-sans font-medium text-stone-300">{lead.procedure}</span>
+                                        <span className="font-sans font-medium text-stone-300 line-clamp-2">{lead.procedure}</span>
                                         <span className="text-[10px] text-brand-neutral font-sans">{lead.budget}</span>
                                     </div>
                                  </td>
-                                 <td className="px-4 py-4">
+                                 <td className="px-4 py-4 whitespace-nowrap">
                                     <div className="flex items-center justify-end gap-2">
                                        <button
                                           onClick={() => handleToggleContacted(lead)}
