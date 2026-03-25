@@ -121,9 +121,9 @@ export const getLeads = async (token: string): Promise<Lead[]> => {
             budget: String(item.budget || item.Presupuesto || ''),
             source: String(item.source || item.Fuente || ''),
             motivation: String(item.motivation || item.Motivacion || ''),
-            contacted: String(item.contacted ?? false).toLowerCase() === 'true',
-            converted: String(item.converted ?? false).toLowerCase() === 'true',
-            lost: String(item.lost ?? false).toLowerCase() === 'true'
+            contacted: String(item.contacted ?? item.Contactado ?? false).toLowerCase() === 'true',
+            converted: String(item.converted ?? item.Convertido ?? false).toLowerCase() === 'true',
+            lost: String(item.lost ?? item.Perdido ?? false).toLowerCase() === 'true'
         })).reverse();
 
     } catch (error) {

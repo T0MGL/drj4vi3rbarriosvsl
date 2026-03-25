@@ -26,6 +26,7 @@ export const CRM: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [loginLoading, setLoginLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
+  const [statusFilter, setStatusFilter] = useState<'all' | 'new' | 'contacted' | 'converted' | 'lost'>('all');
   const [error, setError] = useState('');
 
   // Restaurar sesión
@@ -105,7 +106,12 @@ export const CRM: React.FC = () => {
     const matchesTerm = lead.name?.toLowerCase().includes(searchTerm.toLowerCase()) ||
       lead.phone?.includes(searchTerm) ||
       lead.procedure?.toLowerCase().includes(searchTerm.toLowerCase());
-    return matchesTerm;
+    if (!matchesTerm) return false;
+    if (statusFilter === 'new') return !lead.contacted && !lead.converted && !lead.lost;
+    if (statusFilter === 'contacted') return !!lead.contacted;
+    if (statusFilter === 'converted') return !!lead.converted;
+    if (statusFilter === 'lost') return !!lead.lost;
+    return true;
   });
 
   const downloadCSV = () => {
@@ -211,14 +217,37 @@ export const CRM: React.FC = () => {
                   <Download size={16} /> Exportar Excel
               </button>
             </div>
-            <div className="flex flex-col md:flex-row gap-4 bg-brand-dark/30 p-4 rounded-2xl border border-white/5">
-                <div className="relative flex-1 group">
-                   <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-brand-neutral group-focus-within:text-brand-accent transition-colors" size={16} />
-                   <input type="text" placeholder="Buscar por nombre, whatsapp o procedimiento..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} className="w-full bg-brand-dark border border-white/10 rounded-xl py-2.5 pl-10 text-white focus:border-brand-accent outline-none text-sm transition-all shadow-sm h-full font-sans" />
+            <div className="flex flex-col gap-3 bg-brand-dark/30 p-4 rounded-2xl border border-white/5">
+                <div className="flex flex-col md:flex-row gap-3">
+                   <div className="relative flex-1 group">
+                      <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-brand-neutral group-focus-within:text-brand-accent transition-colors" size={16} />
+                      <input type="text" placeholder="Buscar por nombre, whatsapp o procedimiento..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} className="w-full bg-brand-dark border border-white/10 rounded-xl py-2.5 pl-10 text-white focus:border-brand-accent outline-none text-sm transition-all shadow-sm h-full font-sans" />
+                   </div>
+                   {searchTerm && (
+                       <button onClick={() => setSearchTerm('')} className="px-4 py-2 bg-red-900/20 hover:bg-red-900/40 text-red-400 rounded-xl text-xs font-bold uppercase tracking-wider transition-colors flex items-center justify-center"><X size={16} /></button>
+                    )}
                 </div>
-                {searchTerm && (
-                    <button onClick={() => setSearchTerm('')} className="px-4 py-2 bg-red-900/20 hover:bg-red-900/40 text-red-400 rounded-xl text-xs font-bold uppercase tracking-wider transition-colors flex items-center justify-center"><X size={16} /></button>
-                 )}
+                <div className="flex gap-2 overflow-x-auto">
+                   {([
+                     ['all', 'Todos'],
+                     ['new', 'Nuevos'],
+                     ['contacted', 'Contactados'],
+                     ['converted', 'Convertidos'],
+                     ['lost', 'Perdidos'],
+                   ] as const).map(([key, label]) => (
+                     <button
+                       key={key}
+                       onClick={() => setStatusFilter(key)}
+                       className={`px-3 py-1.5 rounded-lg text-xs font-sans font-medium uppercase tracking-wide transition-all whitespace-nowrap ${
+                         statusFilter === key
+                           ? 'bg-brand-accent/20 text-brand-accent border border-brand-accent/40'
+                           : 'bg-brand-dark border border-white/10 text-stone-400 hover:text-white hover:border-white/20'
+                       }`}
+                     >
+                       {label}
+                     </button>
+                   ))}
+                </div>
             </div>
          </div>
 
@@ -227,18 +256,17 @@ export const CRM: React.FC = () => {
                <table className="w-full text-left text-sm whitespace-nowrap font-sans">
                   <thead className="bg-brand-darker text-brand-neutral uppercase tracking-wider text-[10px] font-medium border-b border-white/5">
                      <tr>
-                        <th className="p-5">Fecha</th>
-                        <th className="p-5">Paciente</th>
-                        <th className="p-5">Procedimiento</th>
-                        <th className="p-5">Estados</th>
-                        <th className="p-5 text-center">Acciones</th>
+                        <th className="px-4 py-4">Fecha</th>
+                        <th className="px-4 py-4">Paciente</th>
+                        <th className="px-4 py-4">Procedimiento</th>
+                        <th className="px-4 py-4 text-right">Acciones</th>
                      </tr>
                   </thead>
                   <tbody className="divide-y divide-white/5">
                      {loading ? (
-                        <tr><td colSpan={5} className="p-12 text-center text-brand-neutral animate-pulse">Sincronizando...</td></tr>
+                        <tr><td colSpan={4} className="p-12 text-center text-brand-neutral animate-pulse">Sincronizando...</td></tr>
                      ) : filteredLeads.length === 0 ? (
-                        <tr><td colSpan={5} className="p-12 text-center text-brand-neutral">Sin resultados.</td></tr>
+                        <tr><td colSpan={4} className="p-12 text-center text-brand-neutral">Sin resultados.</td></tr>
                      ) : (
                         filteredLeads.map((lead, idx) => {
                            let dateStr = lead.date;
@@ -254,10 +282,10 @@ export const CRM: React.FC = () => {
 
                            return (
                               <tr key={idx} className={`hover:bg-white/5 transition-colors group ${isLost ? 'opacity-50 grayscale' : ''} ${isConverted ? 'bg-green-900/5' : ''}`}>
-                                 <td className="p-5 text-stone-400 text-xs font-mono">{dateStr}</td>
-                                 <td className="p-5">
+                                 <td className="px-4 py-4 text-stone-400 text-xs font-mono">{dateStr}</td>
+                                 <td className="px-4 py-4">
                                     <div className="flex items-center gap-3">
-                                       <div className={`w-8 h-8 rounded-full flex items-center justify-center ${isConverted ? 'bg-green-500 text-black' : 'bg-brand-accent/10 text-brand-accent'}`}>
+                                       <div className={`w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center ${isConverted ? 'bg-green-500 text-black' : 'bg-brand-accent/10 text-brand-accent'}`}>
                                           {isConverted ? <DollarSign size={14} /> : <User size={14} />}
                                        </div>
                                        <div>
@@ -266,14 +294,14 @@ export const CRM: React.FC = () => {
                                        </div>
                                     </div>
                                  </td>
-                                 <td className="p-5">
+                                 <td className="px-4 py-4">
                                     <div className="flex flex-col gap-1">
                                         <span className="font-sans font-medium text-stone-300">{lead.procedure}</span>
                                         <span className="text-[10px] text-brand-neutral font-sans">{lead.budget}</span>
                                     </div>
                                  </td>
-                                 <td className="p-5">
-                                    <div className="flex gap-2">
+                                 <td className="px-4 py-4">
+                                    <div className="flex items-center justify-end gap-2">
                                        <button
                                           onClick={() => handleToggleContacted(lead)}
                                           title="Marcar como Contactado"
@@ -295,12 +323,8 @@ export const CRM: React.FC = () => {
                                        >
                                           <Ban size={14} />
                                        </button>
-                                    </div>
-                                 </td>
-                                 <td className="p-5">
-                                    <div className="flex justify-center gap-2">
-                                       <a href={`https://wa.me/${(lead.phone || '').replace(/[^0-9]/g, '')}`} target="_blank" rel="noreferrer" className="flex items-center gap-2 px-3 py-1.5 bg-green-500/10 text-green-500 hover:bg-green-500 hover:text-white border border-green-500/20 hover:border-green-500 rounded-lg transition-all text-xs font-sans font-medium uppercase tracking-wide">
-                                          <MessageCircle size={14} /> <span>Whatsapp</span>
+                                       <a href={`https://wa.me/${(lead.phone || '').replace(/[^0-9]/g, '')}`} target="_blank" rel="noreferrer" className="flex items-center gap-1.5 px-3 py-1.5 bg-green-500/10 text-green-500 hover:bg-green-500 hover:text-white border border-green-500/20 hover:border-green-500 rounded-lg transition-all text-xs font-sans font-medium uppercase tracking-wide">
+                                          <MessageCircle size={13} /> <span>WA</span>
                                        </a>
                                     </div>
                                  </td>
