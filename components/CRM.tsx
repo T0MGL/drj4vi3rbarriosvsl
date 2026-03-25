@@ -269,11 +269,17 @@ export const CRM: React.FC = () => {
                         <tr><td colSpan={4} className="p-12 text-center text-brand-neutral">Sin resultados.</td></tr>
                      ) : (
                         filteredLeads.map((lead, idx) => {
-                           let dateStr = lead.date;
+                           let dateLine = lead.date;
+                           let timeLine = '';
                            try {
                                if (lead.date.includes('T')) {
                                   const d = new Date(lead.date);
-                                  dateStr = d.toLocaleDateString('es-PY', { day: '2-digit', month: 'short', hour: '2-digit', minute:'2-digit' });
+                                  dateLine = d.toLocaleDateString('es-PY', { day: '2-digit', month: 'short', year: 'numeric' });
+                                  timeLine = d.toLocaleTimeString('es-PY', { hour: '2-digit', minute: '2-digit' });
+                               } else if (lead.date.includes(',')) {
+                                  const parts = lead.date.split(',');
+                                  dateLine = parts[0].trim();
+                                  timeLine = parts.slice(1).join(',').trim();
                                }
                            } catch(e){}
 
@@ -282,7 +288,10 @@ export const CRM: React.FC = () => {
 
                            return (
                               <tr key={idx} className={`hover:bg-white/5 transition-colors group ${isLost ? 'opacity-50 grayscale' : ''} ${isConverted ? 'bg-green-900/5' : ''}`}>
-                                 <td className="px-4 py-4 text-stone-400 text-xs font-mono">{dateStr}</td>
+                                 <td className="px-4 py-4 text-stone-400 text-xs font-mono">
+                                    <div>{dateLine}</div>
+                                    {timeLine && <div className="text-stone-500 text-[10px]">{timeLine}</div>}
+                                 </td>
                                  <td className="px-4 py-4">
                                     <div className="flex items-center gap-3">
                                        <div className={`w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center ${isConverted ? 'bg-green-500 text-black' : 'bg-brand-accent/10 text-brand-accent'}`}>

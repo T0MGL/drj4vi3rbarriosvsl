@@ -44,13 +44,19 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       const response = await fetch(GOOGLE_SCRIPT_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        redirect: 'follow',
         body: JSON.stringify(req.body),
       });
 
-      // Google Scripts redirige, pero los datos llegan
-      return res.status(200).json({ success: true });
-    } catch (error) {
-      return res.status(500).json({ error: 'Error al enviar datos' });
+      const text = await response.text();
+      try {
+        const data = JSON.parse(text);
+        return res.status(200).json(data);
+      } catch {
+        return res.status(200).json({ success: true, raw: text.substring(0, 200) });
+      }
+    } catch (error: any) {
+      return res.status(500).json({ error: 'Error al enviar datos', detail: error.message });
     }
   }
 
