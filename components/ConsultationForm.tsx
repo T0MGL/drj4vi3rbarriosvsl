@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { LeadData, PROCEDURES, BUDGET_RANGES, SOURCES } from '../types';
 import { ArrowRight, ArrowLeft, CheckCircle2, Sparkles, X, AlertCircle, ChevronDown, Loader2, Check } from 'lucide-react';
 import { submitLead } from '../services/sheetApi';
-import { trackFormConversion, trackFormStart, trackFormStep } from '../services/analytics';
+import { trackFormStart, trackFormStep } from '../services/analytics';
 
 interface ConsultationFormProps {
   onClose?: () => void;

@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import { CheckCircle2, ArrowLeft, Instagram, Facebook, MessageCircle } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { Logo } from './Logo';
-import { trackFormConversion } from '../services/analytics';
 import { trackPixelSequence, debugPixelStatus } from '../utils/pixelHelpers';
 
 interface LocationState {

@@ -117,13 +117,8 @@ export const trackFormConversion = (data: {
       predicted_ltv: getBudgetValue(data.budget),
     });
 
-    // Evento personalizado adicional para tracking interno
-    window.fbq('trackCustom', 'ConsultationRequested', {
-      procedure: data.procedure,
-      budget_range: data.budget,
-      source: data.source,
-      location: data.location,
-    });
+    // ConsultationRequested se dispara SOLO en /gracias (ThankYouPage.tsx)
+    // No disparar aqui para evitar conversiones falsas en Meta Ads
   }
 
   // 2. Google Analytics 4 (si está configurado)
