@@ -1,76 +1,14 @@
 import React, { useEffect } from 'react';
 import { CheckCircle2, ArrowLeft, Instagram, Facebook, MessageCircle } from 'lucide-react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Logo } from './Logo';
-import { trackPixelSequence, debugPixelStatus } from '../utils/pixelHelpers';
-
-interface LocationState {
-  conversionData?: {
-    procedure: string;
-    budget: string;
-    source: string;
-    location: string;
-  };
-}
 
 export const ThankYouPage: React.FC = () => {
-  const location = useLocation();
-  const state = location.state as LocationState;
-
-  // CRÍTICO: Disparar conversión de Meta Pixel AL CARGAR /gracias
   useEffect(() => {
-    console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
-    console.log('🎯 ThankYouPage montado - Iniciando tracking');
-    console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
-
-    // Debug: Mostrar estado del pixel
-    debugPixelStatus();
-
-    // Función async para manejar los eventos
-    const trackConversion = async () => {
-      // IMPORTANTE: En SPA, el PageView NO se dispara automáticamente en rutas nuevas
-      // Debemos dispararlo manualmente para que Meta detecte el cambio de página
-
-      const events: Array<{ type: 'track' | 'trackCustom'; name: string; params?: Record<string, unknown>; delay?: number }> = [
-        {
-          type: 'track' as const,
-          name: 'PageView',
-          delay: 0
-        }
-      ];
-
-      if (state?.conversionData) {
-        console.log('✅ Datos de conversión encontrados:', state.conversionData);
-        const { procedure, budget, source, location } = state.conversionData;
-        events.push({
-          type: 'trackCustom' as const,
-          name: 'ConsultationRequested',
-          params: {
-            procedure,
-            budget_range: budget,
-            source,
-            location,
-            content_category: 'Consultation Request',
-          },
-          delay: 300
-        });
-      } else {
-        console.warn('⚠️ Sin conversionData — solo PageView');
-      }
-
-      // Disparar secuencia de eventos
-      await trackPixelSequence(events);
-
-      console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
-      console.log('✅ Tracking completado en /gracias');
-      console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
-    };
-
-    // Ejecutar tracking
-    trackConversion().catch(error => {
-      console.error('❌ Error en tracking de conversión:', error);
-    });
-  }, []); // Solo ejecutar una vez al montar
+    if (typeof window !== 'undefined' && window.fbq) {
+      window.fbq('trackCustom', 'ConsultationRequested');
+    }
+  }, []);
 
   return (
     <div className="min-h-screen bg-brand-dark text-brand-light relative selection:bg-brand-accent selection:text-white flex flex-col font-sans">
