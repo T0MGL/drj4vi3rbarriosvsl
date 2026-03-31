@@ -207,22 +207,7 @@ export const ConsultationForm: React.FC<ConsultationFormProps> = ({ onClose }) =
     const success = await submitLead(formData);
 
     if (success) {
-      const proceduresString = formData.procedures.includes('Otro procedimiento')
-        ? formData.procedures.map(p => p === 'Otro procedimiento' ? (formData.otherProcedure || 'Otro') : p).join(', ')
-        : formData.procedures.join(', ');
-
-      // IMPORTANTE: La conversión se dispara EN /gracias, no aquí
-      // Pasamos los datos vía state para que ThankYouPage dispare el evento
-      navigate('/gracias', {
-        state: {
-          conversionData: {
-            procedure: proceduresString || 'No especificado',
-            budget: formData.budget,
-            source: formData.source,
-            location: formData.location,
-          }
-        }
-      });
+      navigate('/gracias');
     } else {
       setIsSubmitting(false);
       alert("Hubo un problema al enviar sus datos. Por favor, verifique su conexión e intente nuevamente.");
