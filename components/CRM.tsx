@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import * as XLSX from 'xlsx';
 import { Lead } from '../types';
 import { getLeads, toggleLeadContacted, toggleLeadConversion, toggleLeadLost, authenticateCRM } from '../services/sheetApi';
 import {
@@ -115,61 +116,50 @@ export const CRM: React.FC = () => {
   });
 
   const downloadCSV = () => {
-    const DELIMITER = ";";
-    const NEWLINE = "\r\n";
-
-    const escape = (value: unknown): string => {
-      const str = (value ?? "")
+    const clean = (value: unknown): string =>
+      (value ?? "")
         .toString()
         .replace(/\r?\n/g, " ")
         .replace(/\s+/g, " ")
         .trim();
-      return `"${str.replace(/"/g, '""')}"`;
-    };
 
-    const headers = [
-      "ID",
-      "Fecha",
-      "Nombre",
-      "Whatsapp",
-      "Email",
-      "Ubicacion",
-      "Procedimiento",
-      "Presupuesto",
-      "Fuente",
-      "Motivacion",
-      "Contactado",
-      "Convertido",
-      "Perdido",
+    const rows = filteredLeads.map(lead => ({
+      ID: clean(lead.id),
+      Fecha: clean(lead.date),
+      Nombre: clean(lead.name),
+      Whatsapp: clean(lead.phone),
+      Email: clean(lead.email),
+      Ubicacion: clean(lead.location),
+      Procedimiento: clean(lead.procedure),
+      Presupuesto: clean(lead.budget),
+      Fuente: clean(lead.source),
+      Motivacion: clean(lead.motivation),
+      Contactado: lead.contacted ? "SI" : "NO",
+      Convertido: lead.converted ? "SI" : "NO",
+      Perdido: lead.lost ? "SI" : "NO",
+    }));
+
+    const worksheet = XLSX.utils.json_to_sheet(rows);
+    worksheet["!cols"] = [
+      { wch: 10 }, // ID
+      { wch: 12 }, // Fecha
+      { wch: 24 }, // Nombre
+      { wch: 16 }, // Whatsapp
+      { wch: 28 }, // Email
+      { wch: 18 }, // Ubicacion
+      { wch: 22 }, // Procedimiento
+      { wch: 32 }, // Presupuesto
+      { wch: 22 }, // Fuente
+      { wch: 60 }, // Motivacion
+      { wch: 12 }, // Contactado
+      { wch: 12 }, // Convertido
+      { wch: 10 }, // Perdido
     ];
 
-    const rows = filteredLeads.map(lead => [
-      escape(lead.id),
-      escape(lead.date),
-      escape(lead.name),
-      escape(lead.phone),
-      escape(lead.email),
-      escape(lead.location),
-      escape(lead.procedure),
-      escape(lead.budget),
-      escape(lead.source),
-      escape(lead.motivation),
-      escape(lead.contacted ? "SI" : "NO"),
-      escape(lead.converted ? "SI" : "NO"),
-      escape(lead.lost ? "SI" : "NO"),
-    ].join(DELIMITER));
-
-    const csvBody = [headers.join(DELIMITER), ...rows].join(NEWLINE);
-    const BOM = "\uFEFF";
-    const blob = new Blob([BOM + csvBody], { type: "text/csv;charset=utf-8;" });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement("a");
-    link.setAttribute("href", url);
-    link.setAttribute("download", `pacientes_dr_barrios_${new Date().toISOString().split("T")[0]}.csv`);
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Pacientes");
+    const today = new Date().toISOString().split("T")[0];
+    XLSX.writeFile(workbook, `pacientes_dr_barrios_${today}.xlsx`);
   };
 
   if (!isAuthenticated) {
