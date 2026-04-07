@@ -158,8 +158,12 @@ export const CRM: React.FC = () => {
 
     const workbook = XLSX.utils.book_new();
     XLSX.utils.book_append_sheet(workbook, worksheet, "Pacientes");
-    const today = new Date().toISOString().split("T")[0];
-    XLSX.writeFile(workbook, `pacientes_dr_barrios_${today}.xlsx`);
+
+    const now = new Date();
+    const dd = String(now.getDate()).padStart(2, "0");
+    const mm = String(now.getMonth() + 1).padStart(2, "0");
+    const yyyy = now.getFullYear();
+    XLSX.writeFile(workbook, `Pacientes_${dd}-${mm}-${yyyy}.xlsx`);
   };
 
   if (!isAuthenticated) {
