@@ -115,32 +115,61 @@ export const CRM: React.FC = () => {
   });
 
   const downloadCSV = () => {
-    const headers = ["ID", "Fecha", "Nombre", "Whatsapp", "Email", "Ubicacion", "Procedimiento", "Presupuesto", "Fuente", "Contactado", "Convertido"];
-    const csvContent = [
-        headers.join(","),
-        ...leads.map(lead => [
-            `"${lead.id}"`,
-            `"${lead.date}"`,
-            `"${lead.name}"`,
-            `"${lead.phone}"`,
-            `"${lead.email}"`,
-            `"${lead.location}"`,
-            `"${lead.procedure}"`,
-            `"${lead.budget}"`,
-            `"${lead.source}"`,
-            `"${lead.contacted ? 'SI' : 'NO'}"`,
-            `"${lead.converted ? 'SI' : 'NO'}"`
-        ].join(","))
-    ].join("\n");
+    const DELIMITER = ";";
+    const NEWLINE = "\r\n";
 
-    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
-    const link = document.createElement("a");
+    const escape = (value: unknown): string => {
+      const str = (value ?? "")
+        .toString()
+        .replace(/\r?\n/g, " ")
+        .replace(/\s+/g, " ")
+        .trim();
+      return `"${str.replace(/"/g, '""')}"`;
+    };
+
+    const headers = [
+      "ID",
+      "Fecha",
+      "Nombre",
+      "Whatsapp",
+      "Email",
+      "Ubicacion",
+      "Procedimiento",
+      "Presupuesto",
+      "Fuente",
+      "Motivacion",
+      "Contactado",
+      "Convertido",
+      "Perdido",
+    ];
+
+    const rows = filteredLeads.map(lead => [
+      escape(lead.id),
+      escape(lead.date),
+      escape(lead.name),
+      escape(lead.phone),
+      escape(lead.email),
+      escape(lead.location),
+      escape(lead.procedure),
+      escape(lead.budget),
+      escape(lead.source),
+      escape(lead.motivation),
+      escape(lead.contacted ? "SI" : "NO"),
+      escape(lead.converted ? "SI" : "NO"),
+      escape(lead.lost ? "SI" : "NO"),
+    ].join(DELIMITER));
+
+    const csvBody = [headers.join(DELIMITER), ...rows].join(NEWLINE);
+    const BOM = "\uFEFF";
+    const blob = new Blob([BOM + csvBody], { type: "text/csv;charset=utf-8;" });
     const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
     link.setAttribute("href", url);
-    link.setAttribute("download", `pacientes_dr_barrios_${new Date().toISOString().split('T')[0]}.csv`);
+    link.setAttribute("download", `pacientes_dr_barrios_${new Date().toISOString().split("T")[0]}.csv`);
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+    URL.revokeObjectURL(url);
   };
 
   if (!isAuthenticated) {
